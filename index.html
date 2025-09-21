@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REFUEL.RUN</title>
+    <meta name="description" content="Motor de cálculo nutricional basado en evidencia científica">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Partículas de fondo -->
+    <div class="particles-bg" id="particles-bg"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">
+                <img class="header-logo" src="LogoRF.png" alt="REFUEL.RUN Logo"> 
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+            <button class="nav-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="homeSection">
+            <div class="hero-container">
+                <div class="hero-content">
+                    
+                    <div class="hero-logo-large">
+                        <img class="hero-logo" src="LogoRF.png" alt="REFUEL.RUN" />
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Obtén tu plan nutricional de carrera<br>
+                        <span class="title-highlight">de forma fácil, rápida y personalizada.</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Motor de cálculo energético basado en evidencia científica. 
+                    </p>
+                    
+                    <div class="hero-cta-group">
+                        <button class="hero-cta primary" onclick="startCalculator()">
+                            <span>Generar plan</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m9 18 6-6-6-6"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">Evidencia científica</div>
+                            <div class="stat-label">Publicaciones validadas</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="stat-value">Adaptativo</div>
+                            <div class="stat-label">Según tus parámetros</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="stat-value">Por fases</div>
+                            <div class="stat-label">Progresión Temporal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <div class="calculator-section" id="calculatorSection" style="display: none;">
+            <div class="calculator-container">
+                <button class="btn btn-primary" onclick="backToHome()" style="margin-bottom: 20px;">
+                    Volver al inicio
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m15 18-6-6 6-6"/>
+                    </svg>
+                </button>
+                
+                <div class="calculator-header">
+                    <div class="calculator-disclaimer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                            <path d="M12 9v4"/>
+                            <path d="m12 17 .01 0"/>
+                        </svg>
+                         Este sistema se basa en publicaciones académicas y científicas, pero es únicamente una herramienta de aproximación. Es esencial consultar con profesionales expertos antes de implementar cualquier recomendación.
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-labels">
+                            <span class="progress-label active" data-step="1">
+                                <span class="step-circle">1</span> Perfil
+                            </span>
+                            <span class="progress-label" data-step="2">
+                                <span class="step-circle">2</span> Carrera
+                            </span>
+                            <span class="progress-label" data-step="3">
+                                <span class="step-circle">3</span> Condiciones
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="nutritionWizard" class="wizard-form">
+                    <!-- Step 1: Perfil del Atleta -->
+                    <div class="step-container" data-step="1">
+                        <div class="step-header">
+                            <h3 class="step-title">Perfil del atleta</h3>
+                            <p class="step-description">Datos para cálculo metabólico</p>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="weight">Peso (kg)</label>
+                                <input type="number" id="weight" name="weight" placeholder="Ej: 75" required>
+                                <div class="error-message" id="weight-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="height">Altura (cm)</label>
+                                <input type="number" id="height" name="height" placeholder="Ej: 185" required>
+                                <div class="error-message" id="height-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="age">Edad</label>
+                                <input type="number" id="age" name="age" placeholder="Ej: 35" required>
+                                <div class="error-message" id="age-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="gender">Sexo</label>
+                                <select id="gender" name="gender" required style="color: #000; background: #fff;">
+                                    <option value="">Seleccionar</option>
+                                    <option value="male">Masculino</option>
+                                    <option value="female">Femenino</option>
+                                </select>
+                                <div class="error-message" id="gender-error"></div>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="experience">Experiencia en maratón o ultra</label>
+                                <select id="experience" name="experience" required style="color: #000; background: #fff;">
+                                    <option value="">Seleccionar</option>
+                                    <option value="novice">Principiante (Entre 0 y 2)</option>
+                                    <option value="intermediate">Intermedio (Entre 3 y 10)</option>
+                                    <option value="experienced">Experimentado (10 o más)</option>
+                                    <option value="elite">Élite (Nivel competitivo)</option>
+                                </select>
+                                <div class="error-message" id="experience-error"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-actions">
+                            <div></div> <!-- Placeholder for alignment -->
+                            <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                Siguiente
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Carrera -->
+                    <div class="step-container" data-step="2">
+                        <div class="step-header">
+                            <h3 class="step-title">Datos de la carrera</h3>
+                            <p class="step-description">Parámetros específicos de la competición</p>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="distance">Distancia (km)</label>
+                                <input type="number" id="distance" name="distance" placeholder="Ej: 100" required>
+                                <div class="error-message" id="distance-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="estimatedTime">Tiempo estimado (horas)</label>
+                                <input type="number" id="estimatedTime" name="estimatedTime" step="0.1" placeholder="Ej: 12.5" required>
+                                <div class="error-message" id="estimatedTime-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="elevation">Desnivel positivo (metros)</label>
+                                <input type="number" id="elevation" name="elevation" placeholder="Ej: 4500" required>
+                                <div class="error-message" id="elevation-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="altitude">Altitud media aproximada (metros)</label>
+                                <input type="number" id="altitude" name="altitude" placeholder="Ej: 1200" required>
+                                <div class="error-message" id="altitude-error"></div>
+                            </div>
+                            
+                            <!-- Campo de Terreno AÑADIDO -->
+                            <div class="form-group full-width">
+                                <label for="terrain">Tipo de Terreno</label>
+                                <select id="terrain" name="terrain" required style="color: #000; background: #fff;">
+                                    <option value="">Seleccionar</option>
+                                    <option value="trail_normal">🌄Trail Running - Moderado (Pistas y senderos)</option>
+                                    <option value="trail_moderate">⛰️Trail Running - Difícil (Senderos técnicos)</option>
+                                    <option value="trail_alpine">🗻Trail Running - Extremo (Alpino)</option>
+                                    <option value="road">🛣️Road Running - Asfalto</option>
+                                </select>
+                                <div class="error-message" id="terrain-error"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                                Anterior
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                Siguiente
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Condiciones -->
+                    <div class="step-container" data-step="3">
+                        <div class="step-header">
+                            <h3 class="step-title">Condiciones ambientales</h3>
+                            <p class="step-description">Factores que afectan al rendimiento</p>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="temperature">Temperatura aproximada (°C)</label>
+                                <input type="number" id="temperature" name="temperature" placeholder="Ej: 15" required>
+                                <div class="error-message" id="temperature-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="weather">Clima esperado</label>
+                                <select id="weather" name="weather" required style="color: #000; background: #fff;">
+                                    <option value="">Seleccionar</option>
+                                    <option value="sunny">☀️Soleado</option>
+                                    <option value="partly_cloudy">🌤️Parcialmente nublado</option>
+                                    <option value="cloudy">☁️Nublado</option>
+                                    <option value="light_rain">🌦️Lluvia ligera</option>
+                                    <option value="rain">🌧️Lluvia moderada</option>
+                                    <option value="heavy_rain">⛈️Lluvia fuerte</option>
+                                    <option value="snow">🌨️Nieve</option>
+                                    <option value="windy">🌪️Ventoso</option>
+                                </select>
+                                <div class="error-message" id="weather-error"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                                Anterior
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                Calcular Plan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-container">
+                <div class="results-content" id="resultsContent"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 REFUEL.RUN. Todos los derechos reservados</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="privacidad.html" class="footer-link" style="color: white; font-size: 0.8em;">Términos y privacidad</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p>🔍 Calculando plan...</p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="test_functions.js"></script>
+    <script src="test_electrolytes_improved.js"></script>
+</body>
+</html>

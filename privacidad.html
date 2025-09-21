@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Privacidad - REFUEL.RUN</title>
+    <meta name="description" content="Términos y privacidad de REFUEL.RUN - Información legal completa">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { color: white !important; }
+        h1, h2, h3, h4, h5, h6 { color: #ff6600 !important; }
+    </style>
+</head>
+<body>
+    <!-- Partículas de fondo -->
+    <div class="particles-bg" id="particles-bg"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">
+                <img class="header-logo" src="LogoRF.png" alt="REFUEL.RUN Logo"> 
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+            <button class="nav-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Privacy -->
+        <section class="faq-hero">
+            <div class="container">
+                <div class="faq-hero-content">
+                    <div class="hero-badge">
+                        <div class="badge-icon">🔒</div>
+                        <span>Términos y Privacidad</span>
+                    </div>
+                    <h1>Términos y Privacidad</h1>
+                    <p>Información transparente sobre nuestros términos de uso y cómo manejamos tus datos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Content -->
+        <section class="faq-section" id="privacy">
+            <div class="container">
+                <div class="faq-grid">
+                    <!-- Categoría: Términos y Privacidad -->
+                    <div class="faq-category">
+                        <div class="category-header">
+                            <h2>Términos y Privacidad</h2>
+                        </div>
+                        
+                        <div class="faq-items">
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Qué datos recopilamos?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Recopilamos únicamente los datos necesarios para calcular el plan nutricional:</p>
+                                    <ul>
+                                        <li>Peso, altura, edad y sexo</li>
+                                        <li>Experiencia en resistencia</li>
+                                        <li>Características del evento (distancia, tiempo, desnivel, altitud)</li>
+                                        <li>Condiciones ambientales (temperatura, clima)</li>
+                                    </ul>
+                                    <p>Estos datos se procesan localmente en tu navegador y no se almacenan en servidores.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Cómo se usan los datos?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Los datos se utilizan exclusivamente para:</p>
+                                    <ul>
+                                        <li>Calcular el gasto energético metabólico</li>
+                                        <li>Determinar necesidades de carbohidratos y electrolitos</li>
+                                        <li>Generar recomendaciones nutricionales</li>
+                                        <li>Ajustar según condiciones ambientales</li>
+                                    </ul>
+                                    <p>Todo el procesamiento se realiza en tu dispositivo, sin envío de datos a servidores externos.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Usamos cookies?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>No utilizamos cookies para rastreo o análisis de usuarios.</p>
+                                    <p>Únicamente usamos:</p>
+                                    <ul>
+                                        <li>Variables temporales en memoria del navegador para mantener el estado del formulario mientras usas la calculadora</li>
+                                        <li>Datos que se eliminan automáticamente al cerrar la pestaña o navegador</li>
+                                        <li>No hay almacenamiento persistente (localStorage/sessionStorage) de datos personales</li>
+                                    </ul>
+                                    <p>No hay seguimiento de comportamiento ni datos compartidos con terceros.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Dónde se almacenan los datos?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Todos los datos se procesan y almacenan localmente en tu navegador:</p>
+                                    <ul>
+                                        <li>No se envían datos del formulario a servidores externos</li>
+                                        <li>No hay base de datos ni almacenamiento en la nube de datos personales</li>
+                                        <li>Los datos del formulario se eliminan automáticamente al cerrar la pestaña o navegador</li>
+                                        <li>No registramos IP, ubicación ni información de identificación personal</li>
+                                        <li>Solo el servidor web puede registrar accesos básicos (IP, navegador) en logs técnicos estándar</li>
+                                    </ul>
+                                    <p>El motor de cálculo funciona completamente offline una vez cargada la página (requiere conexión inicial solo para cargar recursos estáticos como fuentes).</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Cómo protegemos tus datos?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Implementamos múltiples capas de protección enfocadas en la privacidad:</p>
+                                    <ul>
+                                        <li><strong>Procesamiento local sin envío de datos:</strong> Todo el cálculo se realiza en tu navegador, sin transmisión de datos personales</li>
+                                        <li><strong>Conexión HTTPS encriptada:</strong> Todas las conexiones externas usan encriptación SSL/TLS</li>
+                                        <li><strong>No hay formularios que envíen datos:</strong> El formulario no tiene action ni method que envíe información a servidores</li>
+                                        <li><strong>Código fuente disponible:</strong> El código es transparente y puede ser auditado por cualquier persona</li>
+                                        <li><strong>Dependencias externas mínimas:</strong> Solo Google Fonts para tipografía (Google puede registrar la solicitud de fuentes pero no recibe datos del formulario ni del usuario)</li>
+                                    </ul>
+                                    <p>Tu privacidad está protegida por diseño desde el principio, con énfasis en el procesamiento local y la transparencia.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Compartimos datos con terceros?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>No compartimos datos con terceros bajo ninguna circunstancia:</p>
+                                    <ul>
+                                        <li>No hay integración con servicios externos</li>
+                                        <li>No hay análisis de uso ni métricas</li>
+                                        <li>No hay publicidad ni marketing</li>
+                                        <li>No hay venta de datos</li>
+                                    </ul>
+                                    <p>Los datos permanecen exclusivamente en tu dispositivo.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Cuáles son mis derechos?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Tienes derecho a:</p>
+                                    <ul>
+                                        <li>Acceder a toda la información sobre tus datos</li>
+                                        <li>Solicitar eliminación de datos (aunque no se almacenan)</li>
+                                        <li>Conocer cómo se procesan los datos</li>
+                                        <li>Revocar consentimiento en cualquier momento</li>
+                                        <li>Contactar para cualquier consulta sobre privacidad</li>
+                                    </ul>
+                                    <p>Como no almacenamos datos, la mayoría de estos derechos se cumplen automáticamente.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>Propiedad Intelectual y Copyright</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p><strong>Derechos de Autor:</strong></p>
+                                    <ul>
+                                        <li>El código, diseño, interfaz y contenido de REFUEL.RUN están protegidos por derechos de autor.</li>
+                                        <li>Los algoritmos de cálculo y la base de datos de alimentos son propiedad intelectual de REFUEL.RUN.</li>
+                                        <li>El uso de la herramienta es gratuito para usuarios finales con fines personales y no comerciales.</li>
+                                        <li>Está prohibida la reproducción, distribución o uso comercial sin autorización expresa.</li>
+                                    </ul>
+                                    <p><strong>Fuentes Científicas:</strong></p>
+                                    <ul>
+                                        <li>Respetamos y reconocemos la propiedad intelectual de las publicaciones científicas citadas.</li>
+                                        <li>Los estudios y referencias utilizados se emplean bajo principios de uso educativo y científico.</li>
+                                        <li>Las metodologías se basan en publicaciones de dominio público y estudios peer-reviewed.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>Marco Legal</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Esta herramienta se rige por la legislación española. Para temas de privacidad se aplica el RGPD de la UE.</p>
+                                    <p>Nos reservamos el derecho de modificar estos términos, publicando cualquier cambio en esta página.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <section class="contact-section" id="contact">
+                    <div class="contact-container">
+                        <div class="contact-header">
+                            <h2>Contacta con nosotros</h2>
+                        </div>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div class="method-content">
+                                    <p>info@refuel.run</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 REFUEL.RUN. Todos los derechos reservados</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="privacidad.html" class="footer-link" style="font-size: 0.8em;">Términos y privacidad</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Privacy Functionality (same as FAQ)
+        function toggleFaq(element) {
+            const faqItem = element.parentNode;
+            const answer = faqItem.querySelector('.faq-answer');
+            const toggle = element.querySelector('.faq-toggle');
+            
+            // Toggle active class
+            faqItem.classList.toggle('active');
+            
+            // Animate answer
+            if (faqItem.classList.contains('active')) {
+                answer.style.display = 'block';
+                answer.style.animation = 'fadeInUp 0.3s ease-out';
+                if (toggle) {
+                    toggle.style.transform = 'rotate(180deg)';
+                }
+            } else {
+                answer.style.animation = 'fadeOut 0.3s ease-in-out';
+                if (toggle) {
+                    toggle.style.transform = 'rotate(0deg)';
+                }
+                setTimeout(() => {
+                    if (!faqItem.classList.contains('active')) {
+                        answer.style.display = 'none';
+                    }
+                }, 300);
+            }
+        }
+
+        // Crear partículas de fondo
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-bg');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Inicializar partículas cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Añadir estilos específicos para Privacy (same as FAQ)
+            const style = document.createElement('style');
+            style.textContent = `
+                .faq-hero {
+                    min-height: 60vh;
+                    display: flex;
+                    align-items: center;
+                    padding: 120px 0 80px;
+                    text-align: center;
+                }
+                
+                .faq-hero-content h1 {
+                    font-size: clamp(2.5rem, 5vw, 3.5rem);
+                    margin: 1rem 0;
+                }
+                
+                .faq-hero-content p {
+                    font-size: 1.25rem;
+                    color: var(--text-secondary);
+                    max-width: 600px;
+                    margin: 0 auto;
+                }
+                
+                .faq-section {
+                    padding: 80px 0;
+                }
+                
+                .faq-grid {
+                    display: grid;
+                    gap: 3rem;
+                }
+                
+                .faq-category {
+                    background: var(--gradient-card);
+                    border-radius: var(--radius-2xl);
+                    padding: 2rem;
+                    backdrop-filter: blur(20px);
+                    border: 1px solid rgba(249, 115, 22, 0.1);
+                }
+                
+                .category-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    padding-bottom: 1rem;
+                    border-bottom: 2px solid var(--brand-orange);
+                }
+                
+                .category-icon {
+                    width: 48px;
+                    height: 48px;
+                    background: var(--gradient-orange);
+                    border-radius: var(--radius-lg);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                }
+                
+                .category-header h2 {
+                    color: var(--text-primary);
+                    font-size: 1.5rem;
+                }
+                
+                .faq-items {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+                
+                .faq-item {
+                    background: rgba(255, 255, 255, 0.03);
+                    border-radius: var(--radius-lg);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                }
+                
+                .faq-item:hover {
+                    border-color: rgba(249, 115, 22, 0.3);
+                    transform: translateY(-2px);
+                }
+                
+                .faq-question {
+                    padding: 1.5rem;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: all 0.3s ease;
+                }
+                
+                .faq-question:hover {
+                    background: rgba(249, 115, 22, 0.05);
+                }
+                
+                .faq-question h3 {
+                    color: var(--text-primary);
+                    font-size: 1.125rem;
+                    margin: 0;
+                }
+                
+                .faq-toggle {
+                    color: var(--brand-orange);
+                    transition: transform 0.3s ease;
+                }
+                
+                .faq-answer {
+                    display: none;
+                    padding: 0 1.5rem 1.5rem;
+                    color: var(--text-secondary);
+                    line-height: 1.6;
+                }
+                
+                .faq-answer p {
+                    margin-bottom: 1rem;
+                }
+                
+                .faq-answer ul, .faq-answer ol {
+                    margin: 1rem 0;
+                    padding-left: 1.5rem;
+                }
+                
+                .faq-answer li {
+                    margin-bottom: 0.5rem;
+                }
+                
+                .faq-answer strong {
+                    color: var(--brand-orange);
+                }
+                
+                .contact-section {
+                    padding: 80px 0;
+                    background: rgba(30, 41, 59, 0.3);
+                }
+                
+                .contact-container {
+                    max-width: 800px;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+                
+                .contact-header h2 {
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+                }
+                
+                .contact-header p {
+                    font-size: 1.25rem;
+                    color: var(--text-secondary);
+                    margin-bottom: 3rem;
+                }
+                
+                .contact-methods {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 2rem;
+                }
+                
+                .contact-method {
+                    background: var(--gradient-card);
+                    padding: 2rem;
+                    border-radius: var(--radius-xl);
+                    border: 1px solid rgba(249, 115, 22, 0.1);
+                    text-align: center;
+                    transition: all 0.3s ease;
+                }
+                
+                .contact-method:hover {
+                    transform: translateY(-5px);
+                    border-color: rgba(249, 115, 22, 0.3);
+                }
+                
+                .method-icon {
+                    width: 64px;
+                    height: 64px;
+                    background: var(--gradient-orange);
+                    border-radius: var(--radius-lg);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1rem;
+                    color: white;
+                }
+                
+                .method-content h3 {
+                    color: var(--text-primary);
+                    margin-bottom: 0.5rem;
+                }
+                
+                .method-content p {
+                    color: var(--brand-orange);
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                }
+                
+                .method-content span {
+                    color: var(--text-muted);
+                    font-size: 0.875rem;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

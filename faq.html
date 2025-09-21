@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - REFUEL.RUN</title>
+    <meta name="description" content="Preguntas frecuentes sobre el sistema nutricional científico de REFUEL.RUN">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { color: white !important; }
+        h1, h2, h3, h4, h5, h6 { color: #ff6600 !important; }
+        .faq-answer {
+            display: none !important;
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .faq-answer.active {
+            display: block !important;
+        }
+        .faq-answer p {
+            margin-bottom: 1rem;
+        }
+        .faq-answer ul, .faq-answer ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+        .faq-answer strong {
+            color: var(--brand-orange);
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-bg" id="particles-bg"></div>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">
+                <img class="header-logo" src="LogoRF.png" alt="REFUEL.RUN Logo"> 
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+            <button class="nav-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+    <main>
+        <section class="faq-hero">
+            <div class="container">
+                <div class="faq-hero-content">
+                    <div class="hero-badge">
+                        <div class="badge-icon">❔</div>
+                        <span>Preguntas Frecuentes</span>
+                    </div>
+                    <h1>¿Cómo funciona?</h1>
+                    <p>Encuentra las respuestas sobre nuestra herramienta de cálculo nutricional.</p>
+                </div>
+            </div>
+        </section>
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="faq-grid">
+                    <div class="faq-category">
+                        <div class="category-header">
+                            <h2>El proyecto</h2>
+                        </div>
+                        <div class="faq-items">
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Qué es REFUEL.RUN?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>REFUEL.RUN es una herramienta de cálculo energético que planifica la nutrición durante carreras de resistencia y ultra-resistencia, generando recomendaciones de alimentación e hidratación basándose en tus características personales y las condiciones de tu carrera.</p>
+                                    <p>El motor de cálculo ha sido desarrollado con la ayuda de inteligencia artificial, integrando evidencia científica de organizaciones como ISSN (International Society of Sports Nutrition) y ACSM (American College of Sports Medicine), publicaciones como Sports Medicine, y datos de campo referenciales de competiciones como Western States 100.</p>
+                                    <p>Dirigido a corredores de todos los niveles, el objetivo es abrir el acceso al conocimiento y a las herramientas de planificación basadas en ciencia, para que puedan ayudar y guiar a los atletas en sus estrategias y aprendizaje.</p>
+                                    <p><strong>IMPORTANTE:</strong> Esta herramienta es para fines educativos, proporcionando estimaciones generales basadas en promedios poblacionales y evidencia científica publicada. Al usarla, aceptas hacerlo bajo tu propio criterio y responsabilidad.</p>
+                               </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿En qué evidencia científica se basa?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>El motor de cálculo ha sido desarrollado con la ayuda de inteligencia artificial,utilizando valores y metodología basados en evidencia científica de publicaciones validadas:</p>
+                                    
+                                    <p><strong>📚 Fuentes Científicas:</strong></p>
+                                    <p><em>Datos principales basados en:</em></p>
+                                    <ul>
+                                        <li><strong>ISSN Position Stand 2019</strong> - International Society of Sports Nutrition</li>
+                                        <li><strong>ACSM Guidelines 2015</strong> - American College of Sports Medicine</li>
+                                        <li><strong>Sports Medicine 2021</strong> - Estudios sobre nutrición en ultraendurance</li>
+                                    </ul>
+                                    
+                                    <p><em>Complementadas con:</em></p>
+                                    <ul>
+                                        <li><strong>Journal of Sports Sciences 2019</strong> - Tolerancia y combinaciones alimentarias</li>
+                                        <li><strong>Sports Nutrition Research 2021</strong> - Incidencia de problemas gastrointestinales</li>
+                                        <li><strong>International Journal of Sports Nutrition 2020</strong> - Oxidación de sustratos y palatabilidad</li>
+                                        <li><strong>Ultra-Endurance Research</strong> - Balance electrolítico en fases tardías</li>
+                                        <li><strong>Ultra-Endurance Medicine</strong> - Prevención de hiponatremia (EAH)</li>
+                                        <li><strong>Ultra-Trail Magazine</strong> - Patrones nutricionales Europa/USA</li>
+                                        <li><strong>EFSA 2017</strong> - Límites diarios de seguridad nutricional</li>
+                                        <li><strong>USDA Database</strong> - Composición nutricional exacta de alimentos</li>
+                                    </ul>
+                                    
+                                    <p><strong>🏃 Datos de Campo Validados:</strong></p>
+                                    <ul>
+                                        <li><strong>Western States 100 (2020)</strong> - Análisis específico de finishers</li>
+                                        <li><strong>Comrades Marathon (2018-2019)</strong> - Estudios de tolerancia digestiva</li>
+                                        <li><strong>Badwater 2019</strong> - Tolerancia en condiciones extremas</li>
+                                    </ul>
+                                    
+                                    <p>Los cálculos integran constantes fisiológicas y factores validados por todas estas fuentes de gran nombre.</p>
+                                </div>                               
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Por qué es importante consultar con profesionales?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>REFUEL.RUN es una herramienta informativa que proporciona recomendaciones nutricionales aproximadas, pero las recomendaciones personalizadas solo pueden venir de profesionales cualificados. Esta herramienta NO reemplaza la consulta con profesionales de la salud cualificados.</p>
+                                    <p><strong>IMPORTANTE:</strong></p>
+                                    <ul>
+                                        <li><strong>Necesidades individuales:</strong> Cada individuo tiene necesidades nutricionales únicas que deben ser evaluadas personalmente por un profesional cualificado.</li>
+                                        <li><strong>Uso seguro recomendado:</strong> Para evitar riesgos, es fundamental consultar con profesionales sanitarios antes de implementar cualquier cambio nutricional basado en estas estimaciones.</li>
+                                        <li><strong>Consulta recomendada:</strong> Antes de implementar cualquier cambio nutricional, te recomendamos consultar con un médico, nutricionista deportivo, dietista o entrenador certificado.</li>
+                                        <li><strong>Restricciones de uso:</strong> Si tiene condiciones médicas, toma medicación, está embarazada, amamantando o tiene menos de 18 años, NO use esta herramienta sin supervisión médica.</li>
+                                        <li><strong>Alergias:</strong> Esta herramienta no considera alergias alimentarias, intolerancias o restricciones dietéticas específicas.</li>
+                                        <li><strong>Optimización deportiva:</strong> Para maximizar tu rendimiento y seguridad en eventos de resistencia, recomendamos la supervisión de profesionales especializados en nutrición y entrenamiento deportivo.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Cómo funciona el motor de cálculo?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <h4>El Proceso de Cálculo Simplificado</h4>
+                                    <h5>Paso 1: Calculamos tu gasto energético personal</h5>
+                                    <p>Tomamos tu peso como base principal, ya que es el factor que más influye en cuántas calorías quemas. Una persona de 70kg no gasta lo mismo que una de 90kg corriendo la misma distancia.</p>
+                                    <h5>Paso 2: Ajustamos según tus características</h5>
+                                    <p>Tu altura, edad y género también afectan el metabolismo. Las personas más altas tienden a gastar más energía, mientras que el metabolismo se ralentiza ligeramente con la edad.</p>
+                                    <h5>Paso 3: Consideramos la dificultad de tu carrera</h5>
+                                    <p>No es lo mismo correr 100km en asfalto plano que en montaña con 4000m de desnivel. El terreno técnico, la altitud y las subidas aumentan significativamente el gasto energético.</p>
+                                    <h5>Paso 4: Factores ambientales</h5>
+                                    <p>El calor, frío, lluvia o viento también afectan cuánta energía necesitas. Tu cuerpo trabaja más en condiciones extremas.</p>
+                                    <h5>Paso 5: Tu nivel de experiencia</h5>
+                                    <p>Los atletas más experimentados requieren mayor ingesta calórica por correr a mayor intensidad relativa, mientras que los principiantes son más conservadores y necesitan menos calorías por hora.</p>
+                                    <h4>Las 6 Fases del Ejercicio Prolongado</h4>
+                                    <p>Algo revolucionario de nuestro sistema es que reconoce que tus necesidades cambian durante la carrera:</p>
+                                    <h5>Horas 0-2 (Adaptación):</h5>
+                                    <p>Tu estómago está fresco y puede procesar alimentos rápidos como geles y bebidas isotónicas sin problemas.</p>
+                                    <h5>Horas 2-4 (Sostenida Temprana):</h5>
+                                    <p>Puedes empezar a incluir algo de proteína y alimentos más consistentes como barritas energéticas.</p>
+                                    <h5>Horas 4-8 (Sostenida Media):</h5>
+                                    <p>Es el momento de alimentos reales como pasta, arroz, bocadillos. Tu cuerpo necesita variedad.</p>
+                                    <h5>Horas 8-12 (Fatiga Temprana):</h5>
+                                    <p>Necesitas más sal y alimentos calientes empiezan a ser atractivos. Sopas y caldos se vuelven aliados.</p>
+                                    <h5>Horas 12-16 (Fatiga Avanzada):</h5>
+                                    <p>Combinar estrategias: líquidos + sólidos, dulce + salado. La variedad es clave para mantener la ingesta.</p>
+                                    <h5>Más de 16 horas (Crítica):</h5>
+                                    <p>Los líquidos se vuelven prioritarios. El estómago puede rechazar sólidos, necesitas supervivencia nutricional.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Qué factores considera?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <h4>Sobre Ti Como Atleta</h4>
+                                    <h5>Tu Peso Corporal</h5>
+                                    <p>Es el factor más importante. Determina tanto tu gasto calórico base como tus necesidades mínimas de proteína diaria. Una persona más pesada necesita más calorías y más proteína para mantener su masa muscular.</p>
+                                    <h5>Tu Altura</h5>
+                                    <p>Las personas más altas tienen mayor superficie corporal y suelen gastar más energía. Por cada centímetro sobre 170cm, hay un pequeño incremento en el gasto.</p>
+                                    <h5>Tu Edad</h5>
+                                    <p>El metabolismo se ralentiza ligeramente con cada década de vida. Aplicamos un factor de reducción del 1% por cada década, que aunque no es dramático, sí es medible y lo consideramos en los cálculos.</p>
+                                    <h5>Tu Género</h5>
+                                    <p>Los hombres y mujeres tienen diferencias metabólicas sutiles que afectan el gasto energético. Las mujeres tienden a ser ligeramente más eficientes energéticamente.</p>
+                                    <h4>Sobre Tu Carrera</h4>
+                                    <h5>Distancia Total</h5>
+                                    <p>Obviamente, más kilómetros = más calorías. Es el multiplicador principal de toda la ecuación.</p>
+                                    <h5>Tiempo Estimado</h5>
+                                    <p>No solo define cuántas horas de recomendaciones generar, sino que las carreras más largas requieren mayor porcentaje de carbohidratos para evitar el agotamiento total.</p>
+                                    <h5>Desnivel Positivo</h5>
+                                    <p>Subir cuesta arriba es exponencialmente más costoso que correr en plano. Cada 1000 metros de desnivel añade aproximadamente un 6% más de gasto energético.</p>
+                                    <h5>Altitud Media</h5>
+                                    <p>En altura hay menos oxígeno, tu corazón late más rápido y gastas más energía. El efecto es gradual hasta estabilizarse en altitudes extremas.</p>
+                                    <h5>Tipo de Terreno</h5>
+                                    <ul>
+                                        <li><strong>Asfalto:</strong> El más eficiente energéticamente</li>
+                                        <li><strong>Trail normal:</strong> Pistas y senderos añaden un 12% más de gasto</li>
+                                        <li><strong>Trail técnico:</strong> Senderos con obstáculos suman 25% más</li>
+                                        <li><strong>Trail alpino:</strong> Terreno extremo puede incrementar hasta 35%</li>
+                                    </ul>
+                                    <h4>Condiciones Ambientales</h4>
+                                    <h5>Temperatura</h5>
+                                    <p>Tu cuerpo trabaja más en temperaturas extremas. Entre 10-15°C es el rango óptimo. Fuera de este rango, gastas energía extra en termorregulación.</p>
+                                    <h5>Clima Esperado</h5>
+                                    <ul>
+                                        <li>Sol directo aumenta el estrés térmico</li>
+                                        <li>La lluvia reduce la eficiencia pero también el sobrecalentamiento</li>
+                                        <li>El viento te hace trabajar más contra la resistencia</li>
+                                        <li>La nieve complica cada paso</li>
+                                    </ul>
+                                    <h4>Tu Experiencia</h4>
+                                    <p>Los atletas se clasifican en 4 niveles según carreras completadas:</p>
+                                    <ul>
+                                        <li><strong>Principiantes (0-2 carreras):</strong> Menos eficientes, gastan más energía</li>
+                                        <li><strong>Intermedios (3-10 carreras):</strong> Mejora notable en economía de carrera</li>
+                                        <li><strong>Experimentados (10+ carreras):</strong> Eficiencia óptima</li>
+                                        <li><strong>Élite (competitivos):</strong> Paradójicamente gastan más por mayor intensidad</li>
+                                    </ul>
+                                    <h4>Cálculos Automáticos de Hidratación</h4>
+                                    <p>El sistema calcula automáticamente cuánto sudas basándose en la temperatura y tu tiempo de carrera. Una persona suda aproximadamente 650ml por hora (0.65 L/h) en condiciones normales, pero esto aumenta 20ml extra por cada grado sobre 15°C.</p>
+                                    <p>Además, estimamos tus pérdidas de sales: pierdes aproximadamente 600mg de sodio y 150mg de potasio por cada litro de sudor. El sistema recomienda reponer entre el 70-80% de estas pérdidas para evitar sobrecarga gastrointestinal.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <h3>¿Cómo reportar problemas o sugerencias?</h3>
+                                </div>
+                                <div class="faq-answer">
+                                    <h4>Reportar Problemas y Sugerencias</h4>
+                                    <h5>Errores en los cálculos</h5>
+                                    <p>Esta herramienta de cálculo aproximado puede contener errores en los resultados. Si encuentras valores que parecen incorrectos o poco realistas:</p>
+                                    <ul>
+                                        <li><strong>Verifica que todos los datos estén completados correctamente</strong></li>
+                                        <li><strong>Prueba a recalcular para confirmar la consistencia</strong></li>
+                                        <li><strong>Si persiste el problema, contáctanos para informarnos</strong></li>
+                                    </ul>
+                                    <h5>Contacto y feedback</h5>
+                                    <p>Si eres profesional de la salud, deporte o nutrición, o del desarrollo web, tu experiencia y sugerencias nos pueden ayudar a crear una herramienta más precisa y útil para toda la comunidad de corredores.</p>
+                                    <p>Contacta con nosotros en el correo que encontrarás más abajo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                if (ans !== answer) {
+                    ans.classList.remove('active');
+                    const otherToggle = ans.previousElementSibling.querySelector('.faq-toggle');
+                    if (otherToggle) {
+                        otherToggle.classList.remove('rotated');
+                    }
+                }
+            });
+            answer.classList.toggle('active');
+            if (toggle) {
+                toggle.classList.toggle('rotated');
+            }
+        }
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesBg = document.getElementById('particles-bg');
+            const particleCount = 50;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesBg.appendChild(particle);
+            }
+            const style = document.createElement('style');
+            style.textContent = `
+                .particle {
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    animation: float linear infinite;
+                    top: 100vh;
+                }
+                @keyframes float {
+                    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+                    10% { opacity: 1; }
+                    90% { opacity: 1; }
+                    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2>Contacta con nosotros</h2>
+            </div>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="method-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="method-content">
+                        <p>info@refuel.run</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 REFUEL.RUN. Todos los derechos reservados</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="privacidad.html" class="footer-link" style="font-size: 0.8em;">Términos y privacidad</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                if (ans !== answer) {
+                    ans.classList.remove('active');
+                    const otherToggle = ans.previousElementSibling.querySelector('.faq-toggle');
+                    if (otherToggle) {
+                        otherToggle.classList.remove('rotated');
+                    }
+                }
+            });
+            answer.classList.toggle('active');
+            if (toggle) {
+                toggle.classList.toggle('rotated');
+            }
+        }
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-bg');
+            const particleCount = 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            const style = document.createElement('style');
+            style.textContent = `
+                .faq-hero {
+                    min-height: 60vh;
+                    display: flex;
+                    align-items: center;
+                    padding: 120px 0 80px;
+                    text-align: center;
+                }
+                .faq-hero-content h1 {
+                    font-size: clamp(2.5rem, 5vw, 3.5rem);
+                    margin: 1rem 0;
+                }
+                .faq-hero-content p {
+                    font-size: 1.25rem;
+                    color: var(--text-secondary);
+                    max-width: 600px;
+                    margin: 0 auto;
+                }
+                .faq-section {
+                    padding: 80px 0;
+                }
+                .faq-grid {
+                    display: grid;
+                    gap: 3rem;
+                }
+                .faq-category {
+                    background: var(--gradient-card);
+                    border-radius: var(--radius-2xl);
+                    padding: 2rem;
+                    backdrop-filter: blur(20px);
+                    border: 1px solid rgba(249, 115, 22, 0.1);
+                }
+                .category-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    padding-bottom: 1rem;
+                    border-bottom: 2px solid var(--brand-orange);
+                }
+                .category-icon {
+                    width: 48px;
+                    height: 48px;
+                    background: var(--gradient-orange);
+                    border-radius: var(--radius-lg);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                }
+                .category-header h2 {
+                    color: var(--text-primary);
+                    font-size: 1.5rem;
+                }
+                .faq-items {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+                .faq-item {
+                    background: rgba(255, 255, 255, 0.03);
+                    border-radius: var(--radius-lg);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                }
+                .faq-item:hover {
+                    border-color: rgba(249, 115, 22, 0.3);
+                    transform: translateY(-2px);
+                }
+                .faq-question {
+                    padding: 1.5rem;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: all 0.3s ease;
+                }
+                .faq-question:hover {
+                    background: rgba(249, 115, 22, 0.05);
+                }
+                .faq-question h3 {
+                    color: var(--text-primary);
+                    font-size: 1.125rem;
+                    margin: 0;
+                }
+        .faq-toggle {
+            color: var(--brand-orange);
+            transition: transform 0.3s ease;
+        }
+        .faq-toggle.rotated {
+            transform: rotate(180deg);
+        }                .contact-section {
+                    padding: 80px 0;
+                    background: rgba(30, 41, 59, 0.3);
+                }
+                .contact-container {
+                    max-width: 800px;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+                .contact-header h2 {
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+                }
+                .contact-header p {
+                    font-size: 1.25rem;
+                    color: var(--text-secondary);
+                    margin-bottom: 3rem;
+                }
+                .contact-methods {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 2rem;
+                }
+                .contact-method {
+                    background: var(--gradient-card);
+                    padding: 2rem;
+                    border-radius: var(--radius-xl);
+                    border: 1px solid rgba(249, 115, 22, 0.1);
+                    text-align: center;
+                    transition: all 0.3s ease;
+                }
+                .contact-method:hover {
+                    transform: translateY(-5px);
+                    border-color: rgba(249, 115, 22, 0.3);
+                }
+                .method-icon {
+                    width: 64px;
+                    height: 64px;
+                    background: var(--gradient-orange);
+                    border-radius: var(--radius-lg);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1rem;
+                    color: white;
+                }
+                .method-content h3 {
+                    color: var(--text-primary);
+                    margin-bottom: 0.5rem;
+                }
+                .method-content p {
+                    color: var(--brand-orange);
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                }
+                .disclaimer-category {
+                    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+                    border: 2px solid rgba(239, 68, 68, 0.3);
+                    margin-bottom: 2rem;
+                }
+                .disclaimer-category .category-header {
+                    background: linear-gradient(135deg, #dc2626, #b91c1c);
+                    color: white;
+                }
+                .disclaimer-category .category-icon {
+                    background: rgba(255, 255, 255, 0.2);
+                    color: white;
+                }
+                .disclaimer-content {
+                    padding: 2rem;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 1rem;
+                    margin: 1rem 0;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
