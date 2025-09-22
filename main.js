@@ -297,8 +297,42 @@ function backToHome() {
     document.querySelector('.progress-label[data-step="1"]').classList.add('active');
     document.getElementById('progressFill').style.width = '0%';
     
-    // Opcional: Scroll al inicio de la página
-    window.scrollTo(0, 0);
+    // Forzar reflow inmediato del homeSection
+    const homeSection = document.getElementById('homeSection');
+    homeSection.offsetHeight;
+    
+    // Scroll al inicio con múltiples técnicas para asegurar centrado en PC
+    setTimeout(() => {
+        // Primero scroll directo e inmediato
+        window.scrollTo(0, 0);
+        
+        // Luego scroll suave como backup
+        setTimeout(() => {
+            window.scrollTo({ 
+                top: 0, 
+                left: 0, 
+                behavior: 'smooth' 
+            });
+        }, 10);
+        
+        // Forzar un re-layout para asegurar el centrado correcto en PC
+        requestAnimationFrame(() => {
+            document.body.style.transform = 'translateZ(0)';
+            homeSection.style.transform = 'translateZ(0)';
+            
+            setTimeout(() => {
+                document.body.style.transform = '';
+                homeSection.style.transform = '';
+                
+                // Verificación final del centrado
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'instant'
+                });
+            }, 100);
+        });
+    }, 50);
 }
 
 function resetWizard() {
