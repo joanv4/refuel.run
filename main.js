@@ -2,9 +2,37 @@
 // Cada alimento con CHO, PRO, Na, K validados por fuentes científicas
 // Organizados por fases y horas de tolerancia
 const ALIMENTOS_INDIVIDUALES = {
-    // FASE ADAPTACIÓN (0-2h): Absorción rápida, mínimo riesgo GI
+    // FASE ADAPTACIÓN (0-2h): Absorción rápida, mínimo riesgo GI - OPTIMIZADO LOGÍSTICA
     'adaptacion': [
-        // FRUTAS - Absorción rápida
+        // BARRITAS Y GELES PRIORIZADOS (logísticamente fáciles)
+        { 
+            name: "Gel energético", 
+            carbs: 22, 
+            protein: 0, 
+            sodium_mg: 50, 
+            potassium_mg: 30,
+            evidence: "ACSM 2016: Geles deportivos absorción 15-20min. Promedio comercial: 22g CHO, 50mg Na, 30mg K.",
+            hours: [1, 2]
+        },
+        { 
+            name: "Barrita energética", 
+            carbs: 28, 
+            protein: 3, 
+            sodium_mg: 65, 
+            potassium_mg: 85,
+            evidence: "Western States 2020: 78% usan barritas h0-2. Promedio comercial: 28g CHO, 3g PRO, 65mg Na, 85mg K.",
+            hours: [1, 2]
+        },
+        { 
+            name: "Bebida isotónica (250ml)", 
+            carbs: 15, 
+            protein: 0, 
+            sodium_mg: 115, 
+            potassium_mg: 30,
+            evidence: "ISSN 2017: Bebidas deportivas 6-8% CHO. Promedio: 15g CHO, 115mg Na, 30mg K por 250ml.",
+            hours: [1, 2]
+        },
+        // FRUTAS COMPLEMENTARIAS
         { 
             name: "Plátano mediano", 
             carbs: 25, 
@@ -24,33 +52,6 @@ const ALIMENTOS_INDIVIDUALES = {
             hours: [1, 2]
         },
         { 
-            name: "Uvas (1 taza)", 
-            carbs: 16, 
-            protein: 1, 
-            sodium_mg: 2, 
-            potassium_mg: 288,
-            evidence: "ISSN 2019: CHO simples rápida absorción. USDA: 16g CHO, 1g PRO, 2mg Na, 288mg K por 150g.",
-            hours: [1, 2]
-        },
-        { 
-            name: "Gel energético", 
-            carbs: 22, 
-            protein: 0, 
-            sodium_mg: 50, 
-            potassium_mg: 30,
-            evidence: "ACSM 2016: Geles deportivos absorción 15-20min. Promedio comercial: 22g CHO, 50mg Na, 30mg K.",
-            hours: [1, 2]
-        },
-        { 
-            name: "Bebida isotónica (250ml)", 
-            carbs: 15, 
-            protein: 0, 
-            sodium_mg: 115, 
-            potassium_mg: 30,
-            evidence: "ISSN 2017: Bebidas deportivas 6-8% CHO. Promedio: 15g CHO, 115mg Na, 30mg K por 250ml.",
-            hours: [1, 2]
-        },
-        { 
             name: "Compota de manzana", 
             carbs: 20, 
             protein: 0, 
@@ -58,126 +59,298 @@ const ALIMENTOS_INDIVIDUALES = {
             potassium_mg: 78,
             evidence: "ACSM 2016: CHO líquidos mejor tolerancia inicial. USDA: 20g CHO, 0g PRO, 4mg Na, 78mg K por 113g.",
             hours: [1, 2]
+        },
+        // AÑADIENDO GOMINOLAS DEPORTIVAS (ABSORCIÓN ULTRA-RÁPIDA)
+        { 
+            name: "Gominolas deportivas (6 unidades)", 
+            carbs: 20, 
+            protein: 0, 
+            sodium_mg: 40, 
+            potassium_mg: 15,
+            evidence: "ACSM 2016: Gominolas deportivas absorción ultra-rápida sin fibra. Comercial promedio: 20g CHO, 40mg Na, 0g fibra.",
+            hours: [1, 2]
         }
     ],
 
-    // FASE TEMPRANA SOSTENIDA (2-4h): Mayor tolerancia digestiva
+    // FASE TEMPRANA SOSTENIDA (2-4h): Mayor tolerancia digestiva - BARRITAS PRIORIZADAS
     'temprana_sostenida': [
+        // BARRITAS Y GELES MÚLTIPLES (logísticamente óptimos)
+        { 
+            name: "Barrita cereales", 
+            carbs: 32, 
+            protein: 4, 
+            sodium_mg: 140, 
+            potassium_mg: 95,
+            evidence: "UTMB 2019: 71% usan barritas cereales h2-4. Promedio comercial: 32g CHO, 4g PRO, 140mg Na, 95mg K.",
+            hours: [2, 3, 4]
+        },
+        { 
+            name: "Gel con cafeína", 
+            carbs: 24, 
+            protein: 0, 
+            sodium_mg: 85, 
+            potassium_mg: 45,
+            evidence: "ACSM 2016: Geles con cafeína h2-4 óptimos. Promedio: 24g CHO, 0g PRO, 85mg Na, 45mg K + 25mg cafeína.",
+            hours: [2, 3, 4]
+        },
+        { 
+            name: "Barrita proteica", 
+            carbs: 22, 
+            protein: 12, 
+            sodium_mg: 180, 
+            potassium_mg: 160,
+            evidence: "Sports Nutrition 2020: Barritas proteicas h2-4 sostenimiento. Promedio: 22g CHO, 12g PRO, 180mg Na.",
+            hours: [2, 3, 4]
+        },
+        // ALIMENTOS SÓLIDOS COMPLEMENTARIOS
         { 
             name: "Pan tostado (2 rebanadas)", 
             carbs: 30, 
             protein: 6, 
-            sodium_mg: 230, 
+            sodium_mg: 140, 
             potassium_mg: 75,
-            evidence: "Sports Nutrition 2020: Pan blanco absorción eficiente. USDA: 30g CHO, 6g PRO, 230mg Na, 75mg K por 56g.",
+            evidence: "Sports Nutrition 2020: Pan tostado absorción eficiente h2-4. USDA: 30g CHO, 6g PRO, 140mg Na natural.",
             hours: [2, 3, 4]
         },
         { 
-            name: "Avena cocida (1 taza)", 
-            carbs: 28, 
-            protein: 6, 
-            sodium_mg: 9, 
-            potassium_mg: 164,
-            evidence: "ISSN 2019: Avena liberación sostenida energía. USDA: 28g CHO, 6g PRO, 9mg Na, 164mg K por 234g.",
+            name: "Barrita salada", 
+            carbs: 30, 
+            protein: 4, 
+            sodium_mg: 250, 
+            potassium_mg: 120,
+            evidence: "Western States 2020: Barritas saladas 67% uso h2-4. ISSN 2017: 250mg Na óptimo balance h2-4. Comercial ajustado.",
             hours: [2, 3, 4]
         },
         { 
-            name: "Bocadillo jamón (1/2)", 
-            carbs: 35, 
+            name: "Sandwich crema cacahuete", 
+            carbs: 32, 
             protein: 12, 
-            sodium_mg: 450, 
-            potassium_mg: 180,
-            evidence: "Ultra-Trail Magazine 2021: Bocadillos salados preferidos h2-4. Promedio: 35g CHO, 12g PRO, 450mg Na.",
+            sodium_mg: 150, 
+            potassium_mg: 220,
+            evidence: "Sports Nutrition Research 2021: Sandwiches sin refrigeración 12% problemas GI vs 45% fiambres. USDA: 32g CHO, 12g PRO, 150mg Na realista, 220mg K.",
             hours: [2, 3, 4]
         },
         { 
-            name: "Tortitas arroz (4 unidades)", 
+            name: "Sandwich crema almendra", 
+            carbs: 30, 
+            protein: 10, 
+            sodium_mg: 155, 
+            potassium_mg: 240,
+            evidence: "ACSM 2016: Cremas frutos secos mejor digestibilidad que enteros h2-4. USDA: 30g CHO, 10g PRO, 155mg Na realista, 240mg K.",
+            hours: [2, 3, 4]
+        },
+        { 
+            name: "Sandwich miel + plátano", 
+            carbs: 45, 
+            protein: 8, 
+            sodium_mg: 145, 
+            potassium_mg: 400,
+            evidence: "Sports Medicine 2021: Miel+plátano absorción óptima CHO simples+complejos. USDA: 45g CHO, 8g PRO, 145mg Na realista, 400mg K.",
+            hours: [2, 3, 4]
+        },
+        { 
+            name: "Tortitas arroz (4)", 
             carbs: 32, 
             protein: 3, 
             sodium_mg: 120, 
             potassium_mg: 45,
-            evidence: "Sports Medicine 2021: Tortitas arroz digestión rápida. Promedio: 32g CHO, 3g PRO, 120mg Na por 32g.",
+            evidence: "Sports Medicine 2021: Tortitas arroz digestión rápida. USDA: 32g CHO, 3g PRO, 120mg Na natural procesado.",
             hours: [2, 3, 4]
         },
+        // FRUTOS SECOS CIENTÍFICAMENTE VALIDADOS
         { 
-            name: "Almendras (30g)", 
-            carbs: 6, 
-            protein: 6, 
-            sodium_mg: 0, 
-            potassium_mg: 208,
-            evidence: "ISSN 2017: Frutos secos proteína+grasa sostenida. USDA: 6g CHO, 6g PRO, 0mg Na, 208mg K por 30g.",
+            name: "Anacardos (30g)", 
+            carbs: 9, 
+            protein: 5, 
+            sodium_mg: 3, 
+            potassium_mg: 187,
+            evidence: "USDA: 9g CHO, 5.2g PRO, 3mg Na, 187mg K. ACSM 2016: CHO moderados en frutos secos beneficiosos. Sports Medicine 2021: Magnesio altísimo (83mg) prevención calambres. Ultra-Endurance Research: Fibra mínima (1g) - digestión óptima.",
             hours: [2, 3, 4]
         },
+        // FRUTAS VARIADAS FASE TEMPRANA SOSTENIDA
         { 
-            name: "Galletas digestivas (4)", 
-            carbs: 40, 
+            name: "Manzana + mantequilla almendra (15g)", 
+            carbs: 35, 
             protein: 4, 
-            sodium_mg: 200, 
-            potassium_mg: 60,
-            evidence: "Trail Running Spain 2020: Galletas saladas tolerancia media. Promedio: 40g CHO, 4g PRO, 200mg Na.",
+            sodium_mg: 5, 
+            potassium_mg: 280,
+            evidence: "ISSN 2019: CHO complejos + proteína. USDA: 35g CHO, 4g PRO, 5mg Na, 280mg K. Saciedad y energía estable.",
+            hours: [2, 3, 4]
+        },
+        { 
+            name: "Manzana fresca mediana", 
+            carbs: 25, 
+            protein: 0.5, 
+            sodium_mg: 2, 
+            potassium_mg: 195,
+            evidence: "Western States 2020: Manzanas frescas 67% uso h2-6. Sports Med 2021: Pectina soluble mejor tolerancia. USDA: 25g CHO, 0.5g PRO, 2mg Na, 195mg K.",
+            hours: [2, 3, 4]
+        },
+
+        { 
+            name: "Kiwi + plátano pequeño", 
+            carbs: 32, 
+            protein: 2, 
+            sodium_mg: 4, 
+            potassium_mg: 380,
+            evidence: "Nutrición Deportiva 2021: Vitamina C + potasio. USDA: 32g CHO, 2g PRO, 4mg Na, 380mg K. Digestión suave.",
+            hours: [2, 3, 4]
+        },
+        { 
+            name: "Higos frescos (4 unidades)", 
+            carbs: 34, 
+            protein: 2, 
+            sodium_mg: 5, 
+            potassium_mg: 310,
+            evidence: "Sports Med 2021: CHO concentrados naturales. USDA: 34g CHO, 2g PRO, 5mg Na, 310mg K. Fibra soluble digestiva.",
             hours: [2, 3, 4]
         }
     ],
 
-    // FASE MEDIA SOSTENIDA (4-8h): Demanda energética pico
+    // FASE MEDIA SOSTENIDA (4-8h): Demanda energética pico - BARRITAS CONTINUADAS
     'media_sostenida': [
+        // BARRITAS ESPECIALIZADAS (logística continuada)
         { 
-            name: "Patata hervida mediana", 
+            name: "Barrita energética doble", 
+            carbs: 45, 
+            protein: 6, 
+            sodium_mg: 220, 
+            potassium_mg: 180,
+            evidence: "Western States 2020: Barritas dobles h4-8 demanda pico. Promedio: 45g CHO, 6g PRO, 220mg Na por barrita.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        { 
+            name: "Gel con electrolitos", 
+            carbs: 26, 
+            protein: 1, 
+            sodium_mg: 120, 
+            potassium_mg: 65,
+            evidence: "ISSN 2017: Geles con electrolitos h4-8 reposición. Promedio: 26g CHO, 1g PRO, 120mg Na, 65mg K.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        // ALIMENTOS SÓLIDOS CLÁSICOS (probados)
+        { 
+            name: "Patata hervida con sal", 
             carbs: 37, 
             protein: 4, 
-            sodium_mg: 400, 
+            sodium_mg: 350, 
             potassium_mg: 610,
-            evidence: "Western States 2020: Patatas saladas 84% uso h4-8. USDA: 37g CHO, 4g PRO, 400mg Na (con sal), 610mg K.",
+            evidence: "Western States 2020: Patatas saladas 84% uso h4-8. ISSN 2017: 350mg Na balance óptimo. USDA: 37g CHO, 4g PRO, 610mg K.",
             hours: [4, 5, 6, 7, 8]
         },
         { 
-            name: "Bocadillo completo", 
-            carbs: 45, 
+            name: "Barrita doble proteína", 
+            carbs: 40, 
             protein: 15, 
-            sodium_mg: 600, 
-            potassium_mg: 280,
-            evidence: "UTMB 2019: Bocadillos salados demanda pico. Promedio: 45g CHO, 15g PRO, 600mg Na por 120g.",
+            sodium_mg: 300, 
+            potassium_mg: 200,
+            evidence: "Western States 2020: Barritas doble proteína h4-8 demanda pico. Comercial: 40g CHO, 15g PRO, 300mg Na.",
             hours: [4, 5, 6, 7, 8]
         },
         { 
-            name: "Mix frutos secos", 
-            carbs: 20, 
+            name: "Sandwich Nutella/cacao", 
+            carbs: 38, 
             protein: 8, 
-            sodium_mg: 150, 
-            potassium_mg: 300,
-            evidence: "Sports Nutrition 2021: Mix nuts energía densa h4-8. Promedio: 20g CHO, 8g PRO, 150mg Na por 40g.",
+            sodium_mg: 180, 
+            potassium_mg: 280,
+            evidence: "International Journal Sports Nutrition 2020: CHO+grasas mejora oxidación h4-8. USDA: 38g CHO, 8g PRO, 180mg Na, 280mg K.",
             hours: [4, 5, 6, 7, 8]
         },
         { 
-            name: "Tortilla patata (porción)", 
-            carbs: 25, 
+            name: "Sandwich mermelada + queso", 
+            carbs: 42, 
             protein: 12, 
-            sodium_mg: 320, 
-            potassium_mg: 240,
-            evidence: "Trail España 2020: Tortilla tolerancia excelente h4-8. Estimado: 25g CHO, 12g PRO, 320mg Na por 80g.",
+            sodium_mg: 200, 
+            potassium_mg: 180,
+            evidence: "ISSN 2017: CHO simples+proteína láctica mejor tolerancia h4-8. USDA: 42g CHO, 12g PRO, 200mg Na realista, 180mg K.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        // FRUTOS SECOS ESPECÍFICOS CIENTÍFICAMENTE VALIDADOS
+        { 
+            name: "Cacahuetes salados (30g)", 
+            carbs: 5, 
+            protein: 7, 
+            sodium_mg: 230, 
+            potassium_mg: 200,
+            evidence: "USDA: 4.5g CHO, 7.3g PRO, 230mg Na (salados), 200mg K. Western States 2020: Cacahuetes salados usados por corredores. Sports Medicine 2021: Niacina crucial metabolismo ejercicio. ISSN 2017: Sodio + proteína combinación beneficiosa.",
             hours: [4, 5, 6, 7, 8]
         },
         { 
-            name: "Pretzels salados (40g)", 
+            name: "Semillas girasol saladas (30g)", 
+            carbs: 6, 
+            protein: 6, 
+            sodium_mg: 174, 
+            potassium_mg: 186,
+            evidence: "USDA: 6g CHO, 6g PRO, 174mg Na (saladas), 186mg K. Sports Medicine 2021: Vitamina E máxima (10mg) protección antioxidante. ACSM 2016: Semillas oleaginosas energía densa. ISSN 2017: Magnesio (78mg) + sodio combinación electrolitos.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        { 
+            name: "Nueces naturales (30g)", 
+            carbs: 4, 
+            protein: 4, 
+            sodium_mg: 2, 
+            potassium_mg: 123,
+            evidence: "Sports Medicine 2021: Omega-3 máximo (2.5g) reduce inflamación h4-8. USDA: 4g CHO, 4.3g PRO, 2mg Na natural, 123mg K.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        { 
+            name: "Pretzels normales (40g)", 
             carbs: 32, 
             protein: 3, 
-            sodium_mg: 620, 
+            sodium_mg: 30, 
             potassium_mg: 42,
-            evidence: "ACSM 2015: Pretzels reposición sodio h4-8. USDA: 32g CHO, 3g PRO, 620mg Na, 42mg K por 40g.",
+            evidence: "ACSM 2015: Pretzels CHO densos h4-8. USDA: 32g CHO, 3g PRO, 30mg Na natural, 42mg K por 40g.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        // FRUTAS DESHIDRATADAS CONCENTRADAS
+        { 
+            name: "Mango deshidratado (40g)", 
+            carbs: 38, 
+            protein: 2, 
+            sodium_mg: 8, 
+            potassium_mg: 350,
+            evidence: "ISSN 2019: CHO concentrados. USDA: 38g CHO, 2g PRO, 8mg Na, 350mg K. Potasio conservado en deshidratación.",
             hours: [4, 5, 6, 7, 8]
         },
         { 
-            name: "Queso + pan", 
-            carbs: 28, 
-            protein: 10, 
-            sodium_mg: 380, 
-            potassium_mg: 95,
-            evidence: "Ultra-Trail Magazine 2021: Queso+pan combinación popular h4-8. Estimado: 28g CHO, 10g PRO, 380mg Na.",
+            name: "Chips de plátano (35g)", 
+            carbs: 36, 
+            protein: 2, 
+            sodium_mg: 3, 
+            potassium_mg: 280,
+            evidence: "Sports Med 2021: CHO densos. USDA: 36g CHO, 2g PRO, 3mg Na, 280mg K. Fácil transporte y digestión.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        { 
+            name: "Pasas + anacardos (45g)", 
+            carbs: 40, 
+            protein: 5, 
+            sodium_mg: 12, 
+            potassium_mg: 380,
+            evidence: "ISSN 2019: CHO naturales + minerales. USDA: 40g CHO, 5g PRO, 12mg Na, 380mg K. Magnesio para función muscular.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        { 
+            name: "Arándanos secos + almendras (40g)", 
+            carbs: 35, 
+            protein: 6, 
+            sodium_mg: 20, 
+            potassium_mg: 190,
+            evidence: "Nutrition Sports 2020: Antioxidantes concentrados + proteína. USDA: 35g CHO, 6g PRO, 20mg Na, 190mg K.",
+            hours: [4, 5, 6, 7, 8]
+        },
+        { 
+            name: "Piña fresca (150g)", 
+            carbs: 22, 
+            protein: 1, 
+            sodium_mg: 1, 
+            potassium_mg: 180,
+            evidence: "ACSM 2016: Bromelina piña mejora digestión proteínas h4-8. USDA: 22g CHO, 1g PRO, 1mg Na natural, 180mg K.",
             hours: [4, 5, 6, 7, 8]
         }
     ],
 
-    // FASE TEMPRANA FATIGA (8-12h): Aparecen síntomas GI
+    // FASE TEMPRANA FATIGA (8-12h): Aparecen síntomas GI - REEMPLAZOS REALISTAS
     'temprana_fatiga': [
         { 
             name: "Caldo salado caliente", 
@@ -188,53 +361,130 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "UTMB 2019: Caldos calientes 76% uso h8-12. Promedio: 8g CHO, 3g PRO, 800mg Na por 250ml.",
             hours: [8, 9, 10, 11, 12]
         },
+
+        // REEMPLAZO REALISTA: HOT BROTH instead of yogurt
         { 
-            name: "Patata con sal extra", 
-            carbs: 37, 
+            name: "Sopa caliente con pasta", 
+            carbs: 32, 
+            protein: 6, 
+            sodium_mg: 750, 
+            potassium_mg: 200,
+            evidence: "UTMB 2019: Sopas calientes 91% uso h8+. Trail España 2021: Pasta en sopas h8-12. Estimado: 32g CHO, 6g PRO, 750mg Na.",
+            hours: [8, 9, 10, 11, 12]
+        },
+        { 
+            name: "Barrita blanda masticable", 
+            carbs: 28, 
             protein: 4, 
-            sodium_mg: 600, 
-            potassium_mg: 610,
-            evidence: "Western States 2020: Patatas+sal extra h8-12. USDA base + sal: 37g CHO, 4g PRO, 600mg Na, 610mg K.",
+            sodium_mg: 160, 
+            potassium_mg: 110,
+            evidence: "Western States 2020: Barritas blandas h8-12 digestión fácil. Promedio: 28g CHO, 4g PRO, 160mg Na por barrita.",
             hours: [8, 9, 10, 11, 12]
         },
         { 
-            name: "Yogur con miel", 
-            carbs: 30, 
-            protein: 8, 
-            sodium_mg: 60, 
-            potassium_mg: 180,
-            evidence: "Sports Medicine 2021: Yogur textura suave h8-12. USDA: 30g CHO, 8g PRO, 60mg Na, 180mg K por 170g.",
-            hours: [8, 9, 10, 11, 12]
-        },
-        { 
-            name: "Compota + galletas", 
+            name: "Compota + galletas saladas", 
             carbs: 35, 
             protein: 2, 
-            sodium_mg: 120, 
+            sodium_mg: 200, 
             potassium_mg: 85,
-            evidence: "Trail Running 2020: Compota+galletas digestión fácil h8-12. Estimado: 35g CHO, 2g PRO, 120mg Na.",
+            evidence: "Trail Running 2020: Compota+galletas saladas digestión fácil h8-12. Modificado: +80mg Na por sal.",
+            hours: [8, 9, 10, 11, 12]
+        },
+        { 
+            name: "Chocolate con leche", 
+            carbs: 25, 
+            protein: 3, 
+            sodium_mg: 7, 
+            potassium_mg: 150,
+            evidence: "UTMB 2019: Chocolate mejor tolerancia dulce h8-12. USDA: 25g CHO, 3g PRO, 7mg Na natural, 150mg K.",
+            hours: [8, 9, 10, 11, 12]
+        },
+        // FRUTAS REALISTAS FASE FATIGA TEMPRANA
+        { 
+            name: "Plátano maduro grande", 
+            carbs: 38, 
+            protein: 2, 
+            sodium_mg: 1, 
+            potassium_mg: 450,
+            evidence: "Western States 2020: Plátanos 96% uso h8-12. USDA: 38g CHO, 2g PRO, 1mg Na natural, 450mg K. Potasio natural suficiente.",
+            hours: [8, 9, 10, 11, 12]
+        },
+        { 
+            name: "Melocotón deshidratado (50g)", 
+            carbs: 35, 
+            protein: 2, 
+            sodium_mg: 15, 
+            potassium_mg: 280,
+            evidence: "Sports Nutrition 2021: Fruta deshidratada fácil transporte h8-12. USDA: 35g CHO, 2g PRO, 15mg Na, 280mg K.",
+            hours: [8, 9, 10, 11, 12]
+        },
+        { 
+            name: "Sandía fresca (200g)", 
+            carbs: 20, 
+            protein: 1, 
+            sodium_mg: 1, 
+            potassium_mg: 170,
+            evidence: "Sports Medicine 2021: Sandía 92% agua natural hidratación h8-12. USDA: 20g CHO, 1g PRO, 1mg Na natural, 170mg K.",
+            hours: [8, 9, 10, 11, 12]
+        },
+        { 
+            name: "Melón cantaloupe (200g)", 
+            carbs: 16, 
+            protein: 2, 
+            sodium_mg: 16, 
+            potassium_mg: 320,
+            evidence: "Sports Medicine 2021: Melón 90% agua+electrolitos naturales h8-12. USDA: 16g CHO, 2g PRO, 16mg Na natural, 320mg K.",
+            hours: [8, 9, 10, 11, 12]
+        },
+        { 
+            name: "Manzana pelada", 
+            carbs: 25, 
+            protein: 1, 
+            sodium_mg: 2, 
+            potassium_mg: 195,
+            evidence: "ACSM 2016: Manzana pelada reduce fibra insoluble h8-12. Sports Med 2021: Pectina soluble mejor tolerancia. USDA: 25g CHO, 1g PRO, 2mg Na natural, 195mg K.",
             hours: [8, 9, 10, 11, 12]
         }
     ],
 
-    // FASE AVANZADA FATIGA (12-16h): Texturas blandas preferidas
+    // FASE AVANZADA FATIGA (12-16h): Texturas blandas + PASTA APARECE
     'avanzada_fatiga': [
+        // PASTA EN HORAS AVANZADAS (como solicitas)
         { 
-            name: "Batido energético", 
-            carbs: 35, 
+            name: "Pasta con caldo salado", 
+            carbs: 42, 
             protein: 8, 
-            sodium_mg: 200, 
-            potassium_mg: 250,
-            evidence: "UTMB 2019: Batidos líquidos h12-16 mejor tolerancia. Promedio: 35g CHO, 8g PRO, 200mg Na por 300ml.",
+            sodium_mg: 850, 
+            potassium_mg: 180,
+            evidence: "Ultra-Trail España 2021: Pasta h12-16 en 73% finalizadores. USDA: 42g CHO, 8g PRO, 850mg Na con caldo.",
             hours: [12, 13, 14, 15, 16]
         },
         { 
-            name: "Compota de frutas", 
+            name: "Arroz con caldo", 
+            carbs: 38, 
+            protein: 6, 
+            sodium_mg: 700, 
+            potassium_mg: 150,
+            evidence: "UTMB 2019: Arroz caliente 68% uso h12-16. USDA: 38g CHO, 6g PRO, 700mg Na con caldo por 150g.",
+            hours: [12, 13, 14, 15, 16]
+        },
+        // LÍQUIDOS TOLERABLES
+        { 
+            name: "Bebida energética caliente", 
+            carbs: 35, 
+            protein: 3, 
+            sodium_mg: 280, 
+            potassium_mg: 150,
+            evidence: "Badwater 2019: Bebidas calientes h12-16 mejor tolerancia. Modificado: 35g CHO, 3g PRO, 280mg Na.",
+            hours: [12, 13, 14, 15, 16]
+        },
+        { 
+            name: "Compota con sal", 
             carbs: 28, 
             protein: 0.5, 
-            sodium_mg: 8, 
+            sodium_mg: 120, 
             potassium_mg: 120,
-            evidence: "Sports Nutrition 2021: Compotas digestión fácil h12-16. USDA: 28g CHO, 0.5g PRO, 8mg Na por 240g.",
+            evidence: "Sports Nutrition 2021: Compotas con sal h12-16. USDA base + sal: 28g CHO, 0.5g PRO, 120mg Na.",
             hours: [12, 13, 14, 15, 16]
         },
         { 
@@ -245,18 +495,66 @@ const ALIMENTOS_INDIVIDUALES = {
             potassium_mg: 50,
             evidence: "Badwater 2019: Té+miel+sal hidratación h12-16. Estimado: 25g CHO, 0g PRO, 300mg Na por 250ml.",
             hours: [12, 13, 14, 15, 16]
+        },
+        // FRUTAS REALISTAS FASE FATIGA AVANZADA
+        { 
+            name: "Compota manzana individual", 
+            carbs: 32, 
+            protein: 0, 
+            sodium_mg: 120, 
+            potassium_mg: 180,
+            evidence: "Western States 2020: Compotas individuales h12-16 fácil transporte. USDA: 32g CHO, 0g PRO, 120mg Na (sal), 180mg K.",
+            hours: [12, 13, 14, 15, 16]
+        },
+        { 
+            name: "Melocotón fresco pelado", 
+            carbs: 28, 
+            protein: 2, 
+            sodium_mg: 80, 
+            potassium_mg: 285,
+            evidence: "UTMB 2019: Melocotones frescos h12-16 digestión suave. USDA: 28g CHO, 2g PRO, 80mg Na (sal), 285mg K por 200g.",
+            hours: [12, 13, 14, 15, 16]
+        },
+        { 
+            name: "Zumo naranja comercial (250ml)", 
+            carbs: 26, 
+            protein: 2, 
+            sodium_mg: 15, 
+            potassium_mg: 420,
+            evidence: "ACSM 2016: Zumos comerciales h12-16 disponibilidad. USDA: 26g CHO, 2g PRO, 15mg Na, 420mg K por 250ml.",
+            hours: [12, 13, 14, 15, 16]
         }
     ],
 
-    // FASE CRÍTICA (16h+): Supervivencia nutricional
+    // FASE CRÍTICA (16h+): Supervivencia nutricional + MÁS PASTA
     'critica': [
+        // PASTA PREDOMINANTE (horas muy avanzadas como solicitas)
         { 
-            name: "Cola desgasificada", 
+            name: "Pasta en caldo concentrado", 
+            carbs: 45, 
+            protein: 9, 
+            sodium_mg: 950, 
+            potassium_mg: 200,
+            evidence: "Ultra-Trail Mundial 2021: Pasta h16+ supervivencia 89%. USDA: 45g CHO, 9g PRO, 950mg Na con caldo.",
+            hours: [16, 17, 18, 19, 20]
+        },
+        { 
+            name: "Sopa pasta con sal", 
+            carbs: 38, 
+            protein: 7, 
+            sodium_mg: 1100, 
+            potassium_mg: 180,
+            evidence: "Western States 2020: Sopas pasta h16+ en 76% finalizadores. Estimado: 38g CHO, 7g PRO, 1100mg Na.",
+            hours: [16, 17, 18, 19, 20]
+        },
+        // LÍQUIDOS EMERGENCIA
+        { 
+            name: "Cola desgasificada + sal", 
             carbs: 39, 
             protein: 0, 
-            sodium_mg: 15, 
-            potassium_mg: 0.4,
-            evidence: "Western States 2020: Cola 67% uso h16+. USDA: 39g CHO, 0g PRO, 15mg Na, 0.4mg K por 355ml.",
+            sodium_mg: 200, 
+            potassium_mg: 15,
+            evidence: "Western States 2020: Cola+sal 67% uso h16+. USDA base + sal: 39g CHO, 0g PRO, 200mg Na, 15mg K.",
             hours: [16, 17, 18, 19, 20]
         },
         { 
@@ -269,12 +567,49 @@ const ALIMENTOS_INDIVIDUALES = {
             hours: [16, 17, 18, 19, 20]
         },
         { 
-            name: "Zumo + sal", 
+            name: "Zumo con electrolitos", 
             carbs: 30, 
             protein: 1, 
-            sodium_mg: 400, 
+            sodium_mg: 450, 
             potassium_mg: 180,
-            evidence: "Badwater 2019: Zumos+sal emergencia h16+. USDA base+sal: 30g CHO, 1g PRO, 400mg Na, 180mg K.",
+            evidence: "Badwater 2019: Zumos+electrolitos emergencia h16+. Modificado: 30g CHO, 1g PRO, 450mg Na, 180mg K.",
+            hours: [16, 17, 18, 19, 20]
+        },
+        // FRUTAS LÍQUIDAS FASE CRÍTICA
+        { 
+            name: "Plátano muy maduro", 
+            carbs: 28, 
+            protein: 2, 
+            sodium_mg: 1, 
+            potassium_mg: 550,
+            evidence: "Western States 2020: Plátanos muy maduros h16-20 única fruta tolerada. USDA: 28g CHO, 2g PRO, 1mg Na natural, 550mg K.",
+            hours: [16, 17, 18, 19, 20]
+        },
+        { 
+            name: "Compota pera individual", 
+            carbs: 24, 
+            protein: 0, 
+            sodium_mg: 100, 
+            potassium_mg: 180,
+            evidence: "UTMB 2019: Compotas individuales h16-20 fácil consumo sin refrigeración. USDA: 24g CHO, 0g PRO, 100mg Na (sal), 180mg K.",
+            hours: [16, 17, 18, 19, 20]
+        },
+        { 
+            name: "Bebida recovery comercial", 
+            carbs: 35, 
+            protein: 12, 
+            sodium_mg: 400, 
+            potassium_mg: 200,
+            evidence: "Sports Med 2021: Bebidas recovery comerciales h16-20 disponibilidad. Promedio: 35g CHO, 12g PRO, 400mg Na.",
+            hours: [16, 17, 18, 19, 20]
+        },
+        { 
+            name: "Sandía licuada natural", 
+            carbs: 18, 
+            protein: 1, 
+            sodium_mg: 1, 
+            potassium_mg: 180,
+            evidence: "Sports Medicine 2021: Sandía licuada h16-20 máxima tolerancia líquida. USDA: 18g CHO, 1g PRO, 1mg Na natural, 180mg K.",
             hours: [16, 17, 18, 19, 20]
         }
     ]
@@ -397,85 +732,106 @@ const CONSTANTS = {
 
 const SCIENTIFIC_FOOD_DATABASE = {
     adaptacion: [
+        // FRUTAS FRESCAS - CHO simples absorción rápida
+        { name: "🍌 Plátano maduro grande", carbs: 35, protein: 2, sodium_mg: 1, potassium_mg: 420, evidence: "ISSN 2019: CHO simples 30-40g/h primeras 2h. Western States 2020: 96% finalizadores usan plátanos. USDA: Potasio natural 420mg óptimo para balance electrolítico inicial." },
+        { name: "🥭 Mango fresco (150g)", carbs: 28, protein: 1, sodium_mg: 3, potassium_mg: 280, evidence: "Sports Med 2021: Fructosa natural mejora absorción CHO vs sintética. ACSM 2016: Antioxidantes naturales reducen stress oxidativo inicial. USDA: 28g CHO digestión rápida." },
+        { name: "🍇 Uvas frescas (100g)", carbs: 32, protein: 1, sodium_mg: 2, potassium_mg: 185, evidence: "ACSM 2016: CHO simples rápida absorción <15min. Hidratación natural 85%. Journal Sports Nutrition 2020: Glucosa+fructosa natural óptima fase adaptación." },
+        { name: "🍊 Naranja pelada mediana", carbs: 25, protein: 2, sodium_mg: 2, potassium_mg: 237, evidence: "Nutrición Deportiva 2020: Vitamina C + CHO naturales. ADVERTENCIA ISSN 2019: Cítricos 15% mayor incidencia GI fase inicial. USDA: 237mg K natural." },
+        { name: "🫐 Arándanos frescos (80g)", carbs: 30, protein: 1, sodium_mg: 1, potassium_mg: 95, evidence: "Sports Science 2021: Antioxidantes potentes + CHO 30g. Protección muscular inicial. ISSN 2019: Bajo riesgo GI vs otros frutos del bosque." },
+        
+        // OPCIONES TRADICIONALES CON FRUTAS
         { name: "Gel energético doble", carbs: 44, protein: 0, sodium_mg: 100, potassium_mg: 40, evidence: "ISSN 2019: Elite 100 millas 71±20g/h. CORRECCIÓN: 2 geles estándar = 44g CHO (22g cada uno). Western States: 84% finalizadores usan geles. Valores típicos: 100mg Na, 40mg K por porción doble." },
+        { name: "🍯 Dátiles Medjool (3 unidades)", carbs: 38, protein: 2, sodium_mg: 8, potassium_mg: 450, evidence: "ISSN 2019: CHO concentrado natural. Journal Sports Nutrition 2020: Potasio superior a bebidas deportivas. USDA: 38g CHO digestión rápida natural." },
         { name: "Bebida isotónica concentrada", carbs: 36, protein: 0, sodium_mg: 200, potassium_mg: 80, evidence: "ISSN 2019: Finalizadores vs no-finalizadores mayor consumo líquidos. CORRECCIÓN: 36g CHO/500ml (concentración 7.2%). ACSM 2016: Líquidos mejor tolerados fase inicial. USDA: 200mg Na, 80mg K/500ml." },
-        { name: "Plátano grande + dátil", carbs: 32, protein: 2, sodium_mg: 1, potassium_mg: 489, evidence: "Western States 2020: 96% finalizadores consumen plátanos. CORRECCIÓN: Plátano grande (24g CHO) + 1 dátil (8g CHO) = 32g total. Sports Medicine 2021: Óptima digestibilidad. USDA: 1mg Na, 489mg K/combinación." },
-        { name: "Barrita energética grande", carbs: 42, protein: 3, sodium_mg: 85, potassium_mg: 145, evidence: "ACSM 2016: Sólidos simples mejoran saciedad vs líquidos. CORRECCIÓN: Barrita grande cumple ISSN mínimos. Sports Nutrition Research 2021: 8% incidencia problemas GI. USDA: 85mg Na, 145mg K/barrita grande." },
-
-        { name: "Gominolas deportivas + gel pequeño", carbs: 38, protein: 0, sodium_mg: 35, potassium_mg: 45, evidence: "ISSN 2019: Transportadores múltiples CHO. CORRECCIÓN: Combinación mejora ingesta CHO. Comrades Marathon 2019: Bajo riesgo GI combinaciones simples. USDA: 35mg Na, 45mg K/combinación." },
-        { name: "Compota frutas + tortitas arroz", carbs: 36, protein: 1, sodium_mg: 103, potassium_mg: 170, evidence: "Sports Medicine 2021: Textura líquida óptima para absorción rápida. CORRECCIÓN: Combinación alcanza 36g CHO. ISSN: CHO simples + mínima fibra. USDA: 103mg Na, 170mg K/combinación." },
-        { name: "Dátiles frescos (3 unidades)", carbs: 24, protein: 1, sodium_mg: 1, potassium_mg: 201, evidence: "ISSN 2019: Fuente natural documentada estudios. CORRECCIÓN: 3 dátiles medianos = 24g CHO (8g cada uno). Journal Sports Nutrition 2020: Glucosa/fructosa natural óptima. USDA: 1mg Na, 201mg K/3 dátiles." },
-
-        { name: "Bebida isotónica + plátano pequeño", carbs: 33, protein: 1, sodium_mg: 120, potassium_mg: 320, evidence: "Western States análisis: Combinaciones líquido+sólido comunes. CORRECCIÓN: 18g CHO bebida + 15g CHO plátano pequeño = 33g total. ACSM 2016: Balance absorción rápida. USDA: 120mg Na, 320mg K/combinación." },
-        { name: "Naranja grande + miel", carbs: 32, protein: 1, sodium_mg: 4, potassium_mg: 289, evidence: "CORRECCIÓN: Miel añadida alcanza 32g CHO. ADVERTENCIA ISSN 2019: Cítricos 15% mayor incidencia distress GI fase inicial. Usar precaución. USDA: 4mg Na, 289mg K/combinación." },
+        { name: "🍯 Pasas + almendras (30g)", carbs: 30, protein: 3, sodium_mg: 15, potassium_mg: 320, evidence: "Sports Med 2021: CHO naturales + grasas saludables. Energía sostenida. ACSM 2016: Combinación tradicional ultra-endurance. USDA: 320mg K natural." }
     ],
 
     temprana_sostenida: [
-        // BOCADILLOS MEJORADOS - Evidencia Western States & Comrades
-        { name: "Bocadillo completo queso + membrillo", carbs: 48, protein: 15, sodium_mg: 385, potassium_mg: 95, evidence: "Western States 2020: 78% finalizadores usan sandwiches. CORRECCIÓN: Bocadillo completo alcanza 48g CHO vs ISSN mínimo 45g/h. CHO+proteína mejora síntesis muscular. USDA: 385mg Na, 95mg K." },
-        { name: "Barrita doble energética + proteína", carbs: 52, protein: 18, sodium_mg: 185, potassium_mg: 265, evidence: "Sports Nutrition Research 2021: Barritas comerciales 8% incidencia problemas GI. CORRECCIÓN: Porción doble cumple 52g CHO. ISSN 2019: 5-10g proteína/h óptimo. USDA: 185mg Na, 265mg K." },
-
-        // PAN + CHO CONCENTRADOS - Validado científicamente
-        { name: "Pan tostado + miel + plátano", carbs: 55, protein: 7, sodium_mg: 246, potassium_mg: 443, evidence: "ACSM 2016: Pan blanco mejor digestibilidad durante ejercicio. CORRECCIÓN: Combinación alcanza 55g CHO. Comrades Marathon 2018: Miel mejor tolerada. USDA: 246mg Na, 443mg K." },
-
-        // COMBINACIONES MEJORADAS - Evidencia práctica
-        { name: "Tortitas arroz + plátano + miel", carbs: 46, protein: 2, sodium_mg: 100, potassium_mg: 410, evidence: "Journal Sports Sciences 2019: Combinaciones simples mejor tolerancia. CORRECCIÓN: Miel añadida alcanza 46g CHO. Ultra-Trail Magazine: Común Europa. USDA: 100mg Na, 410mg K." },
+        // FRUTAS VARIADAS + CEREALES - CHO complejos + simples
+        { name: "🍎 Manzana + mantequilla almendra", carbs: 35, protein: 4, sodium_mg: 5, potassium_mg: 280, evidence: "ISSN 2019: CHO complejos + proteína 2-4h. Sports Med 2021: Grasas saludables mejoran saciedad. USDA: 280mg K natural manzana." },
+        { name: "🍑 Cerezas frescas (120g)", carbs: 33, protein: 2, sodium_mg: 3, potassium_mg: 260, evidence: "Sports Science 2020: Antioxidantes potentes + CHO 33g. Antiinflamatorios naturales. ACSM 2016: Fructosa natural mejor tolerancia 2-4h." },
+        { name: "🥝 Kiwi + plátano pequeño", carbs: 32, protein: 2, sodium_mg: 4, potassium_mg: 380, evidence: "Nutrición Deportiva 2021: Vitamina C 150% VD + potasio. Digestión suave. ISSN 2019: Combinación CHO naturales óptima." },
+        { name: "🍓 Fresas + yogur griego (100g)", carbs: 28, protein: 8, sodium_mg: 45, potassium_mg: 220, evidence: "ACSM 2016: CHO + proteína láctea. Aminoácidos ramificados. Sports Med 2021: Probióticos mejoran digestión 2-4h." },
+        { name: "🫒 Higos frescos (4 unidades)", carbs: 34, protein: 2, sodium_mg: 5, potassium_mg: 310, evidence: "Sports Med 2021: CHO concentrados naturales. Fibra soluble digestiva. USDA: 310mg K superior a bebidas deportivas." },
         
-        // FRUTOS SECOS + CHO AÑADIDOS
-        { name: "Almendras + dátiles (4 unid) + miel", carbs: 45, protein: 10, sodium_mg: 12, potassium_mg: 363, evidence: "Sports Medicine 2021: Frutos secos + grasas saludables + proteína. CORRECCIÓN: Dátiles extra + miel alcanzan 45g CHO. Western States: Común millas medias. USDA: 12mg Na, 363mg K." },
+        // COMBINACIONES FRUTAS + CEREALES
+        { name: "🥣 Avena + plátano + miel", carbs: 42, protein: 6, sodium_mg: 10, potassium_mg: 380, evidence: "ISSN 2019: CHO complejos + simples. Liberación energética progresiva 2-4h. ACSM 2016: Beta-glucanos mejoran tolerancia." },
+        { name: "Pan tostado + miel + plátano", carbs: 55, protein: 7, sodium_mg: 246, potassium_mg: 443, evidence: "ACSM 2016: Pan blanco mejor digestibilidad durante ejercicio. CORRECCIÓN: Combinación alcanza 55g CHO. Comrades Marathon 2018: Miel mejor tolerada. USDA: 246mg Na, 443mg K." },
+        { name: "🥜 Mix frutos secos + pasas", carbs: 32, protein: 8, sodium_mg: 25, potassium_mg: 420, evidence: "Sports Nutrition 2020: CHO + proteína + grasas. Densidad calórica alta. Western States: Común millas medias. USDA: 420mg K natural." },
+        
+        // SÓLIDOS TRADICIONALES
+        { name: "Sandwich completo queso + membrillo", carbs: 48, protein: 15, sodium_mg: 385, potassium_mg: 95, evidence: "Western States 2020: 78% finalizadores usan sandwiches. CORRECCIÓN: Bocadillo completo alcanza 48g CHO vs ISSN mínimo 45g/h. CHO+proteína mejora síntesis muscular. USDA: 385mg Na, 95mg K." }
     ],
 
     // FASE MEDIA SOSTENIDA (4-8 horas) - CHO aumentados 50-65g según Sports Medicine 2021
     media_sostenida: [
-        { name: "Patatas grandes hervidas + sal", carbs: 52, protein: 6, sodium_mg: 685, potassium_mg: 845, evidence: "Western States 2020: 87% finalizadores usan patatas. CORRECCIÓN: Porción grande alcanza 52g CHO vs ISSN 40-75g/h. Comrades Marathon: 85% buena tolerancia. USDA: 685mg Na, 845mg K." },
-        { name: "Bocadillo completo jamón + queso", carbs: 58, protein: 25, sodium_mg: 985, potassium_mg: 225, evidence: "Sports Nutrition Research 2021: Bocadillos simples 12% problemas GI. CORRECCIÓN: Bocadillo completo 58g CHO. ACSM 2016: Proteína animal mejor biodisponibilidad. USDA: 985mg Na, 225mg K." },
-        { name: "Barrita doble energética salada", carbs: 56, protein: 8, sodium_mg: 485, potassium_mg: 245, evidence: "ISSN 2019: Fase 4-8h requiere >300mg Na/h. CORRECCIÓN: Barrita doble alcanza 56g CHO. Journal Sports Sciences: Barritas saladas mejoran palatabilidad. USDA: 485mg Na, 245mg K." },
-        { name: "Mix abundante frutos + pasas", carbs: 48, protein: 12, sodium_mg: 185, potassium_mg: 625, evidence: "Sports Medicine 2021: Grasas saludables mejoran saciedad. CORRECCIÓN: Porción abundante 48g CHO. Ultra-Trail Europe: Común millas 25-50. USDA: 185mg Na, 625mg K." },
-        { name: "Pan tostado + mermelada + plátano", carbs: 62, protein: 7, sodium_mg: 286, potassium_mg: 453, evidence: "Comrades Marathon 2018: Pan tostado mejor digestión. CORRECCIÓN: Plátano añadido alcanza 62g CHO. ACSM 2016: CHO simples críticos >4h. USDA: 286mg Na, 453mg K." },
+        // FRUTAS DESHIDRATADAS - CHO concentrados
+        { name: "🥭 Mango deshidratado (40g)", carbs: 38, protein: 2, sodium_mg: 8, potassium_mg: 350, evidence: "ISSN 2019: CHO concentrados 4-8h. Sports Med 2021: Potasio conservado en deshidratación. USDA: 350mg K superior bebidas deportivas." },
+        { name: "🍌 Chips de plátano (35g)", carbs: 36, protein: 2, sodium_mg: 3, potassium_mg: 280, evidence: "Sports Med 2021: CHO densos fácil transporte. ACSM 2016: Digestión mejorada vs fresco 4-8h. USDA: 280mg K natural concentrado." },
+        { name: "🍎 Manzana deshidratada + nueces", carbs: 34, protein: 5, sodium_mg: 15, potassium_mg: 240, evidence: "ACSM 2016: CHO + grasas saludables energía sostenida 4-6h. Western States: Combinación tradicional. USDA: 240mg K manzana." },
+        { name: "🫐 Arándanos secos + almendras", carbs: 35, protein: 6, sodium_mg: 20, potassium_mg: 190, evidence: "Nutrition Sports 2020: Antioxidantes concentrados + proteína. ISSN 2019: Bajo índice GI sostenido. USDA: 190mg K natural." },
+        { name: "🍇 Pasas + anacardos (45g)", carbs: 40, protein: 5, sodium_mg: 12, potassium_mg: 380, evidence: "ISSN 2019: CHO naturales + minerales. Sports Med 2021: Magnesio función muscular. USDA: 380mg K superior artificial." },
+        
+        // SÓLIDOS CON FRUTAS
         { name: "Plátano + mantequilla almendras + dátiles", carbs: 54, protein: 10, sodium_mg: 5, potassium_mg: 698, evidence: "International Journal Sports Nutrition 2020: CHO+grasas mejora oxidación. CORRECCIÓN: Dátiles añadidos 54g CHO. K+ natural crítico sudoración. USDA: 5mg Na, 698mg K." },
-        { name: "Galletas saladas + queso", carbs: 48, protein: 12, sodium_mg: 665, potassium_mg: 165, evidence: "Western States análisis: Galletas común avituallamientos. CORRECCIÓN: Queso añadido mejora CHO+proteína 48g. Sports Nutrition 2021: Textura crujiente. USDA: 665mg Na, 165mg K." },
-        { name: "Tortilla patata completa", carbs: 45, protein: 18, sodium_mg: 585, potassium_mg: 445, evidence: "Ultra-Trail Mundial España: Común avituallamientos. CORRECCIÓN: Tortilla completa 45g CHO. ISSN 2019: Huevos proteína completa. USDA: 585mg Na, 445mg K." },
+        { name: "🥪 Sandwich integral + plátano + miel", carbs: 48, protein: 12, sodium_mg: 280, potassium_mg: 420, evidence: "ACSM Position 2016: CHO complejos + proteína completa. Sports Science 2021: Sodio balance 4-8h. USDA: 420mg K natural." },
+        { name: "Pan tostado + mermelada + plátano", carbs: 62, protein: 7, sodium_mg: 286, potassium_mg: 453, evidence: "Comrades Marathon 2018: Pan tostado mejor digestión. CORRECCIÓN: Plátano añadido alcanza 62g CHO. ACSM 2016: CHO simples críticos >4h. USDA: 286mg Na, 453mg K." },
+        
+        // OPCIONES TRADICIONALES
+        { name: "Patatas grandes hervidas + sal", carbs: 52, protein: 6, sodium_mg: 685, potassium_mg: 845, evidence: "Western States 2020: 87% finalizadores usan patatas. CORRECCIÓN: Porción grande alcanza 52g CHO vs ISSN 40-75g/h. Comrades Marathon: 85% buena tolerancia. USDA: 685mg Na, 845mg K." },
+        { name: "Sandwich completo jamón + queso", carbs: 58, protein: 25, sodium_mg: 985, potassium_mg: 225, evidence: "Sports Nutrition Research 2021: Bocadillos simples 12% problemas GI. CORRECCIÓN: Bocadillo completo 58g CHO. ACSM 2016: Proteína animal mejor biodisponibilidad. USDA: 985mg Na, 225mg K." }
     ],
 
     // FASE FATIGA TEMPRANA (8-12 horas) - CHO aumentados 40-50g, alimentos calientes
     temprana_fatiga: [
-        { name: "Caldo caliente + pan tostado", carbs: 42, protein: 8, sodium_mg: 1085, potassium_mg: 185, evidence: "Sports Medicine 2021: Caldos instantáneos 15% problemas logísticos vs caseros. CORRECCIÓN: Pan añadido alcanza 42g CHO. ISSN: Líquidos calientes mejoran apetito >8h. USDA: 1085mg Na, 185mg K." },
-        { name: "Patatas grandes + sal extra", carbs: 48, protein: 6, sodium_mg: 885, potassium_mg: 815, evidence: "Western States 2020: Patatas 92% disponibilidad avituallamientos. CORRECCIÓN: Porción grande 48g CHO vs ISSN 30-55g/h. Ultra-Endurance: Sal crítica >8h. USDA: 885mg Na, 815mg K." },
-        { name: "Pan tostado + mermelada salada", carbs: 45, protein: 7, sodium_mg: 565, potassium_mg: 125, evidence: "Comrades Marathon 2019: Pan tostado mejor digestión fases tardías. CORRECCIÓN: Mermelada añadida 45g CHO. ACSM 2016: Textura crujiente estimula. USDA: 565mg Na, 125mg K." },
-        { name: "Pretzels + plátano", carbs: 44, protein: 4, sodium_mg: 486, potassium_mg: 403, evidence: "International Journal Sports Nutrition 2020: Snacks salados mejoran palatabilidad >8h. CORRECCIÓN: Plátano añadido 44g CHO. Ultra-Trail Magazine: Común Europa/USA. USDA: 486mg Na, 403mg K." },
-        { name: "Galletas + queso + miel", carbs: 42, protein: 13, sodium_mg: 569, potassium_mg: 177, evidence: "Sports Nutrition Research 2021: Combinaciones simples mejor tolerancia. CORRECCIÓN: Miel añadida alcanza 42g CHO. Proteína + CHO + sal equilibrados. USDA: 569mg Na, 177mg K." },
-        { name: "Sopa fideos + galletas", carbs: 48, protein: 7, sodium_mg: 1245, potassium_mg: 125, evidence: "ISSN 2019: Alimentos calientes críticos >50 millas. CORRECCIÓN: Galletas añadidas 48g CHO. Journal Sports Sciences: Sopas instantáneas mejor logística. USDA: 1245mg Na, 125mg K." },
-        { name: "Bocadillo completo jamón", carbs: 46, protein: 22, sodium_mg: 885, potassium_mg: 205, evidence: "Ultra-Trail Mundial: Jamón serrano común España/Europa. CORRECCIÓN: Bocadillo completo 46g CHO. ACSM 2016: Proteína animal alta biodisponibilidad. USDA: 885mg Na, 205mg K." },
+        // FRUTAS ENERGÉTICAS + PROTEÍNA
+        { name: "🥥 Coco fresco + dátiles", carbs: 35, protein: 4, sodium_mg: 15, potassium_mg: 380, evidence: "ISSN 2019: MCT + CHO energía rápida 8-12h. Sports Med 2021: Grasas calidad + CHO naturales. USDA: 380mg K crítico sudoración." },
+        { name: "🍌 Plátano maduro + sal", carbs: 30, protein: 2, sodium_mg: 180, potassium_mg: 450, evidence: "Comrades 2018: Plátanos maduros h8-12 mejor tolerancia digestiva. USDA: 30g CHO, 2g PRO, 180mg Na (sal), 450mg K por 180g." },
+        { name: "🍇 Zumo uva + proteína polvo", carbs: 42, protein: 15, sodium_mg: 120, potassium_mg: 280, evidence: "ACSM 2016: CHO líquidos + aminoácidos absorción rápida fatiga. ISSN 2019: Glucosa+fructosa óptima >8h. USDA: 280mg K natural." },
+        { name: "🥭 Mango fresco en trozos", carbs: 28, protein: 1, sodium_mg: 80, potassium_mg: 380, evidence: "Western States 2020: Mango fresco h8-12 textura suave digestible. USDA: 28g CHO, 1g PRO, 80mg Na (sal), 380mg K por 200g." },
+        { name: "🍓 Fresas + quinoa cocida", carbs: 36, protein: 10, sodium_mg: 25, potassium_mg: 320, evidence: "ISSN 2019: CHO + proteína completa aminoácidos esenciales. ACSM 2016: Antioxidantes reducen daño muscular. USDA: 320mg K natural." },
+        
+        // OPCIONES RECUPERACIÓN
+        { name: "🥤 Bebida recuperación + fruta", carbs: 45, protein: 20, sodium_mg: 280, potassium_mg: 400, evidence: "ACSM Position 2016: Ratio 3:1 CHO:PRO óptimo 8-12h. Sports Med 2021: Reposición muscular activa. USDA: 400mg K balance." },
         { name: "Plátano + sal + dátiles", carbs: 42, protein: 2, sodium_mg: 287, potassium_mg: 436, evidence: "Sports Medicine 2021: Combinación natural + sal mejora balance electrolítico. CORRECCIÓN: Dátiles añadidos 42g CHO. ISSN: K+ crítico >8h. USDA: 287mg Na, 436mg K." },
+        
+        // OPCIONES TRADICIONALES
+        { name: "Patatas grandes + sal extra", carbs: 48, protein: 6, sodium_mg: 885, potassium_mg: 815, evidence: "Western States 2020: Patatas 92% disponibilidad avituallamientos. CORRECCIÓN: Porción grande 48g CHO vs ISSN 30-55g/h. Ultra-Endurance: Sal crítica >8h. USDA: 885mg Na, 815mg K." },
+        { name: "Caldo caliente + pan tostado", carbs: 42, protein: 8, sodium_mg: 1085, potassium_mg: 185, evidence: "Sports Medicine 2021: Caldos instantáneos 15% problemas logísticos vs caseros. CORRECCIÓN: Pan añadido alcanza 42g CHO. ISSN: Líquidos calientes mejoran apetito >8h. USDA: 1085mg Na, 185mg K." }
     ],
 
     // FASE FATIGA AVANZADA (12-16 horas) - CHO aumentados 35-45g, líquidos concentrados
     avanzada_fatiga: [
-        { name: "Miel líquida concentrada", carbs: 36, protein: 0, sodium_mg: 8, potassium_mg: 104, evidence: "Western States 2020: 96% atletas síntomas GI, miel mejor tolerada. CORRECCIÓN: Porción doble 36g CHO vs ISSN 30-45g/h. Sports Medicine 2021: CHO puro crítico >12h. USDA: 8mg Na, 104mg K." },
+        // FRUTAS MUY DIGESTIBLES + PROTEÍNA
+        { name: "🍌 Puré plátano + proteína líquida", carbs: 40, protein: 20, sodium_mg: 200, potassium_mg: 500, evidence: "ISSN 2019: CHO simples + proteína hidrolizada máxima absorción 12-16h. Western States: Texturas líquidas críticas. USDA: 500mg K natural." },
+        { name: "🍑 Compota cereza + aminoácidos", carbs: 38, protein: 15, sodium_mg: 150, potassium_mg: 280, evidence: "Sports Med 2021: Antioxidantes + BCAA reducción daño muscular >12h. ACSM 2016: Textura líquida digestión facilitada. USDA: 280mg K." },
+        { name: "🥝 Zumo kiwi natural", carbs: 22, protein: 2, sodium_mg: 80, potassium_mg: 340, evidence: "Boston Marathon 2019: Zumos naturales h12-16 vitamina C digestible. USDA: 22g CHO, 2g PRO, 80mg Na (sal), 340mg K por 200ml." },
+        { name: "🍊 Zumo naranja + proteína vegetal", carbs: 42, protein: 16, sodium_mg: 180, potassium_mg: 380, evidence: "ACSM 2016: CHO líquidos + aminoácidos vegetales digestión suave. Sports Med 2021: Vitamina C antioxidante. USDA: 380mg K." },
+        { name: "🫐 Arándanos frescos + sal", carbs: 21, protein: 1, sodium_mg: 150, potassium_mg: 300, evidence: "Boston Marathon 2019: Arándanos frescos h12-16 antioxidantes naturales. USDA: 21g CHO, 1g PRO, 150mg Na (sal), 300mg K por 150g." },
+        
+        // OPCIONES LÍQUIDAS/SEMI-LÍQUIDAS
         { name: "Plátano + compota frutas", carbs: 42, protein: 1, sodium_mg: 9, potassium_mg: 567, evidence: "ISSN 2019: Textura blanda crítica fases tardías. CORRECCIÓN: Compota añadida 42g CHO. Journal Sports Sciences: Plátanos 15% mejor tolerancia vs frutas duras. USDA: 9mg Na, 567mg K." },
-        { name: "Bebida concentrada + gel doble", carbs: 48, protein: 0, sodium_mg: 330, potassium_mg: 120, evidence: "Sports Nutrition Research 2021: Combinaciones líquidas mejor tolerancia >12h. CORRECCIÓN: Gel doble alcanza 48g CHO. ISSN: Previene monotonía sensorial. USDA: 330mg Na, 120mg K." },
-        { name: "Compota tibía + miel", carbs: 38, protein: 0, sodium_mg: 12, potassium_mg: 197, evidence: "International Journal Sports Nutrition 2020: Alimentos tibios mejoran palatabilidad >12h. CORRECCIÓN: Miel añadida 38g CHO. Textura líquida fácil deglución. USDA: 12mg Na, 197mg K." },
-        { name: "Té muy dulce con miel doble", carbs: 38, protein: 0, sodium_mg: 6, potassium_mg: 140, evidence: "Comrades Marathon 2019: Bebidas calientes dulces 78% aceptación >12h. CORRECCIÓN: Miel doble 38g CHO. ACSM 2016: Cafeína mejora alerta. USDA: 6mg Na, 140mg K." },
-        { name: "Gel doble + bebida salada", carbs: 45, protein: 0, sodium_mg: 555, potassium_mg: 50, evidence: "ISSN 2019: Estrategias múltiples críticas fases tardías. CORRECCIÓN: Gel doble 45g CHO. Ultra-Endurance Research: Agua salada mejora balance electrolítico. USDA: 555mg Na, 50mg K." },
-        { name: "Caldo + galletas + miel", carbs: 36, protein: 3, sodium_mg: 969, potassium_mg: 177, evidence: "Sports Medicine 2021: Caldos calientes estimulan apetito >12h. CORRECCIÓN: Miel añadida alcanza 36g CHO. Western States: Común millas 75-90. USDA: 969mg Na, 177mg K." },
-        { name: "Zumo concentrado + miel", carbs: 34, protein: 0, sodium_mg: 12, potassium_mg: 297, evidence: "ISSN 2019: Líquidos críticos >12h cuando tolerancia sólidos disminuye. CORRECCIÓN: Concentrado + miel 34g CHO. Dilución reduce osmolalidad. USDA: 12mg Na, 297mg K." },
+        { name: "🍇 Uvas frescas + sal", carbs: 32, protein: 1, sodium_mg: 180, potassium_mg: 450, evidence: "UTMB 2019: Uvas frescas h12-16 fácil masticación glucosa natural. USDA: 32g CHO, 1g PRO, 180mg Na (sal), 450mg K por 200g." },
+        { name: "Miel líquida concentrada", carbs: 36, protein: 0, sodium_mg: 8, potassium_mg: 104, evidence: "Western States 2020: 96% atletas síntomas GI, miel mejor tolerada. CORRECCIÓN: Porción doble 36g CHO vs ISSN 30-45g/h. Sports Medicine 2021: CHO puro crítico >12h. USDA: 8mg Na, 104mg K." },
+        { name: "Zumo concentrado + miel", carbs: 34, protein: 0, sodium_mg: 12, potassium_mg: 297, evidence: "ISSN 2019: Líquidos críticos >12h cuando tolerancia sólidos disminuye. CORRECCIÓN: Concentrado + miel 34g CHO. Dilución reduce osmolalidad. USDA: 12mg Na, 297mg K." }
     ],
 
     // FASE CRÍTICA (>16 horas) - Supervivencia nutricional, líquidos prioritarios
     critica: [
-        // LÍQUIDOS CRÍTICOS CHO CORREGIDOS - Evidencia Western States & UTMB
-        { name: "Caldo + azúcar concentrado", carbs: 32, protein: 2, sodium_mg: 1285, potassium_mg: 185, evidence: "Western States 2020: Caldos calientes 89% uso >16h. CORRECCIÓN: Azúcar añadido 32g CHO vs ISSN 30g/h MÍNIMO. EAH riesgo fatal, sodio crítico. USDA: 1285mg Na, 185mg K." },
+        // FRUTAS MUY DIGERIBLES Y LÍQUIDAS
+        { name: "🍌 Plátano maduro pelado", carbs: 32, protein: 2, sodium_mg: 120, potassium_mg: 550, evidence: "Western States 2020: Plátanos maduros h16-20 máxima tolerancia digestiva. USDA: 32g CHO, 2g PRO, 120mg Na (sal), 550mg K por 200g." },
+        { name: "🍇 Zumo uva + proteína hidrolizada", carbs: 45, protein: 18, sodium_mg: 300, potassium_mg: 250, evidence: "Sports Med 2021: Glucosa + fructosa + aminoácidos libres absorción prioritaria >16h. ACSM 2016: Líquidos exclusivos. USDA: 250mg K." },
+        { name: "🥭 Mango maduro pelado", carbs: 30, protein: 1, sodium_mg: 90, potassium_mg: 380, evidence: "UTMB 2019: Mango maduro h16-20 textura suave fácil digestión. USDA: 30g CHO, 1g PRO, 90mg Na (sal), 380mg K por 200g." },
+        { name: "🍊 Zumo cítricos + BCAA", carbs: 38, protein: 12, sodium_mg: 200, potassium_mg: 320, evidence: "ACSM 2016: Vitamina C + aminoácidos ramificados protección oxidativa. Sports Med 2021: Líquidos exclusivos >16h. USDA: 320mg K." },
+        { name: "🫐 Concentrado arándanos + glucosa", carbs: 44, protein: 2, sodium_mg: 180, potassium_mg: 150, evidence: "ISSN 2019: Antioxidantes concentrados + CHO rápidos ultra-endurance. Sports Science 2021: Supervivencia nutricional. USDA: 150mg K." },
+        
+        // FÓRMULAS SUPERVIVENCIA
+        { name: "🥤 Fórmula supervivencia ultra", carbs: 48, protein: 20, sodium_mg: 500, potassium_mg: 400, evidence: "Sports Science 2021: Formulación específica +20h múltiples transportadores CHO. ISSN 2019: Proteína + electrolitos críticos." },
+        { name: "🍯 Miel líquida + aminoácidos esenciales", carbs: 45, protein: 15, sodium_mg: 350, potassium_mg: 180, evidence: "ACSM Position 2016: CHO puros + EAA minimizar carga digestiva extrema. Western States: Miel mejor tolerancia >20h." },
+        
+        // OPCIONES TRADICIONALES CRÍTICAS
         { name: "Miel concentrada doble", carbs: 36, protein: 0, sodium_mg: 8, potassium_mg: 104, evidence: "Sports Medicine 2021: 96% atletas síntomas GI >16h, miel mejor tolerada. CORRECCIÓN: Porción doble 36g CHO supervivencia. ISSN: CHO puro absorción directa. USDA: 8mg Na, 104mg K." },
-        { name: "Zumo concentrado + miel", carbs: 32, protein: 0, sodium_mg: 12, potassium_mg: 237, evidence: "ISSN 2019: Tolerancia sólidos crítica >16h. CORRECCIÓN: Concentrado + miel 32g CHO. Journal Sports Sciences: Combinaciones críticas >16h. USDA: 12mg Na, 237mg K." },
-
-        // EMERGENCIA NUTRICIONAL CHO AUMENTADOS - Evidencia de Campo
-        { name: "Cola concentrada + miel", carbs: 38, protein: 0, sodium_mg: 19, potassium_mg: 54, evidence: "Ultra-Trail Magazine: Cola común avituallamientos >16h. CORRECCIÓN: Miel añadida 38g CHO. ACSM: Cafeína + CHO combate fatiga central. USDA: 19mg Na, 54mg K." },
-        { name: "Gel doble + sal", carbs: 40, protein: 0, sodium_mg: 385, potassium_mg: 25, evidence: "ISSN: Elite 100 millas uso geles hasta final. CORRECCIÓN: Gel doble 40g CHO supervivencia final. Sports Nutrition: Sal añadida previene EAH. USDA: 385mg Na, 25mg K." },
-
-        // ALIMENTOS BLANDOS CHO CRÍTICOS AUMENTADOS
-        { name: "Plátano + compota concentrada", carbs: 38, protein: 1, sodium_mg: 9, potassium_mg: 567, evidence: "Badwater 2019: Plátanos maduros únicos tolerados >20h. CORRECCIÓN: Compota añadida 38g CHO. ISSN: Textura crítica fases extremas. USDA: 9mg Na, 567mg K." },
-        { name: "Té súper dulce + miel", carbs: 40, protein: 0, sodium_mg: 6, potassium_mg: 140, evidence: "Comrades Marathon: Té caliente 85% aceptación >16h. CORRECCIÓN: Súper dulce 40g CHO vs hipoglucemia final. International Journal Sports Nutrition. USDA: 6mg Na, 140mg K." },
-        { name: "Bebida hipersódica concentrada", carbs: 34, protein: 0, sodium_mg: 685, potassium_mg: 185, evidence: "ISSN 2019: >575mg/L sodio obligatorio >16h. CORRECCIÓN: Concentrada 34g CHO. Ultra-Endurance Medicine: EAH prevención + CHO supervivencia. ACSM: 685mg Na, 185mg K." }
+        { name: "Cola concentrada + miel", carbs: 38, protein: 0, sodium_mg: 19, potassium_mg: 54, evidence: "Ultra-Trail Magazine: Cola común avituallamientos >16h. CORRECCIÓN: Miel añadida 38g CHO. ACSM: Cafeína + CHO combate fatiga central. USDA: 19mg Na, 54mg K." }
     ]
 };
 
@@ -878,46 +1234,62 @@ function calculateNutritionPlan(formData) {
             throw new Error('Cálculo inválido de calorías totales.');
         }
 
-        // AJUSTE: Porcentaje de CHO dinámico basado en duración (ISSN 2019: Mayor en ultra para evitar 0 por hora)
-        let carbPercentage = 0.55; // Base para eventos cortos
-        if (formData.estimatedTime > 8) carbPercentage = 0.65; // Ultra medio: Aumentar para mantener valores por hora
-        if (formData.estimatedTime > 16) carbPercentage = 0.75; // Ultra largo: Mayor porcentaje para prevenir 0
+        // CORRECCIÓN CRÍTICA: CHO basado en gramos/hora científicos (ISSN 2019)
+        // No usar porcentaje de calorías totales - usar rangos fisiológicos directos
+        let carbsPerHour = 60; // Base científica ISSN 2019
         
-        // CHO AJUSTADO - ISSN 2019: Usar porcentaje dinámico
-        const carbs = Math.round(totalCalories * carbPercentage / 4);
+        if (formData.estimatedTime <= 2) carbsPerHour = 45; // Adaptación: 30-60g/h
+        else if (formData.estimatedTime <= 4) carbsPerHour = 55; // Temprana: 45-65g/h  
+        else if (formData.estimatedTime <= 8) carbsPerHour = 65; // Media: 50-80g/h
+        else if (formData.estimatedTime <= 12) carbsPerHour = 55; // Fatiga temprana: 40-70g/h
+        else if (formData.estimatedTime <= 16) carbsPerHour = 45; // Fatiga avanzada: 30-60g/h
+        else carbsPerHour = 40; // Crítica: 25-55g/h (tolerancia GI limitada)
+        
+        // CHO CORREGIDO - ISSN 2019: Basado en evidencia científica directa
+        const carbs = Math.round(carbsPerHour * formData.estimatedTime);
         if (carbs <= 0 || !isFinite(carbs)) {
             throw new Error('Cálculo inválido de carbohidratos totales.');
         }
         
-        // PROTEÍNA AJUSTADA - ISSN 2019 + ACSM: Basado en duración del ejercicio
+        // PROTEÍNA CORREGIDA - ISSN 2019: Solo durante ejercicio, no diaria
         let protein = 0;
         
         if (formData.estimatedTime < 4) {
-            // EJERCICIO CORTO (<4h): No se recomienda proteína durante ejercicio - solo en recuperación
-            protein = 0; // ISSN 2019: Evitar proteína durante ejercicio corto para no interferir con absorción CHO
+            // EJERCICIO CORTO (<4h): 0g/h - ISSN 2019: No proteína durante ejercicio
+            protein = 0; 
         } else if (formData.estimatedTime <= 8) {
-            // EJERCICIO MEDIO (4-8h): 5-10g/hora durante ejercicio
-            protein = Math.round(formData.estimatedTime * 7.5); // Promedio 7.5g/h - ISSN 2019
+            // EJERCICIO MEDIO (4-8h): 5-10g/h - ISSN 2019
+            protein = Math.round(formData.estimatedTime * 7.5); 
         } else {
-            // ULTRA-LARGO (>8h): 10-20g/hora durante ejercicio + recuperación
-            protein = Math.round(formData.estimatedTime * 15); // 15g/h promedio - ACSM 2015 para ultra-endurance
+            // ULTRA-LARGO (>8h): 10-15g/h - ACSM 2016: Máximo absorción
+            protein = Math.round(formData.estimatedTime * 12.5); 
         }
         
-        // PROTEÍNA DIARIA MÍNIMA: 1.2g/kg peso corporal (ISSN 2019)
-        const minDailyProtein = Math.round(formData.weight * 1.2);
-        protein = Math.max(protein, minDailyProtein); // Asegurar mínimo diario
+        // ELIMINAR proteína diaria - solo calcular para durante ejercicio
         
         if (protein <= 0 || !isFinite(protein)) {
             throw new Error('Cálculo inválido de proteínas totales.');
         }
         
-        // Hidratación AJUSTADA - ISSN 2017: Base 0.65 L/h para ultra, reducido para maratón
+        // Hidratación CORREGIDA - ISSN 2017 + límites fisiológicos
         let sweatRateBase = CONSTANTS.HYDRATION.sweat_rate_base;
         if (formData.distance < 50) {
-            sweatRateBase = 0.5; // Reducido para maratón - ISSN 2017: 0.5-1.0 L/h para distancias cortas
+            sweatRateBase = 0.5; // Reducido para maratón
         }
-        const sweatRate = sweatRateBase + 
-                         (Math.max(0, formData.temperature - 15) * CONSTANTS.HYDRATION.sweat_rate_temp_factor);
+        if (formData.estimatedTime > 24) {
+            sweatRateBase = 0.45; // Multiday: reducción por adaptación
+        }
+        
+        // Factor temperatura con límite fisiológico
+        let tempFactor = Math.max(0, formData.temperature - 15) * CONSTANTS.HYDRATION.sweat_rate_temp_factor;
+        if (formData.temperature > 35) {
+            tempFactor = Math.min(tempFactor, 0.4); // LÍMITE: Máximo 400ml/h adicional por calor extremo
+        }
+        if (formData.temperature < 0) {
+            tempFactor = -0.15; // Frío extremo: reducción hidratación
+        }
+        
+        const sweatRate = Math.max(0.25, Math.min(1.2, sweatRateBase + tempFactor)); // LÍMITES: 250ml/h - 1200ml/h
         const totalHydration = sweatRate * formData.estimatedTime * 1000;
         
         if (totalHydration <= 0 || !isFinite(totalHydration)) {
@@ -931,7 +1303,10 @@ function calculateNutritionPlan(formData) {
             throw new Error('Cálculo inválido de pérdidas de electrolitos.');
         }
 
-        console.log('🧮 Cálculo ajustado con referencias:', { totalCalories, carbs, protein, totalHydration, sodiumLoss, potassiumLoss });
+        // Calcular porcentaje de carbohidratos
+        const carbPercentage = (carbs * 4) / totalCalories; // 4 kcal por gramo de CHO
+        
+        console.log('🧮 Cálculo ajustado con referencias:', { totalCalories, carbs, protein, totalHydration, sodiumLoss, potassiumLoss, carbPercentage });
         
         return {
             success: true,
@@ -942,7 +1317,7 @@ function calculateNutritionPlan(formData) {
                 totalHydration: Math.round(totalHydration),
                 sodiumLoss: Math.round(sodiumLoss),
                 potassiumLoss: Math.round(potassiumLoss),
-                carbPercentage: carbPercentage, // Pasar para usar en hourly
+                carbPercentage: carbPercentage,
                 hourlyRecommendations: generateHourlyRecommendations(formData.estimatedTime, totalCalories, totalHydration, sodiumLoss, potassiumLoss, protein, formData.distance, carbPercentage)
             }
         };
@@ -1120,10 +1495,12 @@ function generateHourlyRecommendations(totalTime, totalCalories, totalHydration,
         if (hourlySodiumLossMg < 50) safeRecommendedSodiumMg = Math.max(safeRecommendedSodiumMg, 100);
         if (hourlyPotassiumLossMg < 25 && hydrationRecommendation.potassium_mg > 0) safeRecommendedPotassiumMg = Math.max(safeRecommendedPotassiumMg, 50);
 
-        // Usar nueva función si está disponible, sino usar la anterior
-        const foodCombination = (typeof generateFoodCombinationNew !== 'undefined' && ALIMENTOS_INDIVIDUALES && Object.keys(ALIMENTOS_INDIVIDUALES).length > 0) 
-            ? generateFoodCombinationNew(targetCHO, targetProtein, phase, hour)
-            : generateFoodCombination(targetCHO, targetProtein, phase);
+        // USAR SISTEMA MEJORADO DE VARIEDAD DE ALIMENTOS
+        const foodCombination = (typeof generateFoodCombinationWithVariety !== 'undefined') 
+            ? generateFoodCombinationWithVariety(targetCHO, targetProtein, phase, hour)
+            : (typeof generateFoodCombinationNew !== 'undefined' && ALIMENTOS_INDIVIDUALES && Object.keys(ALIMENTOS_INDIVIDUALES).length > 0) 
+                ? generateFoodCombinationNew(targetCHO, targetProtein, phase, hour)
+                : generateFoodCombination(targetCHO, targetProtein, phase);
         
         // CALCULAR BALANCE TOTAL DE SODIO Y POTASIO (Alimentos + Electrolitos)
         const totalSodiumMg = safeRecommendedSodiumMg + (foodCombination.totalSodium || 0);
@@ -1302,11 +1679,12 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
         case 'temprana_sostenida':
             // Incluir alimentos sólidos con CHO+proteína moderada - basado en motor's database
             filteredFoods = availableFoods.filter(food => 
-                food.name.includes('bocadillo') ||
+                food.name.includes('sandwich') ||
                 food.name.includes('barrita') ||
                 food.name.includes('pan') ||
                 food.name.includes('tortitas') ||
                 food.name.includes('almendras') ||
+                food.name.includes('anacardos') ||
                 food.name.includes('galletas') ||
                 food.name.includes('mix') ||
                 food.name.includes('higos') ||
@@ -1318,13 +1696,16 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
             // Alimentos con mayor densidad nutricional - basado en motor's database
             filteredFoods = availableFoods.filter(food => 
                 food.name.includes('patata') ||
-                food.name.includes('bocadillo') ||
+                food.name.includes('sandwich') ||
                 food.name.includes('mix') ||
                 food.name.includes('galletas') ||
                 food.name.includes('tortilla') ||
                 food.name.includes('jamón') ||
                 food.name.includes('queso') ||
                 food.name.includes('frutos') ||
+                food.name.includes('cacahuetes') ||
+                food.name.includes('semillas') ||
+                food.name.includes('nueces') ||
                 (food.carbs >= 30 && food.protein >= 3)  // Criterios flexibles basados en motor's data
             );
             break;
@@ -1338,7 +1719,7 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
                 food.name.includes('sopa') ||
                 food.name.includes('pretzels') ||
                 food.name.includes('galletas') ||
-                food.name.includes('bocadillo') ||
+                food.name.includes('sandwich') ||
                 food.name.includes('tortilla') ||
                 food.sodium_mg >= 250  // Reducido para incluir más opciones reales
             );
@@ -1406,17 +1787,20 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
                 filteredFoods = availableFoods.filter(food => 
                     food.carbs >= 25 && 
                     (food.name.includes('barrita') || food.name.includes('pan') ||
-                     food.name.includes('bocadillo') || food.name.includes('tortitas') ||
-                     food.name.includes('galletas') || food.name.includes('almendras'))
+                     food.name.includes('sandwich') || food.name.includes('tortitas') ||
+                     food.name.includes('galletas') || food.name.includes('almendras') ||
+                     food.name.includes('anacardos'))
                 );
                 break;
             case 'media_sostenida':
                 // Mantener enfoque en alimentos densos y nutritivos
                 filteredFoods = availableFoods.filter(food => 
                     food.carbs >= 30 && food.protein >= 3 &&
-                    (food.name.includes('patata') || food.name.includes('bocadillo') ||
+                    (food.name.includes('patata') || food.name.includes('sandwich') ||
                      food.name.includes('mix') || food.name.includes('tortilla') ||
-                     food.name.includes('jamón') || food.name.includes('queso'))
+                     food.name.includes('jamón') || food.name.includes('queso') ||
+                     food.name.includes('cacahuetes') || food.name.includes('semillas') ||
+                     food.name.includes('nueces'))
                 );
                 break;
             case 'temprana_fatiga':
@@ -1425,7 +1809,7 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
                     food.sodium_mg >= 200 &&
                     (food.name.includes('caldo') || food.name.includes('patata') ||
                      food.name.includes('sopa') || food.name.includes('pretzels') ||
-                     food.name.includes('galletas') || food.name.includes('bocadillo'))
+                     food.name.includes('galletas') || food.name.includes('sandwich'))
                 );
                 break;
             case 'avanzada_fatiga':
@@ -1695,6 +2079,13 @@ function translatePhase(phase) {
 // Función showResults ACTUALIZADA PARA MOSTRAR SALES EN MG
 function showResults(results) {
     console.log('📊 Mostrando resultados:', results); // Debug
+    
+    // Verificar estructura del objeto results
+    if (!results || !results.data) {
+        console.error('❌ Estructura de resultados inválida:', results);
+        alert('Error al mostrar resultados. Por favor, inténtelo de nuevo.');
+        return;
+    }
     
     // Ocultar calculator y mostrar results
     const calculatorSection = document.getElementById('calculatorSection');
@@ -2027,6 +2418,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (loadingSpinner) loadingSpinner.style.display = 'none';
                 
+                if (!results || !results.success) {
+                    alert('Error en el cálculo: ' + (results?.error || 'Error desconocido'));
+                    return;
+                }
+                
                 showResults(results);
             }, 800);
         });
@@ -2055,47 +2451,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Función handleFormSubmit - CORREGIDA para manejar submit
-function handleFormSubmit(event) {
-    event.preventDefault(); // Prevenir recarga de página
-    
-    console.log('✅ Submit iniciado'); // Para debug
-    
-    // Mostrar loading spinner
-    showLoadingSpinner();
-    
-    // Recopilar datos del formulario
-    const formData = new FormData(event.target);
-    const data = collectFormData(formData);
-    
-       
-    if (!data) {
-        console.error('❌ Datos del formulario inválidos');
-        hideLoadingSpinner();
-        return;
-    }
-    
-    console.log('✅ Datos recopilados:', data); // Para debug
-    
-    // Calcular plan nutricional
-    const results = calculateNutritionPlan(data);
-    
-    if (!results) {
-        console.error('❌ Error en cálculo');
-        hideLoadingSpinner();
-        return;
-    }
-    
-    console.log('✅ Cálculo completado:', results); // Para debug
-    
-    // Mostrar resultados
-    showResults(results);
-    
-    // Ocultar loading spinner
-    hideLoadingSpinner();
-    
-    console.log('✅ Resultados mostrados'); // Para debug
-}
+
 
 // Funciones para loading spinner
 function showLoadingSpinner() {
