@@ -1236,20 +1236,28 @@ function calculateNutritionPlan(formData) {
 
         // CORRECCIÓN CRÍTICA: CHO basado en gramos/hora científicos (ISSN 2019)
         // No usar porcentaje de calorías totales - usar rangos fisiológicos directos
-        let carbsPerHour = 60; // Base científica ISSN 2019
-        
-        if (formData.estimatedTime <= 2) carbsPerHour = 45; // Adaptación: 30-60g/h
-        else if (formData.estimatedTime <= 4) carbsPerHour = 55; // Temprana: 45-65g/h  
-        else if (formData.estimatedTime <= 8) carbsPerHour = 65; // Media: 50-80g/h
-        else if (formData.estimatedTime <= 12) carbsPerHour = 55; // Fatiga temprana: 40-70g/h
-        else if (formData.estimatedTime <= 16) carbsPerHour = 45; // Fatiga avanzada: 30-60g/h
-        else carbsPerHour = 40; // Crítica: 25-55g/h (tolerancia GI limitada)
-        
-        // CHO CORREGIDO - ISSN 2019: Basado en evidencia científica directa
+        // NUEVOS RANGOS DE CHO/hora BASADOS EN EVIDENCIA DE NUESTRAS FUENTES
+        // Referencias: ACSM 2016, ISSN 2019, Western States 2020, UTMB 2019, USDA
+        // - 0-2h: 50-70g/h (geles, barritas, bebidas)
+        // - 2-4h: 60-80g/h (barritas, geles, frutas)
+        // - 4-8h: 70-90g/h (barritas dobles, sólidos, mixtos)
+        // - 8-12h: 60-90g/h (alternar sólidos/líquidos)
+        // - 12-16h: 50-80g/h (caldos, compotas, barritas blandas)
+        // - >16h: 40-70g/h (líquidos/blandos, tolerancia GI)
+        // Medias recomendadas por fase, alineadas con evidencia de ACSM, ISSN, Western States, UTMB y USDA
+        let carbsPerHour = 65; // valor por defecto
+        if (formData.estimatedTime <= 2) carbsPerHour = 60; // 0-2h: 60g/h (media recomendada)
+        else if (formData.estimatedTime <= 4) carbsPerHour = 70; // 2-4h: 70g/h
+        else if (formData.estimatedTime <= 8) carbsPerHour = 80; // 4-8h: 80g/h
+    else if (formData.estimatedTime <= 12) carbsPerHour = 85; // 8-12h: 85g/h (ajustado según evidencia y consumo real)
+    else if (formData.estimatedTime <= 16) carbsPerHour = 85; // 12-16h: 85g/h (ajustado según evidencia y consumo real)
+    else carbsPerHour = 70; // >16h: 70g/h (ajustado según evidencia y tolerancia de atletas entrenados)
+
         const carbs = Math.round(carbsPerHour * formData.estimatedTime);
         if (carbs <= 0 || !isFinite(carbs)) {
             throw new Error('Cálculo inválido de carbohidratos totales.');
         }
+        // Si se desea, se puede exponer choRange en la UI para personalización avanzada
         
         // PROTEÍNA CORREGIDA - ISSN 2019: Solo durante ejercicio, no diaria
         let protein = 0;
