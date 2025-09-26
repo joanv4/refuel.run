@@ -1060,16 +1060,116 @@ function validateStep(step) {
     const inputs = stepContainer.querySelectorAll('input, select');
     const errorMessages = stepContainer.querySelectorAll('.error-message');
 
-    errorMessages.forEach(error => error.textContent = '');
+    errorMessages.forEach(error => {
+        error.textContent = '';
+        error.style.display = 'none';
+    });
+
+    // Ocultar error dinámicamente al corregir el campo
+    inputs.forEach(input => {
+        // Corrige automáticamente la coma por punto en campos numéricos
+        if (input.type === 'number') {
+            input.addEventListener('input', function(e) {
+                if (input.value.includes(',')) {
+                    input.value = input.value.replace(/,/g, '.');
+                }
+                const errorId = `${input.id}-error`;
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.textContent = '';
+                    errorElement.style.display = 'none';
+                }
+            });
+        } else {
+            input.addEventListener('input', function() {
+                const errorId = `${input.id}-error`;
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.textContent = '';
+                    errorElement.style.display = 'none';
+                }
+            }, { once: true });
+        }
+    });
 
     inputs.forEach(input => {
-        if (input.hasAttribute('required') && !input.value.trim()) {
+        const errorId = `${input.id}-error`;
+        const errorElement = document.getElementById(errorId);
+        let value = input.value.trim();
+        if (input.hasAttribute('required') && !value) {
             isValid = false;
-            const errorId = `${input.id}-error`;
-            const errorElement = document.getElementById(errorId);
             if (errorElement) {
                 errorElement.textContent = 'Este campo es obligatorio.';
-                console.log('❌ Required field empty:', input.id);
+                errorElement.style.display = 'block';
+            }
+            return;
+        }
+        // Validación específica para números
+        if (input.type === 'number') {
+            // Detectar coma como decimal
+            if (value.includes(',')) {
+                isValid = false;
+                if (errorElement) {
+                    if (input.id === 'distance') {
+                        errorElement.textContent = 'Usa punto para decimales (ej: 42.2), no coma.';
+                    } else if (input.id === 'estimatedTime') {
+                        errorElement.textContent = 'Usa punto para decimales en el tiempo estimado (ej: 12.5), no coma.';
+                    } else {
+                        errorElement.textContent = 'Usa punto para decimales, no coma.';
+                    }
+                    errorElement.style.display = 'block';
+                }
+                return;
+            }
+            // Detectar más de un decimal en tiempo estimado
+            if (input.id === 'estimatedTime' && value.includes('.')) {
+                const partes = value.split('.');
+                if (partes.length > 2 || (partes[1] && partes[1].length > 1)) {
+                    isValid = false;
+                    if (errorElement) {
+                        errorElement.textContent = 'Solo se permite un decimal en el tiempo estimado (ej: 5.3). Si tienes más decimales, redondea.';
+                        errorElement.style.display = 'block';
+                    }
+                    return;
+                }
+            }
+            let num = Number(value);
+            if (isNaN(num)) {
+                isValid = false;
+                if (errorElement) {
+                    if (input.id === 'distance') {
+                        errorElement.textContent = 'Introduce la distancia solo en kilómetros, usando punto para decimales (ej: 42.2), sin letras ni símbolos.';
+                    } else if (input.id === 'estimatedTime') {
+                        errorElement.textContent = 'Introduce el tiempo estimado solo en horas, usando punto para decimales (ej: 12.5), sin letras ni símbolos.';
+                    } else {
+                        errorElement.textContent = 'Introduce un número válido (sin letras ni símbolos).';
+                    }
+                    errorElement.style.display = 'block';
+                }
+                return;
+            }
+            if (num <= 0) {
+                isValid = false;
+                if (errorElement) {
+                    errorElement.textContent = 'Debe ser mayor a 0.';
+                    errorElement.style.display = 'block';
+                }
+                return;
+            }
+            // Si el campo no permite decimales
+            if (!input.step || input.step === '1') {
+                if (!Number.isInteger(num)) {
+                    isValid = false;
+                    if (errorElement) {
+                        if (input.id === 'height') {
+                            errorElement.textContent = 'Introduce la altura solo en centímetros enteros (ej: 185), sin decimales ni metros.';
+                        } else {
+                            errorElement.textContent = 'Solo se permiten números enteros.';
+                        }
+                        errorElement.style.display = 'block';
+                    }
+                    return;
+                }
             }
         }
     });
@@ -1276,7 +1376,9 @@ function calculateNutritionPlan(formData) {
         // ELIMINAR proteína diaria - solo calcular para durante ejercicio
         
         if (protein <= 0 || !isFinite(protein)) {
+        if (protein < 0 || !isFinite(protein)) {
             throw new Error('Cálculo inválido de proteínas totales.');
+        }
         }
         
         // Hidratación CORREGIDA - ISSN 2017 + límites fisiológicos
