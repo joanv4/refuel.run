@@ -2524,6 +2524,16 @@ function generateFoodCombinationNew(targetCHO, targetProtein, phase, currentHour
         });
     }
 
+    // FILTRO ANTI-REPETICIÓN: Excluir alimentos usados en últimas 3 horas (si hay suficientes alternativas)
+    const recentHistory = window.foodHistory.slice(-3); // Últimas 3 horas
+    const nonRepeatedFoods = availableFoods.filter(f => 
+        !recentHistory.some(prev => prev.includes(f.name))
+    );
+    // Solo aplicar filtro si quedan al menos 5 opciones diferentes
+    if (nonRepeatedFoods.length >= 5) {
+        availableFoods = nonRepeatedFoods;
+    }
+
     // ALGORITMO INTELIGENTE con prioridades y anti-repetición
     let bestCombination = null;
     let bestScore = -Infinity;
@@ -2563,15 +2573,38 @@ function generateFoodCombinationNew(targetCHO, targetProtein, phase, currentHour
                         return sum + (getFoodPriority(food.name, phase) * weight);
                     }, 0);
                 }
-                const priorityBonus = weightedPriority * 50; // Hasta +175 puntos para geles en adaptación
+                const priorityBonus = weightedPriority * 40; // Hasta +140 puntos para geles en adaptación (reducido de 50 para dar espacio a diversidad)
                 score += priorityBonus;
                 
-                // PENALIZACIÓN: Repetición reciente (últimas 6 horas)
+                // BONUS DE DIVERSIDAD: Favorecer alimentos poco usados o nunca usados
                 const foodNames = combo.map(f => f.name);
-                const recentUsage = foodNames.filter(name => 
-                    window.foodHistory.some(prev => prev.includes(name))
-                ).length;
-                const repetitionPenalty = recentUsage * 100; // -100 pts por cada alimento repetido
+                let diversityBonus = 0;
+                foodNames.forEach(name => {
+                    const timesUsed = window.foodHistory.filter(prev => prev.includes(name)).length;
+                    if (timesUsed === 0) {
+                        diversityBonus += 80; // +80 pts si NUNCA usado (fomenta probar nuevos alimentos)
+                    } else if (timesUsed === 1) {
+                        diversityBonus += 40; // +40 pts si usado solo 1 vez
+                    } else if (timesUsed === 2) {
+                        diversityBonus += 20; // +20 pts si usado 2 veces
+                    }
+                    // Si usado 3+ veces: 0 bonus (alimento común)
+                });
+                score += diversityBonus;
+                
+                // PENALIZACIÓN PROGRESIVA: Repetición reciente (últimas 12 horas)
+                let repetitionPenalty = 0;
+                foodNames.forEach(name => {
+                    // Buscar en historial (más reciente = más penalización)
+                    const historyLength = window.foodHistory.length;
+                    window.foodHistory.forEach((prev, idx) => {
+                        if (prev.includes(name)) {
+                            // Penalización decreciente: última hora -300, hace 12h -25
+                            const recentness = (historyLength - idx) / historyLength; // 1.0 = muy reciente, 0.08 = hace 12h
+                            repetitionPenalty += 300 * recentness; // De -300 a -25 pts según antigüedad
+                        }
+                    });
+                });
                 score -= repetitionPenalty;
                 
                 if (score > bestScore) {
@@ -2593,8 +2626,9 @@ function generateFoodCombinationNew(targetCHO, targetProtein, phase, currentHour
     // ACTUALIZAR HISTORIAL: Añadir combinación seleccionada
     const selectedNames = bestCombination.map(f => f.name).join(' + ');
     window.foodHistory.push(selectedNames);
-    if (window.foodHistory.length > 6) {
-        window.foodHistory = window.foodHistory.slice(-6);
+    // Aumentar ventana de historial a 12 horas para ultras largas
+    if (window.foodHistory.length > 12) {
+        window.foodHistory = window.foodHistory.slice(-12);
     }
 
     // Calcular totales finales
