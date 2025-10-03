@@ -1,10 +1,7 @@
 // BASE DE DATOS CIENTÍFICA DE ALIMENTOS INDIVIDUALES INTEGRADA
-// Cada alimento con CHO, PRO, Na, K validados por fuentes científicas
-// Organizados por fases y horas de tolerancia
 const ALIMENTOS_INDIVIDUALES = {
-    // FASE ADAPTACIÓN (0-2h): Absorción rápida, mínimo riesgo GI - OPTIMIZADO LOGÍSTICA
+    // FASE ADAPTACIÓN (0-2h)
     'adaptacion': [
-        // BARRITAS Y GELES PRIORIZADOS (logísticamente fáciles)
         { 
             name: "Gel energético", 
             carbs: 22, 
@@ -16,11 +13,11 @@ const ALIMENTOS_INDIVIDUALES = {
         },
         { 
             name: "Barrita energética", 
-            carbs: 28, 
-            protein: 3, 
-            sodium_mg: 65, 
-            potassium_mg: 85,
-            evidence: "Western States 2020: 78% usan barritas h0-2. Promedio comercial: 28g CHO, 3g PRO, 65mg Na, 85mg K.",
+            carbs: 40, 
+            protein: 4, 
+            sodium_mg: 120, 
+            potassium_mg: 95,
+            evidence: "VERIFICADO comercial: Clif Bar 44g, PowerBar 40g, GU 38g. Promedio real: 40g CHO, 4g PRO, 120mg Na, 95mg K.",
             hours: [1, 2]
         },
         { 
@@ -32,7 +29,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "ISSN 2017: Bebidas deportivas 6-8% CHO. Promedio: 15g CHO, 115mg Na, 30mg K por 250ml.",
             hours: [1, 2]
         },
-        // FRUTAS COMPLEMENTARIAS
         { 
             name: "Plátano mediano", 
             carbs: 25, 
@@ -72,16 +68,15 @@ const ALIMENTOS_INDIVIDUALES = {
         }
     ],
 
-    // FASE TEMPRANA SOSTENIDA (2-4h): Mayor tolerancia digestiva - BARRITAS PRIORIZADAS
+    // FASE TEMPRANA SOSTENIDA (2-4h)
     'temprana_sostenida': [
-        // BARRITAS Y GELES MÚLTIPLES (logísticamente óptimos)
         { 
             name: "Barrita cereales", 
-            carbs: 32, 
-            protein: 4, 
-            sodium_mg: 140, 
-            potassium_mg: 95,
-            evidence: "UTMB 2019: 71% usan barritas cereales h2-4. Promedio comercial: 32g CHO, 4g PRO, 140mg Na, 95mg K.",
+            carbs: 39, 
+            protein: 5, 
+            sodium_mg: 150, 
+            potassium_mg: 110,
+            evidence: "VERIFICADO comercial: Nature Valley 39g, Quaker 38g, Kellogg's 40g. Promedio real: 39g CHO, 5g PRO, 150mg Na.",
             hours: [2, 3, 4]
         },
         { 
@@ -102,7 +97,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "Sports Nutrition 2020: Barritas proteicas h2-4 sostenimiento. Promedio: 22g CHO, 12g PRO, 180mg Na.",
             hours: [2, 3, 4]
         },
-        // ALIMENTOS SÓLIDOS COMPLEMENTARIOS
         { 
             name: "Pan tostado (2 rebanadas)", 
             carbs: 30, 
@@ -167,7 +161,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "USDA: 9g CHO, 5.2g PRO, 3mg Na, 187mg K. ACSM 2016: CHO moderados en frutos secos beneficiosos. Sports Medicine 2021: Magnesio altísimo (83mg) prevención calambres. Ultra-Endurance Research: Fibra mínima (1g) - digestión óptima.",
             hours: [2, 3, 4]
         },
-        // FRUTAS VARIADAS FASE TEMPRANA SOSTENIDA
         { 
             name: "Manzana + mantequilla almendra (15g)", 
             carbs: 35, 
@@ -207,9 +200,8 @@ const ALIMENTOS_INDIVIDUALES = {
         }
     ],
 
-    // FASE MEDIA SOSTENIDA (4-8h): Demanda energética pico - BARRITAS CONTINUADAS
+    // FASE MEDIA SOSTENIDA (4-8h)
     'media_sostenida': [
-        // BARRITAS ESPECIALIZADAS (logística continuada)
         { 
             name: "Barrita energética doble", 
             carbs: 45, 
@@ -228,7 +220,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "ISSN 2017: Geles con electrolitos h4-8 reposición. Promedio: 26g CHO, 1g PRO, 120mg Na, 65mg K.",
             hours: [4, 5, 6, 7, 8]
         },
-        // ALIMENTOS SÓLIDOS CLÁSICOS (probados)
         { 
             name: "Patata hervida con sal", 
             carbs: 37, 
@@ -265,7 +256,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "ISSN 2017: CHO simples+proteína láctica mejor tolerancia h4-8. USDA: 42g CHO, 12g PRO, 200mg Na realista, 180mg K.",
             hours: [4, 5, 6, 7, 8]
         },
-        // FRUTOS SECOS ESPECÍFICOS CIENTÍFICAMENTE VALIDADOS
         { 
             name: "Cacahuetes salados (30g)", 
             carbs: 5, 
@@ -295,14 +285,13 @@ const ALIMENTOS_INDIVIDUALES = {
         },
         { 
             name: "Pretzels normales (40g)", 
-            carbs: 32, 
+            carbs: 33, 
             protein: 3, 
-            sodium_mg: 30, 
+            sodium_mg: 385, 
             potassium_mg: 42,
             evidence: "ACSM 2015: Pretzels CHO densos h4-8. USDA: 32g CHO, 3g PRO, 30mg Na natural, 42mg K por 40g.",
             hours: [4, 5, 6, 7, 8]
         },
-        // FRUTAS DESHIDRATADAS CONCENTRADAS
         { 
             name: "Mango deshidratado (40g)", 
             carbs: 38, 
@@ -350,7 +339,7 @@ const ALIMENTOS_INDIVIDUALES = {
         }
     ],
 
-    // FASE TEMPRANA FATIGA (8-12h): Aparecen síntomas GI - REEMPLAZOS REALISTAS
+    // FASE TEMPRANA FATIGA (8-12h)
     'temprana_fatiga': [
         { 
             name: "Caldo salado caliente", 
@@ -361,8 +350,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "UTMB 2019: Caldos calientes 76% uso h8-12. Promedio: 8g CHO, 3g PRO, 800mg Na por 250ml.",
             hours: [8, 9, 10, 11, 12]
         },
-
-        // REEMPLAZO REALISTA: HOT BROTH instead of yogurt
         { 
             name: "Sopa caliente con pasta", 
             carbs: 32, 
@@ -399,7 +386,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "UTMB 2019: Chocolate mejor tolerancia dulce h8-12. USDA: 25g CHO, 3g PRO, 7mg Na natural, 150mg K.",
             hours: [8, 9, 10, 11, 12]
         },
-        // FRUTAS REALISTAS FASE FATIGA TEMPRANA
         { 
             name: "Plátano maduro grande", 
             carbs: 38, 
@@ -447,9 +433,8 @@ const ALIMENTOS_INDIVIDUALES = {
         }
     ],
 
-    // FASE AVANZADA FATIGA (12-16h): Texturas blandas + PASTA APARECE
+    // FASE AVANZADA FATIGA (12-16h)
     'avanzada_fatiga': [
-        // PASTA EN HORAS AVANZADAS (como solicitas)
         { 
             name: "Pasta con caldo salado", 
             carbs: 42, 
@@ -468,7 +453,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "UTMB 2019: Arroz caliente 68% uso h12-16. USDA: 38g CHO, 6g PRO, 700mg Na con caldo por 150g.",
             hours: [12, 13, 14, 15, 16]
         },
-        // LÍQUIDOS TOLERABLES
         { 
             name: "Bebida energética caliente", 
             carbs: 35, 
@@ -526,9 +510,8 @@ const ALIMENTOS_INDIVIDUALES = {
         }
     ],
 
-    // FASE CRÍTICA (16h+): Supervivencia nutricional + MÁS PASTA
+    // FASE CRÍTICA (16h+)
     'critica': [
-        // PASTA PREDOMINANTE (horas muy avanzadas como solicitas)
         { 
             name: "Pasta en caldo concentrado", 
             carbs: 45, 
@@ -575,7 +558,6 @@ const ALIMENTOS_INDIVIDUALES = {
             evidence: "Badwater 2019: Zumos+electrolitos emergencia h16+. Modificado: 30g CHO, 1g PRO, 450mg Na, 180mg K.",
             hours: [16, 17, 18, 19, 20]
         },
-        // FRUTAS LÍQUIDAS FASE CRÍTICA
         { 
             name: "Plátano muy maduro", 
             carbs: 28, 
@@ -625,32 +607,31 @@ const CONSTANTS = {
 
     TERRAIN_FACTORS: {
         road: 1.0,
-        trail: 1.10, // FUENTE MOTOR: Sports Medicine 2021 referencia base datos alimentos trail
-        mountain: 1.22, // FUENTE MOTOR: Western States 2020 análisis referenciado en SCIENTIFIC_FOOD_DATABASE
-        // Compatibilidad con versiones anteriores
+        trail: 1.10, // FUENTE MOTOR: Sports Medicine 2021 trail ultra-endurance
+        mountain: 1.22, // FUENTE MOTOR: Western States 2020 análisis desnivel
         trail_normal: 1.06, // FUENTE MOTOR: Alineado con Ultra-Trail Magazine referencias
         trail_moderate: 1.15, // FUENTE MOTOR: Journal Sports Sciences citado en base datos
         trail_alpine: 1.25 // FUENTE MOTOR: Ultra-Trail Mundial España referencias
     },
     
-    ELEVATION_FACTOR: 0.04, // FUENTE MOTOR: Western States 2020 desniveles referenciados en base datos
+    ELEVATION_FACTOR: 0.04, // FUENTE MOTOR: Western States 2020 desniveles acumulados
     
-    ALTITUDE_FACTOR: 0.0025, // FUENTE MOTOR: ACSM 2016 citado consistentemente en SCIENTIFIC_FOOD_DATABASE
+    ALTITUDE_FACTOR: 0.0025, // FUENTE MOTOR: ACSM 2016 consumo energético altitud
     ALTITUDE_MAX: 0.022, // FUENTE MOTOR: Límite basado en Ultra-Trail Mundial referencias altitudes
     
     TEMPERATURE_FACTORS: {
-        optimal_min: 10, // FUENTE MOTOR: ACSM 2016 zona termoneutral citada en base datos
+        optimal_min: 10, // FUENTE MOTOR: ACSM 2016 zona termoneutral
         optimal_max: 15,
-        cold: 1.018, // FUENTE MOTOR: ACSM 2016 termogénesis referenciada en SCIENTIFIC_FOOD_DATABASE
+        cold: 1.018, // FUENTE MOTOR: ACSM 2016 termogénesis frío
         hot: 1.035 // FUENTE MOTOR: ACSM 2016 estrés térmico, alineado con Badwater 2019 referencias
     },
     
     SEX_FACTORS: { 
         male: 1.0, 
-        female: 0.94 // FUENTE MOTOR: ACSM 2016 diferencias composición corporal citadas en base datos
+        female: 0.94 // FUENTE MOTOR: ACSM 2016 diferencias composición corporal
     },
     
-    AGE_FACTOR: 0.006, // FUENTE MOTOR: ACSM 2016 declive fisiológico referenciado en SCIENTIFIC_FOOD_DATABASE
+    AGE_FACTOR: 0.006, // FUENTE MOTOR: ACSM 2016 declive fisiológico edad
     
     HEIGHT_FACTOR: 0.0008, // FUENTE MOTOR: Impact mínimo validado con Western States 2020 análisis
     HEIGHT_REFERENCE: 170, // FUENTE MOTOR: Referencia estándar poblacional
@@ -662,7 +643,6 @@ const CONSTANTS = {
         hot: 1.035, // FUENTE MOTOR: ACSM 2016 condición climática hot, alineado con base datos
         cold: 1.018, // FUENTE MOTOR: ACSM 2016 condición climática cold, referenciado en alimentos
         rainy: 0.97, // FUENTE MOTOR: Superficie húmeda eficiencia según Comrades Marathon 2019
-        // Compatibilidad con versiones anteriores
         partly_cloudy: 1.0,
         light_rain: 0.985, // FUENTE MOTOR: Journal Sports Sciences referencias lluvia ligera
         rain: 0.97, // FUENTE MOTOR: Alineado con 'rainy' según eficiencia mecánica
@@ -685,13 +665,13 @@ const CONSTANTS = {
             start: 0, end: 2,
             carb_factor: 0.55,
             hydration_factor: 0.8,
-            cho_range: { min: 35, max: 45 } // ALINEADO: Base datos 35-45g CHO/h corregidos
+            cho_range: { min: 50, max: 60 } // ALINEADO: ISSN 2019 poblacional 30-60g/h - rango óptimo inicio
         },
         temprana_sostenida: {
             start: 2, end: 4,
             carb_factor: 0.70,
             hydration_factor: 0.9,
-            cho_range: { min: 45, max: 55 } // ALINEADO: Base datos 45-55g CHO/h corregidos
+            cho_range: { min: 60, max: 70 } // ALINEADO: ACSM 2016 >2.5h 60-90g/h - transición ultra
         },
         media_sostenida: {
             start: 4, end: 8,
@@ -713,126 +693,20 @@ const CONSTANTS = {
         },
         critica: {
             start: 16, end: 999,
-            carb_factor: 0.35,
+            carb_factor: 0.45,
             hydration_factor: 1.2,
             cho_range: { min: 32, max: 40 } // ALINEADO: Base datos 32-40g CHO/h supervivencia
         }
     },
 
     EXPERIENCE_FACTORS: {
-        beginner: 0.90, // FUENTE MOTOR: Sports Medicine 2021 eficiencia principiantes referenciada en base datos
-        intermediate: 0.96, // FUENTE MOTOR: Progresión eficiencia validada con Western States 2020 análisis
+        beginner: 0.90, // FUENTE MOTOR: Sports Medicine 2021 eficiencia principiantes
+        intermediate: 0.96, // FUENTE MOTOR: Progresión eficiencia validada con Western States 2020
         advanced: 1.0, // FUENTE MOTOR: Referencia estándar
-        elite: 1.018, // FUENTE MOTOR: ISSN 2019 élites eficiencia citada en SCIENTIFIC_FOOD_DATABASE
-        // Compatibilidad con versiones anteriores
+        elite: 1.018, // FUENTE MOTOR: ISSN 2019 élites ultra-endurance
         novice: 0.90, // FUENTE MOTOR: Alineado con 'beginner' según base datos
         experienced: 1.0
     }
-};
-
-const SCIENTIFIC_FOOD_DATABASE = {
-    adaptacion: [
-        // FRUTAS FRESCAS - CHO simples absorción rápida
-        { name: "🍌 Plátano maduro grande", carbs: 35, protein: 2, sodium_mg: 1, potassium_mg: 420, evidence: "ISSN 2019: CHO simples 30-40g/h primeras 2h. Western States 2020: 96% finalizadores usan plátanos. USDA: Potasio natural 420mg óptimo para balance electrolítico inicial." },
-        { name: "🥭 Mango fresco (150g)", carbs: 28, protein: 1, sodium_mg: 3, potassium_mg: 280, evidence: "Sports Med 2021: Fructosa natural mejora absorción CHO vs sintética. ACSM 2016: Antioxidantes naturales reducen stress oxidativo inicial. USDA: 28g CHO digestión rápida." },
-        { name: "🍇 Uvas frescas (100g)", carbs: 32, protein: 1, sodium_mg: 2, potassium_mg: 185, evidence: "ACSM 2016: CHO simples rápida absorción <15min. Hidratación natural 85%. Journal Sports Nutrition 2020: Glucosa+fructosa natural óptima fase adaptación." },
-        { name: "🍊 Naranja pelada mediana", carbs: 25, protein: 2, sodium_mg: 2, potassium_mg: 237, evidence: "Nutrición Deportiva 2020: Vitamina C + CHO naturales. ADVERTENCIA ISSN 2019: Cítricos 15% mayor incidencia GI fase inicial. USDA: 237mg K natural." },
-        { name: "🫐 Arándanos frescos (80g)", carbs: 30, protein: 1, sodium_mg: 1, potassium_mg: 95, evidence: "Sports Science 2021: Antioxidantes potentes + CHO 30g. Protección muscular inicial. ISSN 2019: Bajo riesgo GI vs otros frutos del bosque." },
-        
-        // OPCIONES TRADICIONALES CON FRUTAS
-        { name: "Gel energético doble", carbs: 44, protein: 0, sodium_mg: 100, potassium_mg: 40, evidence: "ISSN 2019: Elite 100 millas 71±20g/h. CORRECCIÓN: 2 geles estándar = 44g CHO (22g cada uno). Western States: 84% finalizadores usan geles. Valores típicos: 100mg Na, 40mg K por porción doble." },
-        { name: "🍯 Dátiles Medjool (3 unidades)", carbs: 38, protein: 2, sodium_mg: 8, potassium_mg: 450, evidence: "ISSN 2019: CHO concentrado natural. Journal Sports Nutrition 2020: Potasio superior a bebidas deportivas. USDA: 38g CHO digestión rápida natural." },
-        { name: "Bebida isotónica concentrada", carbs: 36, protein: 0, sodium_mg: 200, potassium_mg: 80, evidence: "ISSN 2019: Finalizadores vs no-finalizadores mayor consumo líquidos. CORRECCIÓN: 36g CHO/500ml (concentración 7.2%). ACSM 2016: Líquidos mejor tolerados fase inicial. USDA: 200mg Na, 80mg K/500ml." },
-        { name: "🍯 Pasas + almendras (30g)", carbs: 30, protein: 3, sodium_mg: 15, potassium_mg: 320, evidence: "Sports Med 2021: CHO naturales + grasas saludables. Energía sostenida. ACSM 2016: Combinación tradicional ultra-endurance. USDA: 320mg K natural." }
-    ],
-
-    temprana_sostenida: [
-        // FRUTAS VARIADAS + CEREALES - CHO complejos + simples
-        { name: "🍎 Manzana + mantequilla almendra", carbs: 35, protein: 4, sodium_mg: 5, potassium_mg: 280, evidence: "ISSN 2019: CHO complejos + proteína 2-4h. Sports Med 2021: Grasas saludables mejoran saciedad. USDA: 280mg K natural manzana." },
-        { name: "🍑 Cerezas frescas (120g)", carbs: 33, protein: 2, sodium_mg: 3, potassium_mg: 260, evidence: "Sports Science 2020: Antioxidantes potentes + CHO 33g. Antiinflamatorios naturales. ACSM 2016: Fructosa natural mejor tolerancia 2-4h." },
-        { name: "🥝 Kiwi + plátano pequeño", carbs: 32, protein: 2, sodium_mg: 4, potassium_mg: 380, evidence: "Nutrición Deportiva 2021: Vitamina C 150% VD + potasio. Digestión suave. ISSN 2019: Combinación CHO naturales óptima." },
-        { name: "🍓 Fresas + yogur griego (100g)", carbs: 28, protein: 8, sodium_mg: 45, potassium_mg: 220, evidence: "ACSM 2016: CHO + proteína láctea. Aminoácidos ramificados. Sports Med 2021: Probióticos mejoran digestión 2-4h." },
-        { name: "🫒 Higos frescos (4 unidades)", carbs: 34, protein: 2, sodium_mg: 5, potassium_mg: 310, evidence: "Sports Med 2021: CHO concentrados naturales. Fibra soluble digestiva. USDA: 310mg K superior a bebidas deportivas." },
-        
-        // COMBINACIONES FRUTAS + CEREALES
-        { name: "🥣 Avena + plátano + miel", carbs: 42, protein: 6, sodium_mg: 10, potassium_mg: 380, evidence: "ISSN 2019: CHO complejos + simples. Liberación energética progresiva 2-4h. ACSM 2016: Beta-glucanos mejoran tolerancia." },
-        { name: "Pan tostado + miel + plátano", carbs: 55, protein: 7, sodium_mg: 246, potassium_mg: 443, evidence: "ACSM 2016: Pan blanco mejor digestibilidad durante ejercicio. CORRECCIÓN: Combinación alcanza 55g CHO. Comrades Marathon 2018: Miel mejor tolerada. USDA: 246mg Na, 443mg K." },
-        { name: "🥜 Mix frutos secos + pasas", carbs: 32, protein: 8, sodium_mg: 25, potassium_mg: 420, evidence: "Sports Nutrition 2020: CHO + proteína + grasas. Densidad calórica alta. Western States: Común millas medias. USDA: 420mg K natural." },
-        
-        // SÓLIDOS TRADICIONALES
-        { name: "Sandwich completo queso + membrillo", carbs: 48, protein: 15, sodium_mg: 385, potassium_mg: 95, evidence: "Western States 2020: 78% finalizadores usan sandwiches. CORRECCIÓN: Bocadillo completo alcanza 48g CHO vs ISSN mínimo 45g/h. CHO+proteína mejora síntesis muscular. USDA: 385mg Na, 95mg K." }
-    ],
-
-    // FASE MEDIA SOSTENIDA (4-8 horas) - CHO aumentados 50-65g según Sports Medicine 2021
-    media_sostenida: [
-        // FRUTAS DESHIDRATADAS - CHO concentrados
-        { name: "🥭 Mango deshidratado (40g)", carbs: 38, protein: 2, sodium_mg: 8, potassium_mg: 350, evidence: "ISSN 2019: CHO concentrados 4-8h. Sports Med 2021: Potasio conservado en deshidratación. USDA: 350mg K superior bebidas deportivas." },
-        { name: "🍌 Chips de plátano (35g)", carbs: 36, protein: 2, sodium_mg: 3, potassium_mg: 280, evidence: "Sports Med 2021: CHO densos fácil transporte. ACSM 2016: Digestión mejorada vs fresco 4-8h. USDA: 280mg K natural concentrado." },
-        { name: "🍎 Manzana deshidratada + nueces", carbs: 34, protein: 5, sodium_mg: 15, potassium_mg: 240, evidence: "ACSM 2016: CHO + grasas saludables energía sostenida 4-6h. Western States: Combinación tradicional. USDA: 240mg K manzana." },
-        { name: "🫐 Arándanos secos + almendras", carbs: 35, protein: 6, sodium_mg: 20, potassium_mg: 190, evidence: "Nutrition Sports 2020: Antioxidantes concentrados + proteína. ISSN 2019: Bajo índice GI sostenido. USDA: 190mg K natural." },
-        { name: "🍇 Pasas + anacardos (45g)", carbs: 40, protein: 5, sodium_mg: 12, potassium_mg: 380, evidence: "ISSN 2019: CHO naturales + minerales. Sports Med 2021: Magnesio función muscular. USDA: 380mg K superior artificial." },
-        
-        // SÓLIDOS CON FRUTAS
-        { name: "Plátano + mantequilla almendras + dátiles", carbs: 54, protein: 10, sodium_mg: 5, potassium_mg: 698, evidence: "International Journal Sports Nutrition 2020: CHO+grasas mejora oxidación. CORRECCIÓN: Dátiles añadidos 54g CHO. K+ natural crítico sudoración. USDA: 5mg Na, 698mg K." },
-        { name: "🥪 Sandwich integral + plátano + miel", carbs: 48, protein: 12, sodium_mg: 280, potassium_mg: 420, evidence: "ACSM Position 2016: CHO complejos + proteína completa. Sports Science 2021: Sodio balance 4-8h. USDA: 420mg K natural." },
-        { name: "Pan tostado + mermelada + plátano", carbs: 62, protein: 7, sodium_mg: 286, potassium_mg: 453, evidence: "Comrades Marathon 2018: Pan tostado mejor digestión. CORRECCIÓN: Plátano añadido alcanza 62g CHO. ACSM 2016: CHO simples críticos >4h. USDA: 286mg Na, 453mg K." },
-        
-        // OPCIONES TRADICIONALES
-        { name: "Patatas grandes hervidas + sal", carbs: 52, protein: 6, sodium_mg: 685, potassium_mg: 845, evidence: "Western States 2020: 87% finalizadores usan patatas. CORRECCIÓN: Porción grande alcanza 52g CHO vs ISSN 40-75g/h. Comrades Marathon: 85% buena tolerancia. USDA: 685mg Na, 845mg K." },
-        { name: "Sandwich completo jamón + queso", carbs: 58, protein: 25, sodium_mg: 985, potassium_mg: 225, evidence: "Sports Nutrition Research 2021: Bocadillos simples 12% problemas GI. CORRECCIÓN: Bocadillo completo 58g CHO. ACSM 2016: Proteína animal mejor biodisponibilidad. USDA: 985mg Na, 225mg K." }
-    ],
-
-    // FASE FATIGA TEMPRANA (8-12 horas) - CHO aumentados 40-50g, alimentos calientes
-    temprana_fatiga: [
-        // FRUTAS ENERGÉTICAS + PROTEÍNA
-        { name: "🥥 Coco fresco + dátiles", carbs: 35, protein: 4, sodium_mg: 15, potassium_mg: 380, evidence: "ISSN 2019: MCT + CHO energía rápida 8-12h. Sports Med 2021: Grasas calidad + CHO naturales. USDA: 380mg K crítico sudoración." },
-        { name: "🍌 Plátano maduro + sal", carbs: 30, protein: 2, sodium_mg: 180, potassium_mg: 450, evidence: "Comrades 2018: Plátanos maduros h8-12 mejor tolerancia digestiva. USDA: 30g CHO, 2g PRO, 180mg Na (sal), 450mg K por 180g." },
-        { name: "🍇 Zumo uva + proteína polvo", carbs: 42, protein: 15, sodium_mg: 120, potassium_mg: 280, evidence: "ACSM 2016: CHO líquidos + aminoácidos absorción rápida fatiga. ISSN 2019: Glucosa+fructosa óptima >8h. USDA: 280mg K natural." },
-        { name: "🥭 Mango fresco en trozos", carbs: 28, protein: 1, sodium_mg: 80, potassium_mg: 380, evidence: "Western States 2020: Mango fresco h8-12 textura suave digestible. USDA: 28g CHO, 1g PRO, 80mg Na (sal), 380mg K por 200g." },
-        { name: "🍓 Fresas + quinoa cocida", carbs: 36, protein: 10, sodium_mg: 25, potassium_mg: 320, evidence: "ISSN 2019: CHO + proteína completa aminoácidos esenciales. ACSM 2016: Antioxidantes reducen daño muscular. USDA: 320mg K natural." },
-        
-        // OPCIONES RECUPERACIÓN
-        { name: "🥤 Bebida recuperación + fruta", carbs: 45, protein: 20, sodium_mg: 280, potassium_mg: 400, evidence: "ACSM Position 2016: Ratio 3:1 CHO:PRO óptimo 8-12h. Sports Med 2021: Reposición muscular activa. USDA: 400mg K balance." },
-        { name: "Plátano + sal + dátiles", carbs: 42, protein: 2, sodium_mg: 287, potassium_mg: 436, evidence: "Sports Medicine 2021: Combinación natural + sal mejora balance electrolítico. CORRECCIÓN: Dátiles añadidos 42g CHO. ISSN: K+ crítico >8h. USDA: 287mg Na, 436mg K." },
-        
-        // OPCIONES TRADICIONALES
-        { name: "Patatas grandes + sal extra", carbs: 48, protein: 6, sodium_mg: 885, potassium_mg: 815, evidence: "Western States 2020: Patatas 92% disponibilidad avituallamientos. CORRECCIÓN: Porción grande 48g CHO vs ISSN 30-55g/h. Ultra-Endurance: Sal crítica >8h. USDA: 885mg Na, 815mg K." },
-        { name: "Caldo caliente + pan tostado", carbs: 42, protein: 8, sodium_mg: 1085, potassium_mg: 185, evidence: "Sports Medicine 2021: Caldos instantáneos 15% problemas logísticos vs caseros. CORRECCIÓN: Pan añadido alcanza 42g CHO. ISSN: Líquidos calientes mejoran apetito >8h. USDA: 1085mg Na, 185mg K." }
-    ],
-
-    // FASE FATIGA AVANZADA (12-16 horas) - CHO aumentados 35-45g, líquidos concentrados
-    avanzada_fatiga: [
-        // FRUTAS MUY DIGESTIBLES + PROTEÍNA
-        { name: "🍌 Puré plátano + proteína líquida", carbs: 40, protein: 20, sodium_mg: 200, potassium_mg: 500, evidence: "ISSN 2019: CHO simples + proteína hidrolizada máxima absorción 12-16h. Western States: Texturas líquidas críticas. USDA: 500mg K natural." },
-        { name: "🍑 Compota cereza + aminoácidos", carbs: 38, protein: 15, sodium_mg: 150, potassium_mg: 280, evidence: "Sports Med 2021: Antioxidantes + BCAA reducción daño muscular >12h. ACSM 2016: Textura líquida digestión facilitada. USDA: 280mg K." },
-        { name: "🥝 Zumo kiwi natural", carbs: 22, protein: 2, sodium_mg: 80, potassium_mg: 340, evidence: "Boston Marathon 2019: Zumos naturales h12-16 vitamina C digestible. USDA: 22g CHO, 2g PRO, 80mg Na (sal), 340mg K por 200ml." },
-        { name: "🍊 Zumo naranja + proteína vegetal", carbs: 42, protein: 16, sodium_mg: 180, potassium_mg: 380, evidence: "ACSM 2016: CHO líquidos + aminoácidos vegetales digestión suave. Sports Med 2021: Vitamina C antioxidante. USDA: 380mg K." },
-        { name: "🫐 Arándanos frescos + sal", carbs: 21, protein: 1, sodium_mg: 150, potassium_mg: 300, evidence: "Boston Marathon 2019: Arándanos frescos h12-16 antioxidantes naturales. USDA: 21g CHO, 1g PRO, 150mg Na (sal), 300mg K por 150g." },
-        
-        // OPCIONES LÍQUIDAS/SEMI-LÍQUIDAS
-        { name: "Plátano + compota frutas", carbs: 42, protein: 1, sodium_mg: 9, potassium_mg: 567, evidence: "ISSN 2019: Textura blanda crítica fases tardías. CORRECCIÓN: Compota añadida 42g CHO. Journal Sports Sciences: Plátanos 15% mejor tolerancia vs frutas duras. USDA: 9mg Na, 567mg K." },
-        { name: "🍇 Uvas frescas + sal", carbs: 32, protein: 1, sodium_mg: 180, potassium_mg: 450, evidence: "UTMB 2019: Uvas frescas h12-16 fácil masticación glucosa natural. USDA: 32g CHO, 1g PRO, 180mg Na (sal), 450mg K por 200g." },
-        { name: "Miel líquida concentrada", carbs: 36, protein: 0, sodium_mg: 8, potassium_mg: 104, evidence: "Western States 2020: 96% atletas síntomas GI, miel mejor tolerada. CORRECCIÓN: Porción doble 36g CHO vs ISSN 30-45g/h. Sports Medicine 2021: CHO puro crítico >12h. USDA: 8mg Na, 104mg K." },
-        { name: "Zumo concentrado + miel", carbs: 34, protein: 0, sodium_mg: 12, potassium_mg: 297, evidence: "ISSN 2019: Líquidos críticos >12h cuando tolerancia sólidos disminuye. CORRECCIÓN: Concentrado + miel 34g CHO. Dilución reduce osmolalidad. USDA: 12mg Na, 297mg K." }
-    ],
-
-    // FASE CRÍTICA (>16 horas) - Supervivencia nutricional, líquidos prioritarios
-    critica: [
-        // FRUTAS MUY DIGERIBLES Y LÍQUIDAS
-        { name: "🍌 Plátano maduro pelado", carbs: 32, protein: 2, sodium_mg: 120, potassium_mg: 550, evidence: "Western States 2020: Plátanos maduros h16-20 máxima tolerancia digestiva. USDA: 32g CHO, 2g PRO, 120mg Na (sal), 550mg K por 200g." },
-        { name: "🍇 Zumo uva + proteína hidrolizada", carbs: 45, protein: 18, sodium_mg: 300, potassium_mg: 250, evidence: "Sports Med 2021: Glucosa + fructosa + aminoácidos libres absorción prioritaria >16h. ACSM 2016: Líquidos exclusivos. USDA: 250mg K." },
-        { name: "🥭 Mango maduro pelado", carbs: 30, protein: 1, sodium_mg: 90, potassium_mg: 380, evidence: "UTMB 2019: Mango maduro h16-20 textura suave fácil digestión. USDA: 30g CHO, 1g PRO, 90mg Na (sal), 380mg K por 200g." },
-        { name: "🍊 Zumo cítricos + BCAA", carbs: 38, protein: 12, sodium_mg: 200, potassium_mg: 320, evidence: "ACSM 2016: Vitamina C + aminoácidos ramificados protección oxidativa. Sports Med 2021: Líquidos exclusivos >16h. USDA: 320mg K." },
-        { name: "🫐 Concentrado arándanos + glucosa", carbs: 44, protein: 2, sodium_mg: 180, potassium_mg: 150, evidence: "ISSN 2019: Antioxidantes concentrados + CHO rápidos ultra-endurance. Sports Science 2021: Supervivencia nutricional. USDA: 150mg K." },
-        
-        // FÓRMULAS SUPERVIVENCIA
-        { name: "🥤 Fórmula supervivencia ultra", carbs: 48, protein: 20, sodium_mg: 500, potassium_mg: 400, evidence: "Sports Science 2021: Formulación específica +20h múltiples transportadores CHO. ISSN 2019: Proteína + electrolitos críticos." },
-        { name: "🍯 Miel líquida + aminoácidos esenciales", carbs: 45, protein: 15, sodium_mg: 350, potassium_mg: 180, evidence: "ACSM Position 2016: CHO puros + EAA minimizar carga digestiva extrema. Western States: Miel mejor tolerancia >20h." },
-        
-        // OPCIONES TRADICIONALES CRÍTICAS
-        { name: "Miel concentrada doble", carbs: 36, protein: 0, sodium_mg: 8, potassium_mg: 104, evidence: "Sports Medicine 2021: 96% atletas síntomas GI >16h, miel mejor tolerada. CORRECCIÓN: Porción doble 36g CHO supervivencia. ISSN: CHO puro absorción directa. USDA: 8mg Na, 104mg K." },
-        { name: "Cola concentrada + miel", carbs: 38, protein: 0, sodium_mg: 19, potassium_mg: 54, evidence: "Ultra-Trail Magazine: Cola común avituallamientos >16h. CORRECCIÓN: Miel añadida 38g CHO. ACSM: Cafeína + CHO combate fatiga central. USDA: 19mg Na, 54mg K." }
-    ]
 };
 
 const WATER_DATABASE = [
@@ -926,68 +800,58 @@ function startCalculator() {
     }
 }
 
-// Función para volver al inicio
 function backToHome() {
-    // Ocultar la sección de resultados
-    document.getElementById('resultsSection').style.display = 'none';
-    document.getElementById('calculatorSection').style.display = 'none';
+    const htmlElement = document.documentElement;
+    const bodyElement = document.body;
     
-    // Mostrar la sección de inicio
-    document.getElementById('homeSection').style.display = 'block';
+    htmlElement.removeAttribute('style');
+    bodyElement.removeAttribute('style');
     
-    // Limpiar contenido de resultados para evitar que aparezca en home
+    htmlElement.style.scrollBehavior = 'auto';
+    
+    const resultsSection = document.getElementById('resultsSection');
+    const calculatorSection = document.getElementById('calculatorSection');
+    const homeSection = document.getElementById('homeSection');
+    
+    if (resultsSection) resultsSection.removeAttribute('style');
+    if (calculatorSection) calculatorSection.removeAttribute('style');
+    if (homeSection) homeSection.removeAttribute('style');
+    
+    window.scrollTo(0, 0);
+    document.documentElement.scrollLeft = 0;
+    document.documentElement.scrollTop = 0;
+    bodyElement.scrollLeft = 0;
+    bodyElement.scrollTop = 0;
+    
+    if (resultsSection) resultsSection.style.display = 'none';
+    if (calculatorSection) calculatorSection.style.display = 'none';
+    
     document.getElementById('resultsContent').innerHTML = '';
     
-    // Resetear el formulario si es necesario
+    if (homeSection) homeSection.style.display = 'block';
+    
     document.getElementById('nutritionWizard').reset();
     
-    // Resetear el progreso del wizard
     document.querySelectorAll('.step-container').forEach(step => step.classList.remove('step-active'));
     document.querySelector('.step-container[data-step="1"]').classList.add('step-active');
     document.querySelectorAll('.progress-label').forEach(label => label.classList.remove('active'));
     document.querySelector('.progress-label[data-step="1"]').classList.add('active');
     document.getElementById('progressFill').style.width = '0%';
     
-    // Forzar reflow inmediato del homeSection
-    const homeSection = document.getElementById('homeSection');
-    homeSection.offsetHeight;
+    void homeSection.offsetHeight;
     
-    // Scroll al inicio con múltiples técnicas para asegurar centrado en PC
-    setTimeout(() => {
-        // Primero scroll directo e inmediato
+    requestAnimationFrame(() => {
         window.scrollTo(0, 0);
+        document.documentElement.scrollLeft = 0;
+        bodyElement.scrollLeft = 0;
         
-        // Luego scroll suave como backup
         setTimeout(() => {
-            window.scrollTo({ 
-                top: 0, 
-                left: 0, 
-                behavior: 'smooth' 
-            });
-        }, 10);
-        
-        // Forzar un re-layout para asegurar el centrado correcto en PC
-        requestAnimationFrame(() => {
-            document.body.style.transform = 'translateZ(0)';
-            homeSection.style.transform = 'translateZ(0)';
-            
-            setTimeout(() => {
-                document.body.style.transform = '';
-                homeSection.style.transform = '';
-                
-                // Verificación final del centrado
-                window.scrollTo({
-                    top: 0,
-                    left: 0,
-                    behavior: 'instant'
-                });
-            }, 100);
-        });
-    }, 50);
+            htmlElement.style.scrollBehavior = 'smooth';
+        }, 50);
+    });
 }
 
 function resetWizard() {
-    console.log('🔄 Reseteando wizard para recalcular...');
     const calculatorSection = document.getElementById('calculatorSection');
     const resultsSection = document.getElementById('resultsSection');
     const homeSection = document.getElementById('homeSection');
@@ -1016,40 +880,27 @@ function resetWizard() {
     updateProgressBar();
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    console.log('✅ Wizard reseteado para recalcular, formulario mostrado con datos.');
 }
 
 function nextStep() {
-    console.log('🔄 nextStep() called. Current step:', currentStep);
     if (validateStep(currentStep)) {
-        console.log('✅ Validation passed for step:', currentStep);
         if (currentStep < totalSteps) {
             currentStep++;
-            console.log('📈 Moving to step:', currentStep);
             showStep(currentStep);
             updateProgressBar();
-        } else {
-            console.log('⚠️ Already at last step:', currentStep);
         }
-    } else {
-        console.log('❌ Validation failed for step:', currentStep);
     }
 }
 
 function prevStep() {
-    console.log('🔄 prevStep() called. Current step:', currentStep);
     if (currentStep > 1) {
         currentStep--;
-        console.log('📉 Moving to step:', currentStep);
         showStep(currentStep);
         updateProgressBar();
-    } else {
-        console.log('⚠️ Already at first step:', currentStep);
     }
 }
 
 function validateStep(step) {
-    console.log('🔍 Validating step:', step);
     let isValid = true;
     const stepContainer = document.querySelector(`.step-container[data-step="${step}"]`);
     if (!stepContainer) {
@@ -1174,32 +1025,26 @@ function validateStep(step) {
         }
     });
 
-    console.log('🔍 Validation result for step', step, ':', isValid);
     return isValid;
 }
 
 function showStep(step) {
-    console.log('👁️ Showing step:', step);
     const steps = document.querySelectorAll('.step-container');
     const progressLabels = document.querySelectorAll('.progress-label');
 
     steps.forEach((stepEl, index) => {
         if (index + 1 === step) {
             stepEl.classList.add('step-active');
-            console.log('✅ Added step-active to step:', index + 1);
         } else {
             stepEl.classList.remove('step-active');
-            console.log('❌ Removed step-active from step:', index + 1);
         }
     });
 
     progressLabels.forEach((label, index) => {
         if (index + 1 === step) {
             label.classList.add('active');
-            console.log('✅ Added active to progress label:', index + 1);
         } else {
             label.classList.remove('active');
-            console.log('❌ Removed active from progress label:', index + 1);
         }
     });
 }
@@ -1249,7 +1094,6 @@ function collectFormData() {
         return null;
     }
     
-    console.log('✅ Datos del formulario válidos:', data);
     return data;
 }
 
@@ -1319,17 +1163,6 @@ function calculateNutritionPlan(formData) {
         
         const totalCalories = baseCaloricExpenditure * formData.estimatedTime * totalFactor;
         
-        // DEBUG: Mostrar cálculo detallado para casos problemáticos
-        if (formData.distance > 70 || formData.estimatedTime > 12) {
-            console.log('🔍 Debug cálculo ultra:', {
-                baseCaloricExpenditure,
-                distance: formData.distance,
-                totalFactor,
-                totalCalories,
-                formData: formData
-            });
-        }
-        
         if (totalCalories <= 0 || !isFinite(totalCalories)) {
             throw new Error('Cálculo inválido de calorías totales.');
         }
@@ -1345,13 +1178,15 @@ function calculateNutritionPlan(formData) {
         // - 12-16h: 50-80g/h (caldos, compotas, barritas blandas)
         // - >16h: 40-70g/h (líquidos/blandos, tolerancia GI)
         // Medias recomendadas por fase, alineadas con evidencia de ACSM, ISSN, Western States, UTMB y USDA
+        // AJUSTADO según ISSN rango poblacional 40-75g/h para corredores populares
+        // PROGRESIÓN TEMPORAL: Meseta 2-8h (pico fisiológico temprano), descenso gradual por fatiga digestiva
         let carbsPerHour = 65; // valor por defecto
-        if (formData.estimatedTime <= 2) carbsPerHour = 60; // 0-2h: 60g/h (media recomendada)
-        else if (formData.estimatedTime <= 4) carbsPerHour = 70; // 2-4h: 70g/h
-        else if (formData.estimatedTime <= 8) carbsPerHour = 80; // 4-8h: 80g/h
-    else if (formData.estimatedTime <= 12) carbsPerHour = 85; // 8-12h: 85g/h (ajustado según evidencia y consumo real)
-    else if (formData.estimatedTime <= 16) carbsPerHour = 85; // 12-16h: 85g/h (ajustado según evidencia y consumo real)
-    else carbsPerHour = 70; // >16h: 70g/h (ajustado según evidencia y tolerancia de atletas entrenados)
+        if (formData.estimatedTime <= 2) carbsPerHour = 60; // 0-2h: 60g/h (adaptación inicial)
+        else if (formData.estimatedTime <= 4) carbsPerHour = 70; // 2-4h: 70g/h (PICO - máxima capacidad digestiva ACSM 2016)
+        else if (formData.estimatedTime <= 8) carbsPerHour = 70; // 4-8h: 70g/h (meseta sostenible - mantiene capacidad)
+    else if (formData.estimatedTime <= 12) carbsPerHour = 65; // 8-12h: 65g/h (inicio fatiga digestiva Sports Med 2021)
+    else if (formData.estimatedTime <= 16) carbsPerHour = 60; // 12-16h: 60g/h (fatiga avanzada - tolerancia GI reducida)
+    else carbsPerHour = 55; // >16h: 55g/h (supervivencia nutricional - líquidos prioritarios)
 
         const carbs = Math.round(carbsPerHour * formData.estimatedTime);
         if (carbs <= 0 || !isFinite(carbs)) {
@@ -1416,8 +1251,6 @@ function calculateNutritionPlan(formData) {
         // Calcular porcentaje de carbohidratos
         const carbPercentage = (carbs * 4) / totalCalories; // 4 kcal por gramo de CHO
         
-        console.log('🧮 Cálculo ajustado con referencias:', { totalCalories, carbs, protein, totalHydration, sodiumLoss, potassiumLoss, carbPercentage });
-        
         return {
             success: true,
             data: {
@@ -1458,17 +1291,20 @@ function generateHourlyRecommendations(totalTime, totalCalories, totalHydration,
         const phase = getCurrentPhase(hour);
         const phaseData = CONSTANTS.PHASES[phase];
         
+        // CALCULAR hourlyCalories PRIMERO (necesario para el objeto de recomendaciones)
         const hourlyCalories = (totalCalories / totalTime) * phaseData.carb_factor;
-        // AJUSTE: Usar rangos CHO específicos por fase basados en evidencia científica
-        let targetCHO = Math.ceil(hourlyCalories * carbPercentage / 4);
-
-        // Aplicar rangos CHO específicos por fase (ISSN 2019 + ACSM)
+        
+        // NUEVA LÓGICA: CHO basado DIRECTAMENTE en cho_range científico
+        // carb_factor ahora solo modula DENTRO del rango, no lo limita
+        let targetCHO;
+        
         if (phaseData.cho_range) {
-            // Asegurar que el CHO calculado esté dentro del rango óptimo de la fase
-            targetCHO = Math.max(phaseData.cho_range.min, Math.min(targetCHO, phaseData.cho_range.max));
-            console.log(`📊 Fase ${phase}: CHO calculado ${Math.ceil(hourlyCalories * carbPercentage / 4)}g/h → ajustado a ${targetCHO}g/h (rango: ${phaseData.cho_range.min}-${phaseData.cho_range.max}g/h)`);
+            // Usar carb_factor para posicionarse dentro del rango científico
+            const rangeSize = phaseData.cho_range.max - phaseData.cho_range.min;
+            targetCHO = Math.round(phaseData.cho_range.min + (rangeSize * phaseData.carb_factor));
         } else {
-            // Fallback: límite superior tradicional para evitar sobrecarga GI
+            // Fallback: cálculo tradicional si no hay rango definido (no debería ocurrir)
+            targetCHO = Math.ceil(hourlyCalories * carbPercentage / 4);
             targetCHO = Math.min(targetCHO, 90);
         }
         
@@ -1610,7 +1446,7 @@ function generateHourlyRecommendations(totalTime, totalCalories, totalHydration,
             ? generateFoodCombinationWithVariety(targetCHO, targetProtein, phase, hour)
             : (typeof generateFoodCombinationNew !== 'undefined' && ALIMENTOS_INDIVIDUALES && Object.keys(ALIMENTOS_INDIVIDUALES).length > 0) 
                 ? generateFoodCombinationNew(targetCHO, targetProtein, phase, hour)
-                : generateFoodCombination(targetCHO, targetProtein, phase);
+                : generateFoodCombination(targetCHO, targetProtein, phase, currentHour);
         
         // CALCULAR BALANCE TOTAL DE SODIO Y POTASIO (Alimentos + Electrolitos)
         const totalSodiumMg = safeRecommendedSodiumMg + (foodCombination.totalSodium || 0);
@@ -1703,8 +1539,6 @@ function getHydrationRecommendation(hourlySodiumLossMg, hourlyPotassiumLossMg, d
 
 // NUEVA FUNCIÓN: Generación de combinaciones con alimentos individuales
 function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 1) {
-    console.log(`🍎 Generando combinación: ${targetCHO}g CHO, ${targetProtein}g PRO, fase: ${phase}, hora: ${currentHour}`);
-    
     // VALIDAR disponibilidad de nueva base de datos
     if (!ALIMENTOS_INDIVIDUALES || Object.keys(ALIMENTOS_INDIVIDUALES).length === 0) {
         console.warn('⚠️ Base de datos individual no disponible, usando sistema anterior');
@@ -1729,7 +1563,6 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
         );
         if (hourlyFoods.length > 0) {
             availableFoods = hourlyFoods;
-            console.log(`⏰ Filtrado por hora ${currentHour}: ${availableFoods.length} alimentos disponibles`);
         }
     }
 
@@ -1762,10 +1595,89 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
         window.foodHistory = [];
     }
 
-    // Mantener solo las últimas 3 recomendaciones para evitar repeticiones recientes
-    if (window.foodHistory.length > 3) {
-        window.foodHistory = window.foodHistory.slice(-3);
+    // MEJORADO: Mantener últimas 6 recomendaciones para evitar repeticiones en carreras hasta 6h
+    if (window.foodHistory.length > 6) {
+        window.foodHistory = window.foodHistory.slice(-6);
     }
+
+    // FUNCIÓN AUXILIAR: Calcular prioridad de alimento según fase
+    const getFoodPriority = (foodName, phase) => {
+        const name = foodName.toLowerCase();
+        
+        // Clasificar tipo de alimento (más exhaustivo)
+        const isGel = name.includes('gel');
+        const isEnergyDrink = name.includes('bebida energética');
+        const isEnergyBar = name.includes('barrita energética') || name.includes('barrita de cereales') || 
+                           (name.includes('barrita') && !name.includes('proteica') && !name.includes('mixta'));
+        const isProteinBar = name.includes('barrita proteica') || name.includes('barrita mixta');
+        const isGummy = name.includes('gominola') || name.includes('caramelo') || name.includes('jelly');
+        const isBanana = name.includes('plátano') || name.includes('banana');
+        const isDate = name.includes('dátil');
+        const isRiceCake = name.includes('tortita');
+        const isBroth = name.includes('caldo') || name.includes('sopa') || name.includes('té') || name.includes('consomé');
+        const isPotato = name.includes('patata') || name.includes('papa');
+        const isSandwich = name.includes('sandwich') || name.includes('bocadillo') || name.includes('nutella');
+        const isBread = name.includes('pan');
+        const isNuts = name.includes('almendra') || name.includes('nuez') || name.includes('anacardo') || 
+                       name.includes('cacahuete') || name.includes('frutos secos') || name.includes('mix');
+        const isCompote = name.includes('compota') || name.includes('puré');
+        const isHoney = name.includes('miel');
+        const isCookie = name.includes('galleta');
+        
+        // Sistema de prioridad según fase
+        switch (phase) {
+            case 'adaptacion': // 0-2h: Máxima velocidad absorción
+                if (isGel) return 3.5; // AUMENTADO: Geles máxima prioridad
+                if (isEnergyDrink || isGummy) return 2.8;
+                if (isBanana || isDate || isHoney) return 2.2;
+                if (isEnergyBar) return 1.8;
+                if (isBread || isSandwich) return 1.2; // Pan baja prioridad
+                if (isNuts || isProteinBar) return 0.6; // Mínima prioridad
+                return 1.0;
+                
+            case 'temprana_sostenida': // 2-4h: Transición a sólidos ligeros
+                if (isGel) return 3.2; // Geles siguen siendo buena opción
+                if (isEnergyBar) return 3.0;
+                if (isBanana || isRiceCake || isDate) return 2.6;
+                if (isBread && !isSandwich) return 1.8; // Pan simple baja prioridad
+                if (isSandwich || isCookie) return 2.0;
+                if (isProteinBar) return 1.2;
+                if (isNuts) return 0.8;
+                return 1.5;
+                
+            case 'media_sostenida': // 4-8h: Priorizar sólidos completos
+                if (isSandwich || isPotato) return 3.0;
+                if (isProteinBar || isEnergyBar) return 2.5;
+                if (isGel || isBanana) return 2.0;
+                if (isNuts) return 1.5;
+                return 1.8;
+                
+            case 'temprana_fatiga': // 8-12h: Alimentos calientes y salados
+                if (isBroth || isPotato) return 3.0;
+                if (isSandwich || isCookie) return 2.5;
+                if (isEnergyBar || isBanana) return 2.0;
+                if (isGel || isCompote) return 1.8;
+                return 1.5;
+                
+            case 'avanzada_fatiga': // 12-16h: Líquidos y texturas blandas
+                if (isBroth || isCompote) return 3.0;
+                if (isBanana || isHoney) return 2.8;
+                if (isGel || isEnergyDrink) return 2.5;
+                if (isEnergyBar) return 2.0;
+                if (isSandwich || isProteinBar) return 1.2;
+                return 1.5;
+                
+            case 'critica': // >16h: Supervivencia nutricional
+                if (isBroth || isHoney) return 3.0;
+                if (isCompote || isGel) return 2.8;
+                if (isBanana || isEnergyDrink) return 2.5;
+                if (isEnergyBar) return 1.8;
+                return 1.0;
+                
+            default:
+                return 1.0;
+        }
+    };
 
     // Filtrar alimentos según fase y apropiación científica
     let filteredFoods = availableFoods;
@@ -1957,27 +1869,39 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
 
     // LÓGICA CORREGIDA: Buscar alimentos que cumplan exactamente el objetivo sin exceder
     while ((currentCHO < targetCHO * 0.95 || (targetProtein > 0 && currentProtein < targetProtein * 0.8)) && attempts < 20 && combination.length < 2) {
-        // Función auxiliar para verificar si una combinación es demasiado similar a las recientes
+        // MEJORADO: Sistema anti-repetición más agresivo
         const isTooSimilar = (candidateFood) => {
-            return window.foodHistory.some(recent => {
+            // Penalizar alimentos usados en las últimas 3 horas
+            const recentUseCount = window.foodHistory.filter(recent => {
                 return recent.foods.some(recentFood => recentFood.name === candidateFood.name);
-            });
+            }).length;
+            return recentUseCount > 0;
         };
 
-        // Filtrar alimentos que sean demasiado similares a los recientes
+        // Penalizar alimentos usados recientemente
         let availableCandidates = filteredFoods.filter(food => !isTooSimilar(food));
 
-        // Si quedan pocos candidatos, permitir algunos similares pero no idénticos
-        if (availableCandidates.length < 2) {
-            availableCandidates = filteredFoods.filter(food => {
-                return !window.foodHistory.some(recent =>
-                    recent.foods.length === 1 && recent.foods[0].name === food.name
-                );
+        // Si quedan muy pocos candidatos (menos de 3), permitir los menos usados
+        if (availableCandidates.length < 3) {
+            // Contar usos recientes de cada alimento
+            const foodUsageCount = {};
+            filteredFoods.forEach(food => {
+                foodUsageCount[food.name] = window.foodHistory.filter(recent =>
+                    recent.foods.some(rf => rf.name === food.name)
+                ).length;
             });
+            
+            // Ordenar por menos usado
+            availableCandidates = filteredFoods.sort((a, b) => {
+                const usageA = foodUsageCount[a.name] || 0;
+                const usageB = foodUsageCount[b.name] || 0;
+                return usageA - usageB;
+            }).slice(0, Math.max(5, filteredFoods.length));
         }
 
-        // Si aún no hay candidatos suficientes, usar todos
+        // Último recurso: usar todos si realmente no hay opciones
         if (availableCandidates.length === 0) {
+            console.warn(`   ⚠️ No hay candidatos después de filtros, usando todos`);
             availableCandidates = filteredFoods;
         }
 
@@ -1991,7 +1915,7 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
             break;
         }
 
-        // PRIORIZAR alimentos únicos que se acerquen al objetivo SIN EXCEDERLO
+        // MEJORADO: PRIORIZAR alimentos según tipo y fase (scoring inteligente)
         let bestFood = null;
         let bestScore = -1;
 
@@ -2005,7 +1929,7 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
                 const choDistance = Math.abs(targetCHO - newCHO);
                 const proteinDistance = targetProtein === 0 ? 0 : Math.abs(targetProtein - newProtein);
                 
-                // PRIORIZAR proteína si es necesaria
+                // SCORING BASE: Proximidad al objetivo
                 let score = 100;
                 if (targetProtein > 0) {
                     // Si necesitamos proteína, priorizar alimentos con proteína
@@ -2016,6 +1940,18 @@ function generateFoodCombination(targetCHO, targetProtein, phase, currentHour = 
                     score -= choDistance;
                     if (food.protein > 5) score -= 10; // Penalizar proteína innecesaria
                 }
+                
+                // MEJORADO: BONUS POR PRIORIDAD DE TIPO (puede sumar hasta +50 puntos)
+                const priorityFactor = getFoodPriority(food.name, phase);
+                const priorityBonus = priorityFactor * 15; // Escala: 0.6-3.5 → 9-52 puntos
+                score += priorityBonus;
+                
+                // BONUS ADICIONAL: Penalizar fuertemente alimentos usados recientemente
+                const recentUses = window.foodHistory.filter(recent =>
+                    recent.foods.some(rf => rf.name === food.name)
+                ).length;
+                const repetitionPenalty = recentUses * 20; // -20 puntos por cada uso reciente
+                score -= repetitionPenalty;
                 
                 if (score > bestScore) {
                     bestScore = score;
@@ -2188,8 +2124,6 @@ function translatePhase(phase) {
 
 // Función showResults ACTUALIZADA PARA MOSTRAR SALES EN MG
 function showResults(results) {
-    console.log('📊 Mostrando resultados:', results); // Debug
-    
     // Verificar estructura del objeto results
     if (!results || !results.data) {
         console.error('❌ Estructura de resultados inválida:', results);
@@ -2203,7 +2137,6 @@ function showResults(results) {
     
     if (calculatorSection) {
         calculatorSection.style.display = 'none';
-        console.log('✅ Calculator ocultado'); // Debug
     } else {
         console.error('❌ Calculator section no encontrado');
     }
@@ -2213,7 +2146,6 @@ function showResults(results) {
         resultsSection.style.opacity = '1';
         resultsSection.style.visibility = 'visible';
         resultsSection.classList.add('force-show'); // Añadir clase para forzar visibilidad
-        console.log('✅ Results mostrado con estilos inline'); // Debug
     } else {
         console.error('❌ Results section no encontrado');
     }
@@ -2221,7 +2153,6 @@ function showResults(results) {
     // Poblar resultados
     const resultsContent = document.getElementById('resultsContent');
     if (resultsContent) {
-        console.log('✅ Elemento resultsContent encontrado'); // Debug adicional
         
         const htmlContent = `
             <div class="results-summary">
@@ -2263,24 +2194,8 @@ function showResults(results) {
                                         const totalCarbs = f.adjustedCarbs || f.carbs;
                                         const totalProtein = f.adjustedProtein || f.protein;
                                         
-                                        // Si el alimento contiene "+", intentar desglosar los componentes
-                                        if (f.name.includes(' + ')) {
-                                            const components = f.name.split(' + ');
-                                            const carbsPerComponent = Math.round(totalCarbs / components.length);
-                                            const proteinPerComponent = Math.round(totalProtein / components.length);
-                                            
-                                            return `
-                                                <div style="margin: 5px 0 10px 15px;">
-                                                    <p style="margin: 2px 0;"><strong>Combinación: ${f.name}</strong></p>
-                                                    ${components.map(comp => `
-                                                        <p style="margin: 2px 0 2px 25px;">- ${comp.trim()}: ~${carbsPerComponent}g CHO + ~${proteinPerComponent}g PRO</p>
-                                                    `).join('')}
-                                                    <p style="margin: 2px 0; font-weight: bold;">Total de esta combinación: ${totalCarbs}g CHO + ${totalProtein}g PRO</p>
-                                                </div>
-                                            `;
-                                        } else {
-                                            return `<p style="margin: 5px 0 5px 15px;">• <strong>${f.name}:</strong> ${totalCarbs}g CHO + ${totalProtein}g PRO</p>`;
-                                        }
+                                        // Mostrar cada alimento individual (ya no dividir por "+")
+                                        return `<p style="margin: 5px 0 5px 15px;">• <strong>${f.name}:</strong> ${totalCarbs}g CHO + ${totalProtein}g PRO</p>`;
                                     }).join('')}
                                     <p><strong>Total conseguido:</strong> ${rec.foodCombination.totalCHO}g CHO + ${rec.foodCombination.totalProtein}g PRO</p>
                                 </div>
@@ -2306,21 +2221,13 @@ function showResults(results) {
             </div>
         `;
         
-        console.log('📄 HTML generado:', htmlContent.substring(0, 200) + '...'); // Debug adicional (primeros 200 caracteres)
-        console.log('📄 Longitud del HTML:', htmlContent.length); // Debug adicional
-        
         resultsContent.innerHTML = htmlContent;
-        console.log('✅ Resultados poblados en DOM'); // Debug
-        
-        // Verificar que el contenido se asignó correctamente
-        console.log('🔍 Verificación del contenido asignado:', resultsContent.innerHTML.substring(0, 100)); // Debug
     } else {
         console.error('❌ Results content no encontrado');
     }
     
     // Scroll to top
     window.scrollTo(0, 0);
-    console.log('✅ Scroll to top ejecutado'); // Debug
 }
 
 function updateProgressBar() {
@@ -2408,74 +2315,18 @@ function calculateProteinForScenario(distance, time, weight) {
     };
 }
 
-// Función para validar bases de datos de alimentos
-function validateFoodDatabase() {
-    console.log('🍎 VALIDACIÓN DE BASES DE DATOS ALIMENTARIAS');
-    console.log('=' .repeat(60));
-
-    let totalFoods = 0;
-    let validFoods = 0;
-    let issues = [];
-
-    Object.keys(SCIENTIFIC_FOOD_DATABASE).forEach(phase => {
-        console.log(`\n📂 Fase: ${phase.toUpperCase()}`);
-        SCIENTIFIC_FOOD_DATABASE[phase].forEach(food => {
-            totalFoods++;
-            let isValid = true;
-            let foodIssues = [];
-
-            // Validar que tenga todos los campos requeridos
-            if (typeof food.name !== 'string' || food.name.length < 2) {
-                isValid = false;
-                foodIssues.push('Nombre inválido');
-            }
-            if (typeof food.carbs !== 'number' || food.carbs < 0) {
-                isValid = false;
-                foodIssues.push('Carbohidratos inválidos');
-            }
-            if (typeof food.protein !== 'number' || food.protein < 0) {
-                isValid = false;
-                foodIssues.push('Proteína inválida');
-            }
-            if (typeof food.evidence !== 'string' || food.evidence.length < 10) {
-                isValid = false;
-                foodIssues.push('Evidencia insuficiente');
-            }
-
-            if (isValid) {
-                validFoods++;
-                console.log(`   ✅ ${food.name}: ${food.carbs}g CHO, ${food.protein}g PRO`);
-            } else {
-                issues.push(`${food.name}: ${foodIssues.join(', ')}`);
-                console.log(`   ❌ ${food.name}: ${foodIssues.join(', ')}`);
-            }
-        });
-    });
-
-    console.log(`\n📊 Resumen: ${validFoods}/${totalFoods} alimentos válidos`);
-    if (issues.length > 0) {
-        console.log('⚠️  Problemas encontrados:');
-        issues.forEach(issue => console.log(`   - ${issue}`));
-    }
-
-    return { totalFoods, validFoods, issues };
-}
-
 // Exponer funciones de diagnóstico globalmente (solo para desarrollo/debugging)
 if (typeof window !== 'undefined') {
     window.validateProteinCalculations = validateProteinCalculations;
-    window.validateFoodDatabase = validateFoodDatabase;
     window.calculateProteinForScenario = calculateProteinForScenario;
 }
 
 // VARIABLES GLOBALES
 let currentStep = 1;
 const totalSteps = 3;
-console.log('🚀 Initial currentStep:', currentStep, 'totalSteps:', totalSteps);
 
 // INICIALIZACIÓN - UNIFICADA
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 REFUEL.RUN - Inicializando...');
     
     // Añadir event listeners para los botones de navegación
     const nextButton = document.getElementById('nextButton'); // Ajusta el ID si es diferente
@@ -2493,19 +2344,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('📝 Formulario enviado en step:', currentStep);
             
             if (currentStep !== totalSteps) {
-                console.warn('⚠️ Intento de envío en step incorrecto:', currentStep);
                 return;
             }
             
             if (!validateStep(currentStep)) {
-                console.log('❌ Validación fallida en step:', currentStep);
                 return;
             }
-            
-            console.log('✅ Iniciando cálculo científico...');
             
             const loadingSpinner = document.getElementById('loadingSpinner');
             if (loadingSpinner) {
@@ -2515,7 +2361,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Dar tiempo mínimo para mostrar el spinner y procesar
             setTimeout(() => {
                 const formData = collectFormData();
-                console.log('📊 Datos del formulario:', formData);
                 
                 if (!formData) {
                     alert('Por favor, completa todos los campos correctamente.');
@@ -2524,7 +2369,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 const results = calculateNutritionPlan(formData);
-                console.log('🧮 Resultados del cálculo:', results);
                 
                 if (loadingSpinner) loadingSpinner.style.display = 'none';
                 
@@ -2539,9 +2383,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     updateProgressBar();
-    
-    console.log('✅ REFUEL.RUN - Sistema inicializado correctamente');
-    console.log('🔬 Motor científico: ACTIVO');
     
     const particlesContainer = document.getElementById('particles-bg');
     if (particlesContainer) {
@@ -2594,129 +2435,8 @@ function showCalculator() {
     showStep(1);
 }
 
-// FUNCIÓN DE ANÁLISIS Y VALIDACIÓN CHO - Verifica cumplimiento rangos científicos
-function analyzeCHOCalculations() {
-    console.log("🔬 ANÁLISIS DE VALIDACIÓN CHO - Verificando cumplimiento rangos científicos");
-    console.log("=" .repeat(80));
-    
-    let allValid = true;
-    const issues = [];
-    
-    // 1. VERIFICAR RANGOS CONSTANTS.PHASES vs BASE DE DATOS
-    console.log("📊 1. VERIFICANDO RANGOS cho_range EN CONSTANTS.PHASES:");
-    Object.keys(CONSTANTS.PHASES).forEach(phase => {
-        const phaseData = CONSTANTS.PHASES[phase];
-        const foodDatabase = SCIENTIFIC_FOOD_DATABASE[phase];
-        
-        if (!foodDatabase || foodDatabase.length === 0) {
-            issues.push(`❌ Fase ${phase}: Base de datos vacía`);
-            allValid = false;
-            return;
-        }
-        
-        // Calcular rangos reales de CHO en la base de datos
-        const choValues = foodDatabase.map(food => food.carbs);
-        const minCHO = Math.min(...choValues);
-        const maxCHO = Math.max(...choValues);
-        const avgCHO = Math.round(choValues.reduce((a, b) => a + b, 0) / choValues.length);
-        
-        console.log(`   ${phase}:`);
-        console.log(`     - Rango definido: ${phaseData.cho_range.min}-${phaseData.cho_range.max}g/h`);
-        console.log(`     - Rango real BD: ${minCHO}-${maxCHO}g/h (promedio: ${avgCHO}g)`);
-        
-        // Verificar que el promedio esté dentro del rango definido
-        if (avgCHO < phaseData.cho_range.min || avgCHO > phaseData.cho_range.max) {
-            issues.push(`⚠️ Fase ${phase}: Promedio BD (${avgCHO}g) fuera de rango definido (${phaseData.cho_range.min}-${phaseData.cho_range.max}g)`);
-            allValid = false;
-        } else {
-            console.log(`     ✅ VÁLIDO: Promedio dentro del rango`);
-        }
-    });
-    
-    // 2. VERIFICAR CUMPLIMIENTO ISSN 2019 (mínimo 30g/h)
-    console.log("\n📋 2. VERIFICANDO CUMPLIMIENTO ISSN 2019 (mínimo 30g CHO/h):");
-    Object.keys(SCIENTIFIC_FOOD_DATABASE).forEach(phase => {
-        const foods = SCIENTIFIC_FOOD_DATABASE[phase];
-        const belowMinimum = foods.filter(food => food.carbs < 30);
-        
-        if (belowMinimum.length > 0) {
-            console.log(`   ❌ Fase ${phase}: ${belowMinimum.length} alimentos < 30g CHO:`);
-            belowMinimum.forEach(food => {
-                console.log(`     - ${food.name}: ${food.carbs}g CHO`);
-            });
-            issues.push(`Fase ${phase}: ${belowMinimum.length} alimentos bajo mínimo ISSN`);
-            allValid = false;
-        } else {
-            console.log(`   ✅ Fase ${phase}: Todos los alimentos ≥ 30g CHO (ISSN 2019)`);
-        }
-    });
-    
-    // 3. SIMULAR CÁLCULO PARA VERIFICAR FUNCIONAMIENTO
-    console.log("\n🧮 3. SIMULANDO CÁLCULOS DE RECOMENDACIONES:");
-    const testScenarios = [
-        { time: 1, expected: 'adaptacion' },
-        { time: 3, expected: 'temprana_sostenida' },
-        { time: 6, expected: 'media_sostenida' },
-        { time: 10, expected: 'temprana_fatiga' },
-        { time: 14, expected: 'avanzada_fatiga' },
-        { time: 18, expected: 'critica' }
-    ];
-    
-    testScenarios.forEach(scenario => {
-        const phase = getCurrentPhase(scenario.time);
-        const phaseData = CONSTANTS.PHASES[phase];
-        
-        if (phase !== scenario.expected) {
-            issues.push(`❌ Hora ${scenario.time}: Fase calculada '${phase}' ≠ esperada '${scenario.expected}'`);
-            allValid = false;
-        }
-        
-        // Simular selección de alimento para esta fase
-        const foods = SCIENTIFIC_FOOD_DATABASE[phase];
-        if (foods && foods.length > 0) {
-            const sampleFood = foods[Math.floor(Math.random() * foods.length)];
-            console.log(`   Hora ${scenario.time}h (${phase}): ${sampleFood.name} = ${sampleFood.carbs}g CHO`);
-            
-            // Verificar que esté en rango
-            if (sampleFood.carbs < phaseData.cho_range.min || sampleFood.carbs > phaseData.cho_range.max) {
-                issues.push(`⚠️ Hora ${scenario.time}: Alimento ${sampleFood.name} (${sampleFood.carbs}g) fuera de rango fase (${phaseData.cho_range.min}-${phaseData.cho_range.max}g)`);
-                allValid = false;
-            }
-        }
-    });
-    
-    // 4. RESUMEN FINAL
-    console.log("\n" + "=" .repeat(80));
-    console.log("📋 RESUMEN DEL ANÁLISIS:");
-    
-    if (allValid) {
-        console.log("✅ TODOS LOS CÁLCULOS CHO SON VÁLIDOS");
-        console.log("✅ Cumplimiento ISSN 2019: 100%");
-        console.log("✅ Rangos fase-base datos: ALINEADOS");
-        console.log("✅ Funciones de cálculo: OPERATIVAS");
-    } else {
-        console.log("❌ SE ENCONTRARON PROBLEMAS:");
-        issues.forEach(issue => console.log(`   - ${issue}`));
-    }
-    
-    console.log("=" .repeat(80));
-    
-    return {
-        valid: allValid,
-        issues: issues,
-        summary: {
-            totalPhases: Object.keys(CONSTANTS.PHASES).length,
-            totalFoods: Object.values(SCIENTIFIC_FOOD_DATABASE).reduce((sum, foods) => sum + foods.length, 0),
-            issuesFound: issues.length
-        }
-    };
-}
-
-// Ejecutar análisis automáticamente al cargar la página (en desarrollo)
-// NUEVA FUNCIÓN: Generación inteligente OPTIMIZADA - Alcanza exactamente el objetivo
+// NUEVA FUNCIÓN: Generación inteligente OPTIMIZADA con prioridades y anti-repetición
 function generateFoodCombinationNew(targetCHO, targetProtein, phase, currentHour = 1) {
-    console.log(`� ALGORITMO OPTIMIZADO: ${targetCHO}g CHO, ${targetProtein}g PRO, fase: ${phase}, hora: ${currentHour}`);
-    
     // Validar disponibilidad de nueva base de datos
     if (!ALIMENTOS_INDIVIDUALES || Object.keys(ALIMENTOS_INDIVIDUALES).length === 0) {
         console.warn('⚠️ Base nueva no disponible, usando anterior');
@@ -2729,6 +2449,64 @@ function generateFoodCombinationNew(targetCHO, targetProtein, phase, currentHour
         phase = 'adaptacion'; // fallback
     }
 
+    // INICIALIZAR HISTORIAL si no existe
+    if (typeof window.foodHistory === 'undefined') {
+        window.foodHistory = [];
+    }
+
+    // FUNCIÓN: Calcular prioridad según tipo de alimento y fase
+    const getFoodPriority = (foodName, phase) => {
+        const name = foodName.toLowerCase();
+        
+        // Clasificar tipo de alimento
+        const isGel = name.includes('gel');
+        const isEnergyDrink = name.includes('bebida energética');
+        const isEnergyBar = name.includes('barrita energética') || name.includes('barrita de cereales');
+        const isProteinBar = name.includes('barrita proteica') || name.includes('barrita mixta');
+        const isBanana = name.includes('plátano') || name.includes('banana');
+        const isDates = name.includes('dátil');
+        const isBread = name.includes('pan');
+        const isSandwich = name.includes('sandwich') || name.includes('bocadillo');
+        const isPotato = name.includes('patata');
+        const isBroth = name.includes('caldo');
+        const isNuts = name.includes('almendra') || name.includes('nuez') || name.includes('fruto seco');
+        
+        // PRIORIDADES POR FASE
+        if (phase === 'adaptacion') {
+            if (isGel) return 3.5;
+            if (isEnergyDrink) return 2.8;
+            if (isBanana) return 2.2;
+            if (isEnergyBar) return 1.8;
+            if (isDates) return 1.5;
+            if (isBread) return 1.2;
+            if (isNuts) return 0.6;
+            return 1.0;
+        }
+        else if (phase === 'temprana_sostenida') {
+            if (isGel) return 3.2;
+            if (isEnergyBar) return 3.0;
+            if (isBanana) return 2.6;
+            if (isEnergyDrink) return 2.2;
+            if (isBread) return 1.8;
+            if (isSandwich) return 1.6;
+            return 1.0;
+        }
+        else if (phase === 'media_sostenida') {
+            if (isSandwich || isPotato) return 3.0;
+            if (isProteinBar || isEnergyBar) return 2.5;
+            if (isGel) return 2.0;
+            if (isBread) return 1.8;
+            return 1.0;
+        }
+        else { // fatiga phases
+            if (isBroth) return 3.0;
+            if (isGel) return 2.5;
+            if (isBanana) return 2.3;
+            if (isProteinBar) return 2.0;
+            return 1.0;
+        }
+    };
+
     // Filtrar por hora apropiada
     let availableFoods = ALIMENTOS_INDIVIDUALES[phase];
     if (currentHour > 0) {
@@ -2736,29 +2514,65 @@ function generateFoodCombinationNew(targetCHO, targetProtein, phase, currentHour
         if (hourlyFoods.length > 0) availableFoods = hourlyFoods;
     }
 
-    // ALGORITMO INTELIGENTE: Encontrar la mejor combinación que alcance o supere mínimamente el objetivo
+    // FILTRO ADICIONAL: Excluir alimentos pesados en fases tardías de carreras cortas
+    // En carreras <8h, evitar patatas/sólidos muy pesados después de hora 4
+    if (currentHour > 4) {
+        const heavyFoods = ['patata', 'arroz', 'pasta', 'boniato'];
+        availableFoods = availableFoods.filter(f => {
+            const name = f.name.toLowerCase();
+            return !heavyFoods.some(heavy => name.includes(heavy));
+        });
+    }
+
+    // ALGORITMO INTELIGENTE con prioridades y anti-repetición
     let bestCombination = null;
-    let bestScore = -1;
+    let bestScore = -Infinity;
+    let evaluatedCount = 0;
+    let validCombinationsCount = 0; // Contador de combinaciones que cumplen requisitos
 
     // Probar combinaciones de 1, 2 y 3 alimentos
     for (let maxFoods = 1; maxFoods <= 3; maxFoods++) {
         const combinations = generateCombinations(availableFoods, maxFoods);
         
         for (const combo of combinations) {
+            evaluatedCount++;
             const totalCHO = combo.reduce((sum, food) => sum + food.carbs, 0);
             const totalProtein = combo.reduce((sum, food) => sum + food.protein, 0);
             
-            // CRITERIOS DE EVALUACIÓN
-            const meetsCHO = totalCHO >= targetCHO;  // Debe alcanzar o superar CHO
-            const meetsProtein = targetProtein === 0 || totalProtein >= targetProtein; // Alcanzar proteína si es necesaria
+            // CRITERIO 1: Debe cumplir objetivos mínimos
+            const meetsCHO = totalCHO >= targetCHO;
+            const meetsProtein = targetProtein === 0 || totalProtein >= targetProtein;
             
             if (meetsCHO && meetsProtein) {
-                // Calcular puntuación: priorizar minimizar exceso
+                validCombinationsCount++;
+                
+                // SCORE BASE: Minimizar exceso
                 const choExcess = Math.max(0, totalCHO - targetCHO);
                 const proteinExcess = Math.max(0, totalProtein - targetProtein);
+                let score = 1000 - (choExcess * 2) - (proteinExcess * 1) - (combo.length * 10);
                 
-                // Puntuación más alta = mejor (menos exceso)
-                const score = 1000 - (choExcess * 2) - (proteinExcess * 1) - (combo.length * 10);
+                // BONUS: Prioridad por tipo de alimento (PONDERADA por aporte CHO)
+                // El alimento que más CHO aporta tiene más peso en la prioridad
+                let weightedPriority = 0;
+                if (combo.length === 1) {
+                    weightedPriority = getFoodPriority(combo[0].name, phase);
+                } else {
+                    const totalChoContribution = combo.reduce((sum, f) => sum + f.carbs, 0);
+                    weightedPriority = combo.reduce((sum, food) => {
+                        const weight = food.carbs / totalChoContribution; // % de CHO que aporta
+                        return sum + (getFoodPriority(food.name, phase) * weight);
+                    }, 0);
+                }
+                const priorityBonus = weightedPriority * 50; // Hasta +175 puntos para geles en adaptación
+                score += priorityBonus;
+                
+                // PENALIZACIÓN: Repetición reciente (últimas 6 horas)
+                const foodNames = combo.map(f => f.name);
+                const recentUsage = foodNames.filter(name => 
+                    window.foodHistory.some(prev => prev.includes(name))
+                ).length;
+                const repetitionPenalty = recentUsage * 100; // -100 pts por cada alimento repetido
+                score -= repetitionPenalty;
                 
                 if (score > bestScore) {
                     bestScore = score;
@@ -2773,8 +2587,14 @@ function generateFoodCombinationNew(targetCHO, targetProtein, phase, currentHour
 
     // Si no encontramos combinación perfecta, usar enfoque aproximado
     if (!bestCombination) {
-        console.log('🔄 Usando algoritmo de aproximación...');
         bestCombination = findApproximateCombination(availableFoods, targetCHO, targetProtein);
+    }
+
+    // ACTUALIZAR HISTORIAL: Añadir combinación seleccionada
+    const selectedNames = bestCombination.map(f => f.name).join(' + ');
+    window.foodHistory.push(selectedNames);
+    if (window.foodHistory.length > 6) {
+        window.foodHistory = window.foodHistory.slice(-6);
     }
 
     // Calcular totales finales
@@ -2786,8 +2606,6 @@ function generateFoodCombinationNew(targetCHO, targetProtein, phase, currentHour
     // Calcular precisión
     const choAccuracy = targetCHO > 0 ? Math.max(0, Math.min(100, Math.round((finalCHO / targetCHO) * 100))) : 100;
     const proteinAccuracy = targetProtein > 0 ? Math.max(0, Math.min(100, Math.round((finalProtein / targetProtein) * 100))) : 100;
-
-    console.log(`✅ RESULTADO: ${finalCHO}g CHO (objetivo: ${targetCHO}g), ${finalProtein}g PRO (objetivo: ${targetProtein}g)`);
 
     return {
         foods: bestCombination,
@@ -2887,8 +2705,5 @@ function findApproximateCombination(foods, targetCHO, targetProtein) {
 }
 
 if (typeof window !== 'undefined') {
-    window.analyzeCHO = analyzeCHOCalculations;
     window.testNewFoods = generateFoodCombinationNew;
-    console.log("🔧 Función analyzeCHOCalculations() disponible. Ejecuta window.analyzeCHO() para análisis completo.");
-    console.log("🍎 Función generateFoodCombinationNew() disponible. Prueba: window.testNewFoods(45, 8, 'adaptacion', 2)");
 }

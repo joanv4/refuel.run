@@ -70,6 +70,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -82,6 +84,13 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    width: 100%;
+    max-width: 100vw;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    margin: 0;
+    padding: 0;
 }
 
 body::before {
@@ -115,6 +124,15 @@ a {
 
 a:hover {
     color: var(--brand-orange-light);
+}
+
+main {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+    right: 0;
 }
 
 /* PARTÍCULAS DE FONDO */
@@ -161,13 +179,15 @@ a:hover {
 .header {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 0 !important;
+    right: 0 !important;
     z-index: 1000;
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(249, 115, 22, 0.1);
     transition: var(--transition-normal);
+    transform: none !important;
+    width: 100%;
 }
 
 .nav {
@@ -633,7 +653,7 @@ a:hover {
     width: 100%;
     min-height: 100vh;
     padding: 120px var(--spacing-lg) var(--spacing-3xl);
-    display: none; /* Inicialmente oculto */
+    display: none;
 }
 
 .calculator-container {
@@ -750,12 +770,12 @@ a:hover {
 }
 
 .step-container {
-    display: none; /* Oculta todos los pasos por defecto */
+    display: none;
     animation: fadeIn 0.5s var(--transition-cubic);
 }
 
 .step-container.step-active {
-    display: block; /* Muestra solo el paso activo */
+    display: block;
 }
 
 .step-header {
@@ -1182,19 +1202,16 @@ a:hover {
         display: none;
     }
     
-    /* Form Grid Mobile */
     .form-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
     
-    /* Ensure full-width fields span correctly in mobile */
     .form-group.full-width {
         grid-column: 1;
         width: 100%;
     }
     
-    /* Prevent overflow on mobile */
     .form-group input,
     .form-group select {
         width: 100%;
@@ -1264,7 +1281,6 @@ a:hover {
         padding: var(--spacing-sm) var(--spacing-md);
     }
     
-    /* Button alignment fixes for tablet */
     .step-actions {
         gap: var(--spacing-md);
     }
@@ -1334,14 +1350,13 @@ a:hover {
     .form-group select {
         padding: var(--spacing-sm) var(--spacing-md);
         font-size: 0.9rem;
-        min-height: 44px; /* iOS accessibility minimum */
+        min-height: 44px;
     }
     
     .step-container {
         padding: var(--spacing-lg) var(--spacing-md);
     }
     
-    /* Button fixes for mobile */
     .btn {
         display: flex;
         align-items: center;
